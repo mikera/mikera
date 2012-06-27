@@ -1,0 +1,4 @@
+
+Credits:
+
+- Many thanks to Rich Hickey (creator of Clojure) for the inspiration on the persistent data structures!
