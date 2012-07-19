@@ -670,9 +670,16 @@ public final class Rand {
 		}
 	}
 
+	/**
+	 * Randomises the temp array to 0.0 or 1.0 according to the probabilities in the array
+	 * 
+	 * @param temp
+	 * @param offset
+	 * @param length
+	 */
 	public static void binarySample(double[] temp, int offset, int length) {
 		for (int i=offset; i<(offset+length); i++) {
-			temp[i]=(Rand.nextDouble()<temp[i]) ? 1f : 0f;
+			temp[i]=(Rand.nextDouble()<temp[i]) ? 1.0 : 0.0;
 		}
 	}
 
