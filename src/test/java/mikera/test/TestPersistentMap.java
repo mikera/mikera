@@ -144,6 +144,7 @@ public class TestPersistentMap {
 		testIterator(pm);
 		testRandomAdds(pm);
 		testNullAdds(pm);
+		testEquals(pm);
 		CommonTests.testCommonData(pm);
 	}
 	
@@ -171,6 +172,13 @@ public class TestPersistentMap {
 		assertTrue(pm.containsKey(2));
 		assertEquals(null,pm.get(2));	
 	}
+	
+	public void testEquals(PersistentMap<Integer,String> pm) {
+		PersistentMap<Integer,String> pm2=pm.include(2,new String("Hello"));
+		PersistentMap<Integer,String> pm3=pm.include(2,new String("Hello"));
+		assertEquals(pm2,pm3);;	
+	}
+
 
 	
 	public PersistentMap<Integer,String> addRandomStuff(PersistentMap<Integer,String> pm, int n , int maxIndex ) {
