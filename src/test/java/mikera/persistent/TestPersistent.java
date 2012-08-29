@@ -1,4 +1,4 @@
-package mikera.test;
+package mikera.persistent;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,6 +22,7 @@ import mikera.persistent.impl.SingletonList;
 import mikera.persistent.impl.SingletonSet;
 import mikera.persistent.impl.SubList;
 import mikera.persistent.impl.Tuple;
+import mikera.test.CommonTests;
 import mikera.util.Rand;
 import mikera.util.Tools;
 import mikera.util.emptyobjects.NullCollection;
