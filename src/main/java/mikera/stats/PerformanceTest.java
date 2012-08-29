@@ -7,7 +7,6 @@ import java.util.Random;
 import mikera.persistent.PersistentHashMap;
 import mikera.persistent.PersistentMap;
 import mikera.util.Bits;
-import mikera.util.Maths;
 import mikera.util.Rand;
 import mikera.util.TextUtils;
 

@@ -1,6 +1,5 @@
   package mikera.ai.sensor;
 
-import mikera.util.Arrays;
 import mikera.util.Maths;
 
 public final class FixedStringSensor extends AbstractSensor {

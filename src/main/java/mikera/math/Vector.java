@@ -11,7 +11,7 @@ import mikera.util.Maths;
  */
 @Mutable
 public final class Vector extends BaseVector {
-	private static final long serialVersionUID = -265007091119573847L;
+	static final long serialVersionUID = -265007091119573847L;
 
 	public final float[] data;
 	

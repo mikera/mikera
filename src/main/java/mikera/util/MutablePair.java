@@ -11,7 +11,8 @@ import mikera.annotations.Mutable;
  */
 @Mutable
 public final class MutablePair<A,B> implements Cloneable, Comparable<MutablePair<A,B>> {
-	private static final long serialVersionUID = -7930545169533958038L;
+	static final long serialVersionUID = -7930545169533958038L;
+	
 	public A a;
 	public B b;
 	

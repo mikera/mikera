@@ -1,7 +1,7 @@
 package mikera.math;
 
 public abstract class BaseVector implements Cloneable {
-	private static final long serialVersionUID = 4591459378854897907L;
+	static final long serialVersionUID = 4591459378854897907L;
 
 	public BaseVector clone() {
 		try {

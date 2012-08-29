@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 public class ASCIIString implements CharSequence, java.io.Serializable,
 		Comparable<ASCIIString> {
 
+	private static final long serialVersionUID = 1286891517839281202L;
+
 	private final int count;
 	private final byte[] value;
 	private int hash = 0;
