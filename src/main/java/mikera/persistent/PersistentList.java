@@ -216,6 +216,7 @@ public abstract class PersistentList<T> extends PersistentCollection<T> implemen
 	}
 	
 	public boolean equals(List<T> pl) {
+		if (this==pl) return true;
 		int size=size();
 		if (size!=pl.size()) return false;
 		for (int i=0; i<size; i++) {
