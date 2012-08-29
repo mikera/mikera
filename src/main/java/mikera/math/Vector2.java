@@ -4,7 +4,7 @@ import mikera.annotations.Mutable;
 
 @Mutable
 public final class Vector2 extends BaseVector {
-	private static final long serialVersionUID = 2170889059548078960L;
+	static final long serialVersionUID = 2170889059548078960L;
 
 	public float x, y;
 

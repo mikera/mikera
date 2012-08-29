@@ -43,6 +43,7 @@ public class CommonTests {
 	}
 
 	
+	@SuppressWarnings("resource")
 	public static void testSerialization(Serializable s) {
 		
 		Data d=new Data();

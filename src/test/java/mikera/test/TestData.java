@@ -147,6 +147,7 @@ public class TestData {
 		assertEquals(0,d.capacity());
 	}
 	
+	@SuppressWarnings("resource")
 	@Test public void testDataStreams() {
 		DataOutputStream dos=new DataOutputStream();
 		

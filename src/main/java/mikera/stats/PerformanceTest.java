@@ -10,6 +10,7 @@ import mikera.util.Bits;
 import mikera.util.Rand;
 import mikera.util.TextUtils;
 
+@SuppressWarnings("unused")
 public class PerformanceTest {
 
 	public static final int PRERUNS=10;

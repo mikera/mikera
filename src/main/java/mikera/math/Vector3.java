@@ -5,7 +5,7 @@ import mikera.util.Maths;
 
 @Mutable
 public final class Vector3 extends BaseVector {
-	private static final long serialVersionUID = 5710579313106988144L;
+	static final long serialVersionUID = 5710579313106988144L;
 
 	public float x;
     public float y;
