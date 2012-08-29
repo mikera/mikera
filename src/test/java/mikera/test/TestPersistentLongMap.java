@@ -25,7 +25,8 @@ public class TestPersistentLongMap {
 		testMap(pm);
 		testMap(addRandomMaps(pm));
 		
-		LongMap<String> im=LongMap.EMPTY;
+		@SuppressWarnings("unchecked")
+		LongMap<String> im=(LongMap<String>) LongMap.EMPTY;
 		testMap(im);
 		testMap(addRandomMaps(im));
 		
