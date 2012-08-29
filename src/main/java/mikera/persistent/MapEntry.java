@@ -13,6 +13,8 @@ import java.util.Map;
  */
 
 public final class MapEntry<K, V> implements Map.Entry<K,V>, Serializable {
+	private static final long serialVersionUID = -7907536048311814113L;
+
 	final K key;
 	final V value;
 	

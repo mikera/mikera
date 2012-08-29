@@ -1,7 +1,6 @@
 package mikera.util;
 
 import java.util.Collection;
-import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Queue;
@@ -80,13 +79,14 @@ private static final class Node<T> {
 	}
 
 	public Iterator<T> iterator() {
-		return new StackIterator(topOfStack.get());
+		return new StackIterator<T>(topOfStack.get());
 	}
 
 	public Object[] toArray() {
 		throw new UnsupportedOperationException();
 	}
 
+	@SuppressWarnings("hiding")
 	public <T> T[] toArray(T[] a) {
 		throw new UnsupportedOperationException();
 	}

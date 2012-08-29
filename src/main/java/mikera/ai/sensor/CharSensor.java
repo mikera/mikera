@@ -1,6 +1,5 @@
 package mikera.ai.sensor;
 
-import mikera.util.Arrays;
 
 public final class CharSensor extends AbstractSensor {
 

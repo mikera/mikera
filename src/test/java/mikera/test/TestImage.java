@@ -1,10 +1,8 @@
 package mikera.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import mikera.image.*;
 
 public class TestImage {
 

@@ -2,16 +2,7 @@ package mikera.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
-
 import mikera.util.Arrays;
-import mikera.util.Rand;
-import mikera.util.Tools;
 
 import org.junit.Test;
 

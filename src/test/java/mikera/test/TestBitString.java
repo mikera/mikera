@@ -1,14 +1,13 @@
 package mikera.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
 import java.util.BitSet;
-
-import org.junit.Test;
 
 import mikera.data.BitString;
 import mikera.util.Rand;
+
+import org.junit.Test;
 
 public class TestBitString {
 

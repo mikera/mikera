@@ -2,7 +2,6 @@ package mikera.test;
 
 import static org.junit.Assert.assertEquals;
 import mikera.engine.Hex;
-import mikera.util.Maths;
 import mikera.util.Rand;
 
 import org.junit.Test;
