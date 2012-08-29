@@ -119,6 +119,8 @@ public abstract class PersistentMap<K,V> extends PersistentObject implements IPe
 	}
 	
 	public boolean equals(PersistentMap<K,V> pm) {
+		if (this==pm) return true;
+		if (this.size()!=pm.size()) return false;
 		return this.containsAll(pm)&&pm.containsAll(this);
 	}
 	
