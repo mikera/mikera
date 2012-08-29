@@ -139,9 +139,10 @@ public class TestGrid {
 		g.clear();
 	}
 	
+	@SuppressWarnings("unused")
 	private static class BCounter extends BlockVisitor<Integer>  {
-		long count=0;
-		long size=0;
+		public long count=0;
+		public long size=0;
 		
 		public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 				Integer value) {

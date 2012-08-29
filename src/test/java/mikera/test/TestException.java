@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class TestException {
 
+	@SuppressWarnings("null")
 	@Test
 	public void test() {
 		boolean a=false;
