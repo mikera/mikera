@@ -537,7 +537,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 	
 	
 	/**
-	 * Represents a single PersistentHashMap entry
+	 * Represents a single IntMap entry
 	 * 
 	 * @author Mike
 	 *
