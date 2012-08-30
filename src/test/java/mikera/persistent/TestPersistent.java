@@ -7,6 +7,7 @@ import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
+import mikera.data.CommonTests;
 import mikera.persistent.IntSet;
 import mikera.persistent.ListFactory;
 import mikera.persistent.MapFactory;
@@ -22,7 +23,6 @@ import mikera.persistent.impl.SingletonList;
 import mikera.persistent.impl.SingletonSet;
 import mikera.persistent.impl.SubList;
 import mikera.persistent.impl.Tuple;
-import mikera.test.CommonTests;
 import mikera.util.Rand;
 import mikera.util.Tools;
 import mikera.util.emptyobjects.NullCollection;
