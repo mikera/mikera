@@ -7,9 +7,16 @@
 
 	<name>mikera.jar - Mike's Java Library</name>
 
-	<description>General purpose utilities for Java licensed under the GPL by Mike Anderson</description>
+	<description>General purpose utilities for Java by Mike Anderson</description>
 
 	<url>https://github.com/mikera/mikera.git</url>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License (LGPL)</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+		</license>
+	</licenses>
 
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -92,7 +99,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -105,15 +112,6 @@
 			</testResource>
 		</testResources>
 	</build>
-
-	<licenses>
-		<license>
-			<name>GPL</name>
-			<url>http://www.gnu.org/licenses/gpl.txt</url>
-			<distribution>repo</distribution>
-			<comments>GPL</comments>
-		</license>
-	</licenses>
 
 	<packaging>jar</packaging>
 
