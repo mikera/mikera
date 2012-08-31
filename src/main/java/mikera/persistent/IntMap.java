@@ -651,7 +651,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			if (this==o) return true;
 			if (o instanceof IMEntry<?>) {
 				IMEntry<V> entry = (IMEntry<V>)o;
-				return (key==entry.key)&&Tools.equalsWithNulls(value, entry.getValue());
+				return (this.key==entry.key)&&Tools.equalsWithNulls(this.value, entry.value);
 			} else if (o instanceof Map.Entry<?,?>) {
 				Map.Entry<?,V> entry = (Map.Entry<?,V>)o;
 				Integer entryKey=(Integer)(entry.getKey());
