@@ -14,5 +14,7 @@ public class TestIntMap {
 		IntMap<String> im3=im.include(1,"foo");
 		
 		assertEquals(im2,im3);
+		
+		assertEquals(im2.entrySet(),im3.entrySet());
 	}
 }
