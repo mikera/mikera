@@ -643,6 +643,23 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		public String toString() {
 			return String.valueOf(key)+'='+String.valueOf(value);
 		}
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		public boolean equals(Object o) {
+			if (this==o) return true;
+			if (!(o instanceof Map.Entry<?,?>)) return false;		
+			Map.Entry<?,V> ent = (Map.Entry<?,V>)o;
+			return (  Tools.equalsWithNulls(key, ent.getKey())
+					&&Tools.equalsWithNulls(value, ent.getValue()));
+		}
+		
+		public int hashCode() {
+			// defined same as java.util.Map.Entry
+			return (getKey()==null   ? 0 : getKey().hashCode()) ^
+				   (getValue()==null ? 0 : getValue().hashCode());
+			
+		}
 	}
 	
 	/**
