@@ -832,4 +832,9 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		super.validate();
 		root.validate();
 	}
+
+	@SuppressWarnings("unchecked")
+	public static <T> IntMap<T> create() {
+		return (IntMap<T>) IntMap.EMPTY;
+	}
 }
