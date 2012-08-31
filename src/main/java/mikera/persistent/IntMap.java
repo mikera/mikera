@@ -572,17 +572,18 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			value=v;
 		}
 		
-		public boolean matches(int key) {
+		public boolean identicalKey(int key) {
 			return this.key==key;
 		}
 		
-		public boolean matchesValue(V value) {
+		// we test for identity to allow update with a new equal but not identical value
+		public boolean identicalValue(V value) {
 			return this.value==value;
 		}
 		
 		@Override
 		protected IMEntry<V> getEntry(int key) {
-			if (matches(key)) return this;
+			if (identicalKey(key)) return this;
 			return null;
 		}
 		
@@ -590,7 +591,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		protected IMNode<V> include(int newkey, V value,int shift) {
 			if (newkey==this.key) {
 				// replacement case
-				if (!matchesValue(value)) return new IMEntry<V>(newkey,value);
+				if (!identicalValue(value)) return new IMEntry<V>(newkey,value);
 				return this;
 			}
 			
@@ -602,7 +603,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			int newkey=entry.key();
 			if (newkey==this.key) {
 				// replacement case
-				if (!matchesValue(entry.getValue())) return entry;
+				if (!identicalValue(entry.getValue())) return entry;
 				return this;
 			}
 			
@@ -648,10 +649,17 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		@Override
 		public boolean equals(Object o) {
 			if (this==o) return true;
-			if (!(o instanceof Map.Entry<?,?>)) return false;		
-			Map.Entry<?,V> ent = (Map.Entry<?,V>)o;
-			return (  Tools.equalsWithNulls(key, ent.getKey())
-					&&Tools.equalsWithNulls(value, ent.getValue()));
+			if (o instanceof IMEntry<?>) {
+				IMEntry<V> entry = (IMEntry<V>)o;
+				return (key==entry.key)&&Tools.equalsWithNulls(value, entry.getValue());
+			} else if (o instanceof Map.Entry<?,?>) {
+				Map.Entry<?,V> entry = (Map.Entry<?,V>)o;
+				Integer entryKey=(Integer)(entry.getKey());
+				return (  (entryKey!=null)
+						&&(key==entryKey)
+						&&Tools.equalsWithNulls(value, entry.getValue()));
+			} 
+			return false;			
 		}
 		
 		public int hashCode() {
