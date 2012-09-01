@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class TestRayCaster {
 	@Test public void testPoints() {
-		HashSet<Point3i> hm=new HashSet<Point3i>();
+		HashSet<Point3i> hm=new HashSet<>();
 		
 		hm.add(new Point3i(1,1,1));
 		hm.add(new Point3i(1,1,1));

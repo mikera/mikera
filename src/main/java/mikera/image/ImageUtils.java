@@ -71,8 +71,8 @@ public class ImageUtils {
 		return f;
 	}
 	
-	private static final HashMap<String,JFrame> imageFrames=new HashMap<String,JFrame>();
-	private static final HashMap<String,Image> images=new HashMap<String,Image>();
+	private static final HashMap<String,JFrame> imageFrames=new HashMap<>();
+	private static final HashMap<String,Image> images=new HashMap<>();
 	
 	@SuppressWarnings("serial")
 	public static Frame display(final String s, Image image) {

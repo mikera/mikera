@@ -93,7 +93,7 @@ public abstract class PersistentMap<K,V> extends PersistentObject implements IPe
 	}
 	
 	public HashMap<K,V> toHashMap() {
-		HashMap<K,V> hm=new HashMap<K,V>();
+		HashMap<K,V> hm=new HashMap<>();
 		for (Map.Entry<K,V> ent: entrySet()) {
 			hm.put(ent.getKey(), ent.getValue());
 		}
