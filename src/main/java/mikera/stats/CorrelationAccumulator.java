@@ -1,5 +1,7 @@
 package mikera.stats;
 
+import mikera.util.MikeraException;
+
 public final class CorrelationAccumulator implements Comparable<CorrelationAccumulator>, Cloneable {
 	int n;
 	double sum_x;
@@ -98,7 +100,9 @@ public final class CorrelationAccumulator implements Comparable<CorrelationAccum
 		CorrelationAccumulator acc=null;
 		try {
 			acc=(CorrelationAccumulator)super.clone();
-		} catch (CloneNotSupportedException x) {}
+		} catch (CloneNotSupportedException x) {
+			throw new MikeraException(x);
+		}
 
 		return acc;	
 	}
