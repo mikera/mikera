@@ -217,7 +217,7 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 		IntMap<MapEntry<Long,V>> newInnerMap=im.delete(lo);
 		assert (newInnerMap!=im);
 		IntMap<IntMap<MapEntry<Long, V>>> newData = data.include(Bits.highWord(key),newInnerMap);		
-		return new LongMap<V>(newData,count-1);
+		return new LongMap<>(newData,count-1);
 	}
 
 	@Override
