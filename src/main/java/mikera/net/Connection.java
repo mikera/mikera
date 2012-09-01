@@ -37,7 +37,7 @@ public class Connection {
 	
 	// write queue, can hold multiple messages
 	// we synchronise access to writeQueue on writeQueue itself
-	private LinkedList<ByteBuffer> writeQueue=new LinkedList<ByteBuffer>();
+	private LinkedList<ByteBuffer> writeQueue=new LinkedList<>();
 
 	public Connection(SocketChannel clientChannel, Selector s) {
 		channel = clientChannel;

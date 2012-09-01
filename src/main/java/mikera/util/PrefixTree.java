@@ -15,7 +15,7 @@ public class PrefixTree<K,V> {
 	}
 	
 	public class KeyIterator implements Iterator<K[]> {
-		private ArrayList<Integer> indexes=new ArrayList<Integer>();
+		private ArrayList<Integer> indexes=new ArrayList<>();
 		
 		private KeyIterator() {
 			

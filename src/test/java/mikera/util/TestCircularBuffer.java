@@ -16,7 +16,7 @@ public class TestCircularBuffer {
 	
 	// get a empty integer buffer with random position
 	public CircularBuffer<Integer> getIntegerBuffer(int i) {
-		CircularBuffer<Integer> cb=new CircularBuffer<Integer>(i);
+		CircularBuffer<Integer> cb=new CircularBuffer<>(i);
 		
 		for (int ii=Rand.r(10*i); ii>0; ii-- ) {
 			cb.add(ii);
@@ -134,7 +134,7 @@ public class TestCircularBuffer {
 	
 	
 	@Test public void testTreeMap() {
-		TreeMap<Integer,String> tm=new TreeMap<Integer,String>();
+		TreeMap<Integer,String> tm=new TreeMap<>();
 		
 		tm.put(1,"A");
 		tm.put(2, "B");

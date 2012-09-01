@@ -591,7 +591,7 @@ public final class Rand {
 	}
 	
 	private static void chooseIntegersBySampling(int[] dest, int destOffset, int n, int maxValue) {
-		SortedSet<Integer> s=new TreeSet<Integer>();
+		SortedSet<Integer> s=new TreeSet<>();
 		
 		while (s.size()<n) {
 			int v=Rand.r(maxValue);
