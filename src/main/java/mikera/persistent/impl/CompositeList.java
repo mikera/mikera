@@ -20,19 +20,19 @@ public class CompositeList<T> extends BasePersistentList<T> {
 		}
 		
 		if (a.size()<(b.size()>>1)) {
-			return new CompositeList<T>(concat(a,b.front()),b.back());
+			return new CompositeList<>(concat(a,b.front()),b.back());
 		}
 		
 		if (b.size()<(a.size()>>1)) {
-			return new CompositeList<T>(a.front(),concat(a.back(),b));
+			return new CompositeList<>(a.front(),concat(a.back(),b));
 		}
 		
-		return new CompositeList<T>(a,b);
+		return new CompositeList<>(a,b);
 	}
 	
 	public static <T> CompositeList<T> create(T[] data,  int fromIndex, int toIndex) {
 		int midIndex=calcMidIndex(fromIndex, toIndex);
-		return new CompositeList<T>(ListFactory.createFromArray(data,fromIndex,midIndex),ListFactory.createFromArray(data,midIndex,toIndex));
+		return new CompositeList<>(ListFactory.createFromArray(data,fromIndex,midIndex),ListFactory.createFromArray(data,midIndex,toIndex));
 	}
 	
 	public static final int calcMidIndex(int fromIndex, int toIndex) {
@@ -53,7 +53,7 @@ public class CompositeList<T> extends BasePersistentList<T> {
 
 	public static <T> CompositeList<T> create(List<T> source, int fromIndex, int toIndex) {
 		int midIndex=calcMidIndex(fromIndex, toIndex);
-		return new CompositeList<T>(ListFactory.createFromList(source,fromIndex,midIndex),ListFactory.createFromList(source,midIndex,toIndex));
+		return new CompositeList<>(ListFactory.createFromList(source,fromIndex,midIndex),ListFactory.createFromList(source,midIndex,toIndex));
 	}
 	
 	private CompositeList(PersistentList<T> a, PersistentList<T> b ) {

@@ -249,7 +249,7 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 		} else {
 			newData[li]=createLocal(x,y,z,value,fill,shift-DIM_SPLIT_BITS);
 		}
-		return new PersistentTreeGrid<T> (newData);		
+		return new PersistentTreeGrid<> (newData);		
 	}	
 	
 	private static final Object[] setOrCreateArray(Object[] arr, int pos, Object value) {
@@ -351,7 +351,7 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 						} else if (!(d instanceof PersistentTreeGrid<?>)) {
 							if (d.equals(value)) continue;
 							PersistentTreeGrid<T> subGrid=(PersistentTreeGrid<T>)
-								new PersistentTreeGrid<T>((T)d).setBlockLocal(
+								new PersistentTreeGrid<>((T)d).setBlockLocal(
 										Maths.max(lx, x1)-lx,
 										Maths.max(ly, y1)-ly,
 										Maths.max(lz, z1)-lz,
@@ -390,7 +390,7 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 	}
 
 	public ArrayList<T> getObjectList(int x1, int y1, int z1, int x2, int y2, int z2) {
-		final ArrayList<T> al=new ArrayList<T>();
+		final ArrayList<T> al=new ArrayList<>();
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
 
 			@Override

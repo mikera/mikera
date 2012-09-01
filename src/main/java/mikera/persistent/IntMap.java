@@ -52,11 +52,11 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 	}
 	
 	public static<V> IntMap<V> create(int key, V value) {
-		return new IntMap<V>(new IMEntry<V>(key,value));
+		return new IntMap<>(new IMEntry<>(key,value));
 	}
 	
 	public static<V> IntMap<V> create(Map<Integer,V> values) {
-		IntMap<V> pm=new IntMap<V>();
+		IntMap<V> pm=new IntMap<>();
 		for (Map.Entry<Integer,V> ent: values.entrySet()) {
 			pm=pm.include(ent.getKey(),ent.getValue());
 		}
@@ -179,7 +179,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			IMNode<V>[] newdata=new IMNode[DATA_SIZE-1];
 			System.arraycopy(data, 0, newdata, 0, i);
 			System.arraycopy(data, i+1, newdata, i, DATA_SIZE-i-1);
-			return new IMBitMapNode<V>(newdata,shift,0xFFFFFFFF&(~(1<<i)));
+			return new IMBitMapNode<>(newdata,shift,0xFFFFFFFF&(~(1<<i)));
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -187,7 +187,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			IMNode<V>[] newData=new IMNode[DATA_SIZE];
 			System.arraycopy(data, 0, newData, 0, DATA_SIZE);
 			newData[i]=node;
-			return new IMFullNode<V>(newData,shift);
+			return new IMFullNode<>(newData,shift);
 		}
 		
 		@Override
@@ -349,7 +349,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			IMNode<V>[] newData=new IMNode[data.length-1];
 			System.arraycopy(data, 0, newData, 0, i);
 			System.arraycopy(data, i+1, newData, i, data.length-i-1);
-			return new IMBitMapNode<V>(newData,shift,bitmap&(~(1<<slotFromIndex(i))));
+			return new IMBitMapNode<>(newData,shift,bitmap&(~(1<<slotFromIndex(i))));
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -357,7 +357,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			IMNode<V>[] newData=new IMNode[data.length];
 			System.arraycopy(data, 0, newData, 0, data.length);
 			newData[i]=node;
-			return new IMBitMapNode<V>(newData,shift,bitmap);
+			return new IMBitMapNode<>(newData,shift,bitmap);
 		}
 		
 		@Override
@@ -392,7 +392,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			int s=slotFromHash(key,shift);
 			int i=indexFromSlot(s,bitmap);
 			if (((1<<s)&bitmap)==0) {
-				return insertSlot(i,s,new IMEntry<V>(key,value));
+				return insertSlot(i,s,new IMEntry<>(key,value));
 			}
 			IMNode<V> n=data[i];
 			return replace(i,n.include(key, value, shift+SHIFT_AMOUNT));
@@ -417,9 +417,9 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			System.arraycopy(data, i, newData, i+1, data.length-i);
 			newData[i]=node;
 			if (data.length==31) {
-				return new IMFullNode<V>(newData,shift);
+				return new IMFullNode<>(newData,shift);
 			} else {
-				return new IMBitMapNode<V>(newData,shift,bitmap|(1<<s));				
+				return new IMBitMapNode<>(newData,shift,bitmap|(1<<s));				
 			}
 		}
 		
@@ -439,7 +439,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 				nodes=new IMNode[1];
 				nodes[0]=concat(a,ha,b,hb,shift+SHIFT_AMOUNT);
 			}
-			IMBitMapNode<V> fn=new IMBitMapNode<V>(nodes,shift,bitmap);
+			IMBitMapNode<V> fn=new IMBitMapNode<>(nodes,shift,bitmap);
 			return fn;
 		}
 
@@ -508,7 +508,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 
 		@Override
 		protected IMNode<V> include(int key, V value, int shift) {
-			return new IMEntry<V>(key,value);
+			return new IMEntry<>(key,value);
 		}
 		
 		protected IMNode<V> include(IMEntry<V> entry, int shift) {
@@ -592,11 +592,11 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		protected IMNode<V> include(int newkey, V value,int shift) {
 			if (newkey==this.key) {
 				// replacement case
-				if (!identicalValue(value)) return new IMEntry<V>(newkey,value);
+				if (!identicalValue(value)) return new IMEntry<>(newkey,value);
 				return this;
 			}
 			
-			return IMBitMapNode.concat(this,key,new IMEntry<V>(newkey,value),newkey,shift);
+			return IMBitMapNode.concat(this,key,new IMEntry<>(newkey,value),newkey,shift);
 		}
 		
 		@Override
@@ -692,7 +692,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		}
 
 		public Iterator<Map.Entry<Integer,V>> iterator() {
-			return new IMEntrySetIterator<V>(IntMap.this);
+			return new IMEntrySetIterator<>(IntMap.this);
 		}
 
 		public PersistentSet<Map.Entry<Integer,V>> include(
@@ -805,13 +805,13 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 	public IntMap<V> include(Integer key, V value) {
 		IMNode<V> newRoot=root.include(key.intValue(), value,0);
 		if (root==newRoot) return this;
-		return new IntMap<V>(newRoot);
+		return new IntMap<>(newRoot);
 	}
 	
 	public IntMap<V> include(int key, V value) {
 		IMNode<V> newRoot=root.include(key, value,0);
 		if (root==newRoot) return this;
-		return new IntMap<V>(newRoot);
+		return new IntMap<>(newRoot);
 	}
 	
 	@Override
@@ -841,13 +841,13 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 	public IntMap<V> delete(Integer key) {
 		IMNode<V> newRoot=root.delete(key);
 		if (root==newRoot) return this;
-		return new IntMap<V>(newRoot);
+		return new IntMap<>(newRoot);
 	}
 	
 	public IntMap<V> delete(int key) {
 		IMNode<V> newRoot=root.delete(key);
 		if (root==newRoot) return this;
-		return new IntMap<V>(newRoot);
+		return new IntMap<>(newRoot);
 	}
 	
 	public boolean allowsNullKey() {

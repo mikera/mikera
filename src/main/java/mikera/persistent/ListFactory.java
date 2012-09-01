@@ -76,7 +76,7 @@ public class ListFactory<T> {
 	}
 	
 	public static<T> PersistentList<T> createFromIterator(Iterator<T> source) {
-		ArrayList<T> al=new ArrayList<T>();
+		ArrayList<T> al=new ArrayList<>();
 		while(source.hasNext()) {
 			al.add(source.next());
 		}

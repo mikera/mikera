@@ -53,8 +53,8 @@ public class TestTools {
 	}
 	
 	@Test public void testMapDifference() {
-		HashMap<String,String> a=new HashMap<String,String>();
-		HashMap<String,String> b=new HashMap<String,String>();
+		HashMap<String,String> a=new HashMap<>();
+		HashMap<String,String> b=new HashMap<>();
 		
 		a.put("1","a");
 		a.put("2",null);

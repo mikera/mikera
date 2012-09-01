@@ -22,7 +22,7 @@ public final class SingletonSet<T> extends BasePersistentSet<T> {
 	
 	
 	public static <T> SingletonSet<T> create(T object) {
-		return new SingletonSet<T>(object);
+		return new SingletonSet<>(object);
 	}
 	
 	public int size() {

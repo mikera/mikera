@@ -328,7 +328,7 @@ public class TestPersistent {
 	}
 	
 	public <T> void testAppends(PersistentList<T> a) {
-		ArrayList<T> al=new ArrayList<T>();
+		ArrayList<T> al=new ArrayList<>();
 		
 		int n=a.size();	
 		for (int i=0; i<n; i++) {
