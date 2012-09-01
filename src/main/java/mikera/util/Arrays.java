@@ -36,7 +36,6 @@ public class Arrays {
 	
 	public static <T> T[] insertElement(T[] array, T value, int i) {
 		int count=array.length;
-		@SuppressWarnings("unchecked")
 		T[] newarray=(T[]) Array.newInstance(array.getClass().getComponentType(), count+1);
 		
 		System.arraycopy(array, 0, newarray, 0, i);
@@ -60,7 +59,6 @@ public class Arrays {
 	
 	public static <T> T[] deleteElement(T[] array, int i) {
 		int count=array.length;
-		@SuppressWarnings("unchecked")
 		T[] newarray=(T[]) Array.newInstance(array.getClass().getComponentType(), count-1);
 		
 		System.arraycopy(array, 0, newarray, 0, i);
@@ -316,7 +314,6 @@ public class Arrays {
 
 	public static <T> T[] resize(T[] array, int newsize) {
 		int len=array.length;
-		@SuppressWarnings("unchecked")
 		T[] newarray=(T[]) Array.newInstance(array.getClass().getComponentType(), newsize);
 		System.arraycopy(array, 0, newarray, 0, Maths.min(newsize,len));
 		return newarray;
@@ -637,7 +634,6 @@ public class Arrays {
 
 	public static <T> T[] subArray(T[] array, int start, int end) {
 		int len=end-start;
-		@SuppressWarnings("unchecked")
 		T[] newarray=(T[]) Array.newInstance(array.getClass().getComponentType(), len);
 		System.arraycopy(array, start, newarray, 0, len);
 		return newarray;

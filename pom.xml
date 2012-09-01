@@ -18,11 +18,11 @@
 		</license>
 	</licenses>
 
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
+<!-- 	<parent> -->
+<!-- 		<groupId>org.sonatype.oss</groupId> -->
+<!-- 		<artifactId>oss-parent</artifactId> -->
+<!-- 		<version>7</version> -->
+<!-- 	</parent> -->
 
 	<developers>
 		<developer>

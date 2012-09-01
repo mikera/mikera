@@ -23,12 +23,10 @@ import mikera.util.emptyobjects.NullSet;
 public final class ArraySet<T> extends BasePersistentSet<T> {
 	private final T[] data;
 	
-	@SuppressWarnings("unchecked")
 	public static <T> ArraySet<T> createFromSet(Set<T> source) {
 		return new ArraySet<T>((T[])source.toArray());
 	}
 	
-	@SuppressWarnings("unchecked")
 	public static <T> ArraySet<T> createFromSet(PersistentSet<T> source) {
 		if (source instanceof ArraySet<?>) return (ArraySet<T>)source;
 		return new ArraySet<T>((T[])source.toArray());
