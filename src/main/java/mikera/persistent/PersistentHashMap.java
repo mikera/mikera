@@ -764,7 +764,6 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 			return PersistentHashMap.this.size();
 		}
 		
-		@SuppressWarnings("unchecked")
 		public boolean contains(Object o) {
 			if (!(o instanceof Map.Entry<?,?>)) return false;
 			Map.Entry<?,?> ent=(Map.Entry<?,?>)o;

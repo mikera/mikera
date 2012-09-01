@@ -1,8 +1,8 @@
 package mikera.persistent;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
-import mikera.persistent.IntMap;
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 
 public class TestIntMap {
