@@ -131,7 +131,7 @@ public abstract class PersistentMap<K,V> extends PersistentObject implements IPe
 	}
 
 	public void validate() {
-		
+		// nothing to do
 	}
 	
 	public String toString() {

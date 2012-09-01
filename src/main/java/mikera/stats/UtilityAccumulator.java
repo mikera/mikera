@@ -68,7 +68,9 @@ public final class UtilityAccumulator implements Comparable<UtilityAccumulator>,
 		UtilityAccumulator acc=null;
 		try {
 			acc=(UtilityAccumulator)super.clone();
-		} catch (CloneNotSupportedException x) {}
+		} catch (CloneNotSupportedException x) {
+			throw new Error(x);
+		}
 
 		return acc;	
 	}
