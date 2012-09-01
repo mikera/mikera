@@ -872,7 +872,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 	public PersistentHashMap<K, V> include(K key, V value) {
 		PHMNode<K,V> newRoot=root.include(key, value,key.hashCode(),0);
 		if (root==newRoot) return this;
-		return new PersistentHashMap<K,V>(newRoot);
+		return new PersistentHashMap<>(newRoot);
 	}
 	
 	@Override

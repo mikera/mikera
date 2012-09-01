@@ -3,7 +3,7 @@ package mikera.stats;
 import java.util.HashMap;
 
 public class Stats {
-	private static final HashMap<String,Double> stats=new HashMap<String,Double>();
+	private static final HashMap<String,Double> stats=new HashMap<>();
 	
 	public static void addStat(String s, double v) {
 		setStat(s,getStat(s)+v);
