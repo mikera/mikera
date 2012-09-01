@@ -63,7 +63,7 @@ public final class ByteArrayCache {
 	
 	static {
 		for (int i=0; i<32; i++) {
-			cache[i]=new ArrayList<byte[]>();
+			cache[i]=new ArrayList<>();
 		}
 	}
 }

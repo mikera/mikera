@@ -60,7 +60,7 @@ public class TestDirections {
 	@Test public void testPathFinding() {
 		PathFinder pf=new PathFinder();
 		
-		final TreeGrid<Float> costs=new TreeGrid<Float>();
+		final TreeGrid<Float> costs=new TreeGrid<>();
 		pf.setCostFunction(new PathFinder.CostFunction() {
 			@Override
 			public float moveCost(int x, int y, int z, int tx, int ty, int tz) {

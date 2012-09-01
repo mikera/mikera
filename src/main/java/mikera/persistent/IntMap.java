@@ -788,7 +788,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 
 	@Override
 	public PersistentSet<Integer> keySet() {
-		return new KeySetWrapper<Integer, V>(entrySet());
+		return new KeySetWrapper<>(entrySet());
 	}
 
 	@Override
@@ -798,7 +798,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 
 	@Override
 	public PersistentCollection<V> values() {
-		return new ValueCollectionWrapper<Integer, V>(entrySet());
+		return new ValueCollectionWrapper<>(entrySet());
 	}
 
 	@Override

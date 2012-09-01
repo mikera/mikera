@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class TestSoftHashMap {
 	@Test public void test1() {
-		SoftHashMap<Integer,String> sh=new SoftHashMap<Integer,String>();
+		SoftHashMap<Integer,String> sh=new SoftHashMap<>();
 		
 		sh.put(1,"dfevev");
 		sh.put(2,"gbnfrvev");

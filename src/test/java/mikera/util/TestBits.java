@@ -242,7 +242,7 @@ public class TestBits {
 	
 	@Test public void testBitGrid4() {
 		final BitGrid bg=new BitGrid();
-		final TreeGrid<Boolean> tg=new TreeGrid<Boolean>();
+		final TreeGrid<Boolean> tg=new TreeGrid<>();
 		
 		for (int i=0; i<10; i++) {
 			int x=Rand.r(20)-10;

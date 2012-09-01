@@ -97,8 +97,8 @@ public class LineTracer {
 		return totalDist;
 	}
 	
-	private ArrayList<int[]> lines=new ArrayList<int[]>();
-	private ArrayList<int[]> skips=new ArrayList<int[]>();
+	private ArrayList<int[]> lines=new ArrayList<>();
+	private ArrayList<int[]> skips=new ArrayList<>();
 	
 	public void initLines(int maxLength) {
 		lines.clear();

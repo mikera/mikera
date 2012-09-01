@@ -55,7 +55,7 @@ public class TestPersistentMap {
 	@Test public void testConvert() {
 		PersistentMap<Integer,String> phm=PersistentHashMap.create();
 
-		HashMap<Integer,String> hm=new HashMap<Integer,String>();
+		HashMap<Integer,String> hm=new HashMap<>();
 		for (int i=0; i<10; i++) {
 			int key=Rand.r(100);
 			String value=Rand.nextString();
@@ -102,7 +102,7 @@ public class TestPersistentMap {
 	}
 	
 	@Test public void testToString() {
-		HashMap<Integer,String> hm=new HashMap<Integer, String>();
+		HashMap<Integer,String> hm=new HashMap<>();
 		hm.put(1, "Hello");
 		hm.put(2, "World");
 		

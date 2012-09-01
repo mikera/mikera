@@ -70,7 +70,7 @@ public final class MutablePair<A,B> implements Cloneable, Comparable<MutablePair
 	}
 	
 	public MutablePair<B,A> swap() {
-		return new MutablePair<B,A>(b,a);
+		return new MutablePair<>(b,a);
 	}
 	
 	public MutablePair<A,B> clone() {

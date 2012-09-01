@@ -168,8 +168,8 @@ public class TestOctreap {
 	}
 	
 	@Test public void testRandom() {
-		Octreap<Integer> m=new Octreap<Integer>();
-		HashMap<Integer,Integer> h=new HashMap<Integer,Integer>();
+		Octreap<Integer> m=new Octreap<>();
+		HashMap<Integer,Integer> h=new HashMap<>();
 		
 		for (int i=0; i<3000; i++) {
 			int x=Rand.d(11)-6;
@@ -473,7 +473,7 @@ public class TestOctreap {
 		
 	@Test public void testRandomBlock() {
 		Octreap<Integer> m=new Octreap<Integer>();
-		HashMap<Integer,Integer> h=new HashMap<Integer,Integer>();
+		HashMap<Integer,Integer> h=new HashMap<>();
 		
 		for (int i=0; i<3000; i++) {
 			int x=Rand.d(11)-6;
