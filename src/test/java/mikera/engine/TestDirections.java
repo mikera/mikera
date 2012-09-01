@@ -30,7 +30,7 @@ public class TestDirections {
 	}
 	
 	@Test public void testDirDirections() {
-		Octreap<Integer> o=new Octreap<Integer>();
+		Octreap<Integer> o=new Octreap<>();
 		
 		for (int i=0; i<Dir.MAX_DIR; i++) {
 			int d=i;

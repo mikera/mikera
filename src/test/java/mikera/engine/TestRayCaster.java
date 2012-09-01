@@ -28,7 +28,7 @@ public class TestRayCaster {
 	}
 	
 	@Test public void testCast() {
-		final TreeGrid<Integer> tg=new TreeGrid<Integer>();
+		final TreeGrid<Integer> tg=new TreeGrid<>();
 		final int RANGE=5;
 		int D=(RANGE*2)+1;
 		

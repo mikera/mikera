@@ -28,7 +28,7 @@ public final class KeySetWrapper<K,V> extends PersistentSet<K> {
 	}
 
 	public Iterator<K> iterator() {
-		return new KeySetIterator<K, V>(source);
+		return new KeySetIterator<>(source);
 	}
 	
 	public static class KeySetIterator<K,V> implements Iterator<K> {

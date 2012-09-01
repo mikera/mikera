@@ -36,7 +36,7 @@ public class Wrappers {
 
 		@Override
 		public Iterator<K> iterator() {
-			return new Iterators.KeyIterator<K>(map.entrySet().iterator());
+			return new Iterators.KeyIterator<>(map.entrySet().iterator());
 		}
 
 		@Override
