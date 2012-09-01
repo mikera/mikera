@@ -193,7 +193,7 @@ public abstract class Server {
 	}
 	
 	protected void onPlayerConnected(Player p) {
-		
+		// nothing to do, should be overridden if needed
 	}
 
 	// queues message for the relevant player

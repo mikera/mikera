@@ -522,6 +522,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 
 		@Override
 		public void validate() {
+			// TODO: some validation
 		}
 		
 		@Override

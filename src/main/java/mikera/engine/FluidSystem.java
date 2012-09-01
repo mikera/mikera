@@ -20,7 +20,7 @@ public class FluidSystem {
 	
 	public void fluidStep() {
 		
-		
+		// TODO: move fluids
 	}
 	
 	public PointVisitor<Integer> pressureCalc=new PointVisitor<Integer>() {
