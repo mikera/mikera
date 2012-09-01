@@ -12,7 +12,7 @@ public class SparseGrid<T> extends BaseGrid<T> {
 	
 	@Override
 	public SparseGrid<T> clear() {
-		data=new SparseArray<T>();
+		data=new SparseArray<>();
 		return this;
 	}
 

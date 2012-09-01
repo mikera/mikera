@@ -66,7 +66,7 @@ public final class BlockList<T> extends BasePersistentList<T> {
 					fromIndex+size,
 					shift-SHIFT_STEP);
 			
-			return new BlockList<T>(bs,shift,size,0);			
+			return new BlockList<>(bs,shift,size,0);			
 		} else {
 			return createLowestLevel(list,fromIndex, toIndex,DEFAULT_SHIFT);
 		}
@@ -92,7 +92,7 @@ public final class BlockList<T> extends BasePersistentList<T> {
 					fromIndex+size,
 					shift-SHIFT_STEP);
 			
-			return new BlockList<T>(bs,shift,size,0);			
+			return new BlockList<>(bs,shift,size,0);			
 		} else {
 			return createLowestLevel(list,fromIndex, toIndex,DEFAULT_SHIFT);
 		}
@@ -115,7 +115,7 @@ public final class BlockList<T> extends BasePersistentList<T> {
 				fromIndex+((numBlocks-1)<<shift), 
 				fromIndex+size);
 	
-		return new BlockList<T>(bs,shift,size,0);
+		return new BlockList<>(bs,shift,size,0);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -135,7 +135,7 @@ public final class BlockList<T> extends BasePersistentList<T> {
 				fromIndex+((numBlocks-1)<<shift), 
 				fromIndex+size);
 	
-		return new BlockList<T>(bs,shift,size,0);
+		return new BlockList<>(bs,shift,size,0);
 	}
 	
 	private static final int numBlocks(int size, int shift) {
@@ -204,6 +204,6 @@ public final class BlockList<T> extends BasePersistentList<T> {
 	 * @return
 	 */
 	private BlockList<T> subBlockList(int fromIndex, int toIndex) {
-		return new BlockList<T>(blocks,shift,(toIndex-fromIndex),fromIndex+offset);	
+		return new BlockList<>(blocks,shift,(toIndex-fromIndex),fromIndex+offset);	
 	}
 }

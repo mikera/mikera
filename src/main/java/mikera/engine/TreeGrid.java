@@ -215,7 +215,7 @@ public class TreeGrid<T> extends BaseGrid<T> {
 				return this;
 			} else if (!(d instanceof TreeGrid<?>)) {
 				if (d.equals(value)) return this;
-				d=new TreeGrid<T>((T)d);
+				d=new TreeGrid<>((T)d);
 				head.data[li]=d;				
 			}
 			shift-=DIM_SPLIT_BITS;
@@ -312,7 +312,7 @@ public class TreeGrid<T> extends BaseGrid<T> {
 							d=new TreeGrid<T>();
 							data[li]=d;
 						} else if (!(d instanceof TreeGrid<?>)) {
-							d=new TreeGrid<T>((T)d);
+							d=new TreeGrid<>((T)d);
 							data[li]=d;
 						}
 						TreeGrid<T> tg=(TreeGrid<T>)d;
@@ -338,7 +338,7 @@ public class TreeGrid<T> extends BaseGrid<T> {
 	}
 
 	public ArrayList<T> getObjectList(int x1, int y1, int z1, int x2, int y2, int z2) {
-		final ArrayList<T> al=new ArrayList<T>();
+		final ArrayList<T> al=new ArrayList<>();
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
 
 			@Override

@@ -24,21 +24,21 @@ public final class ArraySet<T> extends BasePersistentSet<T> {
 	private final T[] data;
 	
 	public static <T> ArraySet<T> createFromSet(Set<T> source) {
-		return new ArraySet<T>((T[])source.toArray());
+		return new ArraySet<>((T[])source.toArray());
 	}
 	
 	public static <T> ArraySet<T> createFromSet(PersistentSet<T> source) {
 		if (source instanceof ArraySet<?>) return (ArraySet<T>)source;
-		return new ArraySet<T>((T[])source.toArray());
+		return new ArraySet<>((T[])source.toArray());
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static <T> ArraySet<T> createFromValue(T source) {
-		return new ArraySet<T>((T[])new Object[]{source});
+		return new ArraySet<>((T[])new Object[]{source});
 	}
 	
 	public static <T> ArraySet<T> createFromArray(T[] source) {
-		HashSet<T> hs=new HashSet<T>();
+		HashSet<T> hs=new HashSet<>();
 		for (int i=0; i<source.length; i++) {
 			hs.add(source[i]);
 		}
@@ -57,7 +57,7 @@ public final class ArraySet<T> extends BasePersistentSet<T> {
 	}
 	
 	public Iterator<T> iterator() {
-		return new ArraySetIterator<T>();
+		return new ArraySetIterator<>();
 	}
 
 	public int size() {
@@ -98,7 +98,7 @@ public final class ArraySet<T> extends BasePersistentSet<T> {
 			T[] ndata=(T[])new Object[data.length+1];
 			System.arraycopy(data, 0, ndata, 0, data.length);
 			ndata[data.length]=value;
-			return new ArraySet<T>(ndata);
+			return new ArraySet<>(ndata);
 		} else {
 			return this;
 		}

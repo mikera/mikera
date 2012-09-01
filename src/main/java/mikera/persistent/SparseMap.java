@@ -95,7 +95,7 @@ public final class SparseMap<T> extends PersistentObject {
 	private SparseMap<T> extend() {
 		Object[] data = new Object[16];
 		data[5]=this; // consistent with base offset being (-1,-1)
-		return new SparseMap<T>(bits+2,data);
+		return new SparseMap<>(bits+2,data);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -127,20 +127,20 @@ public final class SparseMap<T> extends PersistentObject {
 		Object[] data=new Object[16];
 		if (bits==2) {
 			data[getIndex(ix,iy)]=value;
-			return new SparseMap<T>(bits,data);
+			return new SparseMap<>(bits,data);
 		} else {
 			int zx=ix>>(bits-2);
 			int zy=iy>>(bits-2);
 			int si=getIndex(zx,zy);
 			data[si]=createInternal(bits-2,ix-(zx<<(bits-2)),iy-(zy<<(bits-2)),value);
-			return new SparseMap<T>(bits,data);
+			return new SparseMap<>(bits,data);
 		}
 	}
 
 	private SparseMap<T> update(int i, Object val) {
 		Object[] newData=data.clone();
 		newData[i]=val;
-		return new SparseMap<T>(bits,newData);
+		return new SparseMap<>(bits,newData);
 	}
 	
 	public SparseMap<T> clear(int x, int y) {

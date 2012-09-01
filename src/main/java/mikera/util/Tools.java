@@ -72,7 +72,7 @@ public final class Tools {
 	}
 	
 	public static <T> ArrayList<T> buildArrayList(Iterator<T> iterator) {
-		ArrayList<T> al=new ArrayList<T>();
+		ArrayList<T> al=new ArrayList<>();
 		while (iterator.hasNext()) {
 			al.add(iterator.next());
 		}
@@ -80,7 +80,7 @@ public final class Tools {
 	}
 	
 	public static <T> HashSet<T> buildHashSet(Iterator<T> iterator) {
-		HashSet<T> hs=new HashSet<T>();
+		HashSet<T> hs=new HashSet<>();
 		while (iterator.hasNext()) {
 			hs.add(iterator.next());
 		}
@@ -228,7 +228,7 @@ public final class Tools {
 	}
 	
 	public static ArrayList<String> readStringLinesFromStream(InputStream stream) {
-		ArrayList<String> al=new ArrayList<String>();
+		ArrayList<String> al=new ArrayList<>();
 		BufferedReader reader=null;
 		try {
 			try {
