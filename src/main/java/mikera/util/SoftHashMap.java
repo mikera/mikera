@@ -34,7 +34,7 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 	}
 
 	public SoftHashMap(int minSizeRetained) {
-		hardReferenceBuffer=new CircularBuffer<V>(minSizeRetained);
+		hardReferenceBuffer=new CircularBuffer<>(minSizeRetained);
 	}
 	
 	public int size() {
@@ -82,7 +82,7 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 	public V put(K key, V value) {	
 		maybeCleanUp(); 
 		
-		data.put(key, new SoftReference<V>(value));
+		data.put(key, new SoftReference<>(value));
 		// add to recently accessed list
 		hardReferenceBuffer.add(value);
 		
