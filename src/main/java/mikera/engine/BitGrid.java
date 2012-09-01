@@ -10,7 +10,7 @@ import mikera.util.Maths;
  *
  */
 @Mutable
-public final class BitGrid extends BaseGrid<Boolean> implements Cloneable {
+public final class BitGrid extends BaseGrid<Boolean> {
 	private static final int GROW_BORDER=1;
 	
 	private static final int XLOWBITS=2;

@@ -184,7 +184,7 @@ public class TextUtils {
 		for (int i=0; i<8; i++) {
 			chars[7-i]=toHexChar(n);
 			n>>=4;
-		};
+		}
 		return new String(chars);
 	}
 	

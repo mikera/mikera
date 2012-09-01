@@ -165,7 +165,7 @@ public class TestPersistentLongMap {
 	public void testEquals(PersistentMap<Long,String> pm) {
 		PersistentMap<Long,String> pm2=pm.include(2L,new String("Hello"));
 		PersistentMap<Long,String> pm3=pm.include(2L,new String("Hello"));
-		assertEquals(pm2,pm3);;	
+		assertEquals(pm2,pm3);
 	}
 
 

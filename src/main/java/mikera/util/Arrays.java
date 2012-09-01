@@ -69,7 +69,7 @@ public class Arrays {
 	
 	public static float[] deleteElement(float[] array, int i) {
 		int count=array.length;
-		float[] newarray=new float[count-1];;
+		float[] newarray=new float[count-1];
 		
 		System.arraycopy(array, 0, newarray, 0, i);
 		System.arraycopy(array, i+1, newarray, i, count-i-1);
