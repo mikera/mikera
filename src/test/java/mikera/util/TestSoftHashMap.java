@@ -42,7 +42,7 @@ public class TestSoftHashMap {
 	*/
 	
 	@Test public void testHashCache() {
-		HashCache<Integer> h=new HashCache<Integer>(1000);
+		HashCache<Integer> h=new HashCache<>(1000);
 	
 		Integer a = Integer.valueOf(100);
 		Integer b = Integer.valueOf(200);

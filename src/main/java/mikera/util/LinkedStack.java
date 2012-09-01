@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class LinkedStack<T> implements Queue<T> {
 
-AtomicReference<Node<T>> topOfStack=new AtomicReference<Node<T>>();
+AtomicReference<Node<T>> topOfStack=new AtomicReference<>();
 
 
 private static final class Node<T> {

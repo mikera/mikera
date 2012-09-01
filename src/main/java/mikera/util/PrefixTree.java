@@ -114,12 +114,12 @@ public class PrefixTree<K,V> {
 	
 	private void ensureTails() {
 		if (tails==null) {
-			tails=new ArrayList<PrefixTree<K,V>>();
+			tails=new ArrayList<>();
 		}
 	}
 	
 	private PrefixTree<K,V> addBranch(K a) {
-		PrefixTree<K,V> t=new PrefixTree<K,V>();
+		PrefixTree<K,V> t=new PrefixTree<>();
 		t.head=a;
 		ensureTails();
 		tails.add(t);

@@ -223,7 +223,7 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 	@Override
 	public PersistentMap<Long, V> include(Long key, V value) {
 		IntMap<MapEntry<Long,V>> im = getInner(key);
-		MapEntry<Long,V> entry = new MapEntry<Long, V>(key,value);
+		MapEntry<Long,V> entry = new MapEntry<>(key,value);
 		long newCount=count;
 		int lo=Bits.lowWord(key);
 		if (im==null) {
@@ -236,7 +236,7 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 		
 		IntMap<IntMap<MapEntry<Long, V>>> newData = data.include(Bits.highWord(key),im);
 		if (data==newData) return this;
-		return new LongMap<V>(newData,newCount);
+		return new LongMap<>(newData,newCount);
 
 	}
 

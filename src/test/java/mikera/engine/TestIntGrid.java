@@ -36,7 +36,7 @@ public class TestIntGrid {
 	}
 	
 	@Test public void testGrid() {
-		ArrayGrid<Integer> ig=new ArrayGrid<Integer>();
+		ArrayGrid<Integer> ig=new ArrayGrid<>();
 		
 		ig.setBlock(3, 3, 3,10,10,10, 1);
 		assertEquals(null,ig.get(0,0,0));

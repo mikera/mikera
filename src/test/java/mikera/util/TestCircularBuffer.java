@@ -159,7 +159,7 @@ public class TestCircularBuffer {
 	}
 	
 	@Test public void testRemoveEnds() {
-		CircularBuffer<Integer> cb=new CircularBuffer<Integer>(10);
+		CircularBuffer<Integer> cb=new CircularBuffer<>(10);
 		for (int i=0; i<2; i++) {
 			cb.add(i+3);
 		}

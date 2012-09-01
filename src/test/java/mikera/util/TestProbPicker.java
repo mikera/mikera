@@ -20,7 +20,7 @@ public class TestProbPicker {
 	}
 	
 	@Test public void testAddAndRemove() {
-		ProbabilityPicker<Integer> p=new ProbabilityPicker<Integer>();
+		ProbabilityPicker<Integer> p=new ProbabilityPicker<>();
 		
 		p.add(Integer.valueOf(1),0.5);
 		
@@ -34,7 +34,7 @@ public class TestProbPicker {
 	}
 	
 	@Test public void testAddAndRemoveLots() {
-		ProbabilityPicker<Integer> p=new ProbabilityPicker<Integer>();
+		ProbabilityPicker<Integer> p=new ProbabilityPicker<>();
 		
 		for (int i=1; i<=100; i++) {
 			p.add(Integer.valueOf(i),i);	
@@ -52,7 +52,7 @@ public class TestProbPicker {
 	}
 	
 	@Test public void testPicking() {
-		ProbabilityPicker<Integer> p=new ProbabilityPicker<Integer>();
+		ProbabilityPicker<Integer> p=new ProbabilityPicker<>();
 		
 		for (int i=0; i<10; i++) {
 			p.add(Integer.valueOf(i),100);	

@@ -30,7 +30,7 @@ public class ServerConnector {
 	SelectionKey serverKey;
 
 	private MessageHandler handler;
-	private HashMap<Object, Connection> connections = new HashMap<Object, Connection>();
+	private HashMap<Object, Connection> connections = new HashMap<>();
 
 	// private static final int MAX_BACKLOG=5;
 

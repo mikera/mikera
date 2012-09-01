@@ -43,7 +43,7 @@ public class TestPersistentLongMap {
 	@Test public void testConvert() {
 		PersistentMap<Long,String> phm=PersistentHashMap.create();
 
-		HashMap<Long,String> hm=new HashMap<Long,String>();
+		HashMap<Long,String> hm=new HashMap<>();
 		for (int i=0; i<10; i++) {
 			long key=Rand.r(100);
 			String value=Rand.nextString();
@@ -90,7 +90,7 @@ public class TestPersistentLongMap {
 	}
 	
 	@Test public void testToString() {
-		HashMap<Long,String> hm=new HashMap<Long, String>();
+		HashMap<Long,String> hm=new HashMap<>();
 		hm.put(1L, "Hello");
 		hm.put(2L, "World");
 		

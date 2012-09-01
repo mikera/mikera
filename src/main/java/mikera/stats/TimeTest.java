@@ -40,7 +40,7 @@ public class TimeTest {
 	}
 	
 	static Random rand=new Random();
-	static TreeGrid<Integer> tg=new TreeGrid<Integer>();
+	static TreeGrid<Integer> tg=new TreeGrid<>();
 	static int[] ia=new int[100];
 	
 	private static void setup() {

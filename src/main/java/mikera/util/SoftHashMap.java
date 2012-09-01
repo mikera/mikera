@@ -20,7 +20,7 @@ import java.util.Set;
  * @param <V> Value type
  */
 public class SoftHashMap<K,V> extends AbstractMap<K,V> {
-	private final Map<K,SoftReference<V>> data = new HashMap<K,SoftReference<V>>();
+	private final Map<K,SoftReference<V>> data = new HashMap<>();
 	
 	/**
 	 * Try keep a small number of references at a minimum in a circular buffer

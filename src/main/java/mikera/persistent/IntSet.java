@@ -23,7 +23,7 @@ import mikera.util.Tools;
 @Immutable
 public final class IntSet extends BasePersistentSet<Integer> {
 	private static final long serialVersionUID = 2677550392326589873L;
-	private static final HashCache<IntSet> cache=new HashCache<IntSet>(401);
+	private static final HashCache<IntSet> cache=new HashCache<>(401);
 
 	public static final IntSet EMPTY_INTSET=intern(new IntSet(mikera.util.Arrays.NULL_INTS));
 
