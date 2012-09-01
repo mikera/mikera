@@ -50,7 +50,7 @@ public class Tasks {
 				return task.run(actor, param);
 			}
 		};
-	};
+	}
 	
 	public static <T,P,R> Task<T,P,R>  prioritise(
 			final PersistentList<PriorityFunction<T,P>> ps,

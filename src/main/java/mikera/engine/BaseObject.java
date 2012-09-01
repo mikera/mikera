@@ -314,4 +314,12 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
     	this.local = flattened.local;
     	this.inherited = null;
     }
+
+	@Override
+	public int hashCode() {
+		// TODO should we have a proper hashcode?
+		return super.hashCode();
+	}
+
+    
 }

@@ -358,7 +358,7 @@ public class TestOctreap {
 			oct.setBlock(x1, y1, z1, x2, y2, z2, value);
 			return null;
 		}	
-	};
+	}
 
 	@Test public void testBlock2x() {
 		Octreap<Integer> m=new Octreap<>();

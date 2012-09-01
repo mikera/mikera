@@ -151,7 +151,7 @@ public class TestGrid {
 			
 			return null;
 		}	
-	};
+	}
 
 	
 	@Test public void testTreeGidBlockSet() {

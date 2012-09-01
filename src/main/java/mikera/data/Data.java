@@ -4,7 +4,6 @@ import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.util.AbstractList;
 import java.util.Iterator;
@@ -28,7 +27,7 @@ import mikera.util.emptyobjects.NullArrays;
  *
  */
 @Mutable
-public final class Data extends AbstractList<Byte> implements List<Byte>, Cloneable, Serializable, Comparable<Data>, Externalizable {
+public final class Data extends AbstractList<Byte> implements Cloneable, Comparable<Data>, Externalizable {
 	private static final long serialVersionUID = 293989965333996558L;
 	private static final int DEFAULT_DATA_INCREMENT=50;
 	

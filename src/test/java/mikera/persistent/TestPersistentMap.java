@@ -177,7 +177,7 @@ public class TestPersistentMap {
 	public void testEquals(PersistentMap<Integer,String> pm) {
 		PersistentMap<Integer,String> pm2=pm.include(2,new String("Hello"));
 		PersistentMap<Integer,String> pm3=pm.include(2,new String("Hello"));
-		assertEquals(pm2,pm3);;	
+		assertEquals(pm2,pm3);
 	}
 
 
