@@ -533,6 +533,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 
 		@Override
 		public void validate() {
+			// TODO: validation
 		}
 		
 		@Override

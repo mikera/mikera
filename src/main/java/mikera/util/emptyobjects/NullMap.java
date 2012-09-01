@@ -19,7 +19,9 @@ public final class NullMap<K,V> extends PersistentMap<K, V> {
 		
 	}
 
+	@Override
 	public void clear() {
+		// We are already empty, so nothing to do
 	}
 
 	public boolean containsKey(Object key) {

@@ -176,6 +176,6 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 	}
 	
 	public void validate() {
-		
+		// TODO: validation
 	}
 }
