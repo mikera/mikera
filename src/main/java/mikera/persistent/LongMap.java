@@ -145,7 +145,14 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 		
 		@Override
 		public boolean hasNext() {
-			return ((subIterator!=null)&&subIterator.hasNext())||mainIterator.hasNext();
+			if ((subIterator!=null)&&subIterator.hasNext()) return true;
+			
+			while (mainIterator.hasNext()) {
+				subIterator=(mainIterator.next().getValue()).entrySet().iterator();
+				if ((subIterator!=null)&&subIterator.hasNext()) return true;
+			}
+			
+			return false;
 		}
 
 		@Override
@@ -155,9 +162,11 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 				return entry.getValue();
 			}
 			
-			if (mainIterator.hasNext()) {
+			while (mainIterator.hasNext()) {
 				subIterator=(mainIterator.next().getValue()).entrySet().iterator();
-				return next();
+				if ((subIterator!=null)&&subIterator.hasNext()) {
+					return subIterator.next().getValue();
+				}
 			}
 				
 			throw new NoSuchElementException();
