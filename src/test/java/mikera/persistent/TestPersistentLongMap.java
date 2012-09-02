@@ -1,6 +1,7 @@
 package mikera.persistent;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
@@ -31,6 +32,16 @@ public class TestPersistentLongMap {
 		testMap(im);
 		testMap(addRandomMaps(im));
 		
+	}
+	
+
+	@Test public void testEmptyMap() {
+		PersistentMap<Long,String> pm=LongMap.create();
+		assertEquals(0,pm.values().size());
+		assertEquals(0,pm.keySet().size());
+		assertFalse(pm.entrySet().iterator().hasNext());
+		
+		assertEquals(null, pm.get(0L));
 	}
 	
 	private PersistentMap<Long, String> addRandomMaps(PersistentMap<Long,String> lm) {
