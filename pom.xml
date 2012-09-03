@@ -10,6 +10,12 @@
 	<description>General purpose utilities for Java by Mike Anderson</description>
 
 	<url>https://github.com/mikera/mikera.git</url>
+	
+ 	<scm>
+		<connection>scm:git:git@github.com:mikera/mikera.git</connection>
+		<url>scm:git:git@github.com:mikera/mikera.git</url>
+		<developerConnection>scm:git:git@github.com:mikera/mikerao.git</developerConnection>
+  	</scm>
 
 	<licenses>
 		<license>
@@ -115,9 +121,6 @@
 
 	<packaging>jar</packaging>
 
-	<scm>
-		<url>https://github.com/mikera/mikera.git</url>
-	</scm>
 
 	<distributionManagement>
 		<repository>
