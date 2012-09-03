@@ -10,10 +10,10 @@
 
 	<url>https://github.com/mikera/mikera.git</url>
 	
- 	<scm>
-		<connection>scm:git:git@github.com:mikera/mikera.git</connection>
-		<url>scm:git:git@github.com:mikera/mikera.git</url>
-		<developerConnection>scm:git:git@github.com:mikera/mikera.git</developerConnection>
+	<scm>
+		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
+		<url>scm:git:git@github.com:mikera/${project.artifactId}.git</url>
+		<developerConnection>scm:git:git@github.com:mikera/${project.artifactId}.git</developerConnection>
   	</scm>
 
 	<licenses>
