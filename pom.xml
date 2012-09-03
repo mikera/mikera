@@ -123,11 +123,12 @@
 
 	<distributionManagement>
 		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Nexus Staging Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>clojars</id>
+			<name>Clojars repository</name>
+			<url>https://clojars.org/repo</url>
 		</repository>
 	</distributionManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
