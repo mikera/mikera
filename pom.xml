@@ -13,7 +13,7 @@
  	<scm>
 		<connection>scm:git:git@github.com:mikera/mikera.git</connection>
 		<url>scm:git:git@github.com:mikera/mikera.git</url>
-		<developerConnection>scm:git:git@github.com:mikera/mikerao.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:mikera/mikera.git</developerConnection>
   	</scm>
 
 	<licenses>
