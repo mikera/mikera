@@ -3,12 +3,13 @@
 	<groupId>net.mikera</groupId>
 	<artifactId>mikera</artifactId>
 	<version>1.3.5-SNAPSHOT</version>
-
+	<packaging>jar</packaging>
+	
 	<name>mikera.jar - Mike's Java Library</name>
 
 	<description>General purpose utilities for Java by Mike Anderson</description>
 
-	<url>https://github.com/mikera/mikera.git</url>
+	<url>https://github.com/mikera/${project.artifactId}.git</url>
 	
 	<scm>
 		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
@@ -117,8 +118,6 @@
 			</testResource>
 		</testResources>
 	</build>
-
-	<packaging>jar</packaging>
 
 
 	<distributionManagement>
