@@ -21,7 +21,7 @@ import javax.swing.JComponent;
 /**
  * Class implementing a Swing-based text console
  * 
- * @author Mike
+ * @author Mike Anderson
  *
  */
 public class JConsole extends JComponent {
