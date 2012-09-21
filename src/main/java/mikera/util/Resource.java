@@ -1,5 +1,6 @@
 package mikera.util;
 
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -20,8 +21,9 @@ public class Resource {
 		return Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
 	}
 	
-	public static String getResourceAsString(String filename) {
+	public static String getResourceAsString(String filename) throws FileNotFoundException {
 		InputStream is=getResourceAsStream(filename);
+		if (is==null) throw new FileNotFoundException(filename);
 		return mikera.util.Tools.readStringFromStream(is);
 	}
 }
