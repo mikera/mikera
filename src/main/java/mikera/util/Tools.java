@@ -138,6 +138,25 @@ public final class Tools {
 		return value.hashCode();
 	}
 	
+	/** 
+	 * Hashcode for a double primitive
+	 * 
+	 * @param d
+	 * @return
+	 */
+	public static int hashCode(double d) {
+		return hashCode(Double.doubleToLongBits(d));
+	}
+	
+	/**
+	 * Hashcode for a long primitive
+	 * @param l
+	 * @return
+	 */
+	public static int hashCode(long l) {
+		return (int) (l ^ (l >>> 32));
+	}
+	
 	/**
 	 * Compares two Comparable values, considering null as the lowest possible value 
 	 * 
@@ -304,4 +323,6 @@ public final class Tools {
 			Arrays.swap(al, i, lastIndex-i);
 		}
 	}
+
+	
 }
