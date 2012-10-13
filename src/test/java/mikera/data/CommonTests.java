@@ -16,7 +16,7 @@ import mikera.persistent.IntSet;
 import mikera.persistent.Pair;
 import mikera.persistent.Text;
 import mikera.persistent.impl.RepeatList;
-import mikera.util.Rand;
+import mikera.randomz.Randomz;
 
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ public class CommonTests {
 		testCommonData(Text.create("Hello serialized world!"));
 		testCommonData(RepeatList.create("Spam ",100));
 		testCommonData(IntSet.create(new int[]{1,4,6,7}));		
-		testCommonData(Rand.getGenerator());
+		testCommonData(Randomz.getGenerator());
 	}
 	
 	public static void testCommonData(Object o) {
