@@ -23,7 +23,7 @@ import org.junit.Test;
 public class CommonTests {
 	
 	@Test public void testCommonData() {
-		testCommonData(new Pair<>(1,"Hello"));
+		testCommonData(new Pair<Integer, String>(1,"Hello"));
 		testCommonData(new Data());
 		testCommonData(Integer.valueOf(3));
 		testCommonData(Short.valueOf((short)3));

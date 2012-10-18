@@ -9,7 +9,7 @@ import mikera.engine.TreeGrid;
 import org.junit.Test;
 
 public class TestTask {
-	protected final TreeGrid<Integer> map=new TreeGrid<>();
+	protected final TreeGrid<Integer> map=new TreeGrid<Integer>();
 	
 	protected static class State {
 		byte dir=Dir.N;		
