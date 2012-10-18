@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>mikera</artifactId>
 	<version>1.4.1-SNAPSHOT</version>
@@ -9,19 +10,19 @@
 		<artifactId>mikera-pom</artifactId>
 		<version>0.0.3</version>
 	</parent>
-	
+
 	<name>mikera.jar - Mike's Java Library</name>
 
 	<description>General purpose utilities for Java by Mike Anderson</description>
 
 	<url>git@github.com:mikera/${project.artifactId}.git</url>
-	
+
 	<scm>
 		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
 		<url>scm:git:git@github.com:mikera/${project.artifactId}.git</url>
 		<developerConnection>scm:git:git@github.com:mikera/${project.artifactId}.git</developerConnection>
-  	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<licenses>
 		<license>
@@ -30,11 +31,11 @@
 		</license>
 	</licenses>
 
-<!-- 	<parent> -->
-<!-- 		<groupId>org.sonatype.oss</groupId> -->
-<!-- 		<artifactId>oss-parent</artifactId> -->
-<!-- 		<version>7</version> -->
-<!-- 	</parent> -->
+	<!-- <parent> -->
+	<!-- <groupId>org.sonatype.oss</groupId> -->
+	<!-- <artifactId>oss-parent</artifactId> -->
+	<!-- <version>7</version> -->
+	<!-- </parent> -->
 
 	<developers>
 		<developer>
@@ -118,15 +119,22 @@
 		</testResources>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>clojars.org</id>
+			<name>Clojars repository</name>
+			<url>https://clojars.org/repo</url>
+		</repository>
+	</repositories>
 
 	<distributionManagement>
 		<repository>
-			<id>clojars</id>
+			<id>clojars.org</id>
 			<name>Clojars repository</name>
 			<url>https://clojars.org/repo</url>
 		</repository>
 	</distributionManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
