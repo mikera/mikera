@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class TestRayCaster {
 	@Test public void testPoints() {
-		HashSet<Point3i> hm=new HashSet<>();
+		HashSet<Point3i> hm=new HashSet<Point3i>();
 		
 		hm.add(new Point3i(1,1,1));
 		hm.add(new Point3i(1,1,1));
@@ -28,7 +28,7 @@ public class TestRayCaster {
 	}
 	
 	@Test public void testCast() {
-		final TreeGrid<Integer> tg=new TreeGrid<>();
+		final TreeGrid<Integer> tg=new TreeGrid<Integer>();
 		final int RANGE=5;
 		int D=(RANGE*2)+1;
 		
