@@ -20,7 +20,7 @@ import java.util.Set;
  * @param <V> Value type
  */
 public class SoftHashMap<K,V> extends AbstractMap<K,V> {
-	private final Map<K,SoftReference<V>> data = new HashMap<>();
+	private final Map<K,SoftReference<V>> data = new HashMap<K, SoftReference<V>>();
 	
 	/**
 	 * Try keep a small number of references at a minimum in a circular buffer
@@ -34,7 +34,7 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 	}
 
 	public SoftHashMap(int minSizeRetained) {
-		hardReferenceBuffer=new CircularBuffer<>(minSizeRetained);
+		hardReferenceBuffer=new CircularBuffer<V>(minSizeRetained);
 	}
 	
 	public int size() {
@@ -82,7 +82,7 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 	public V put(K key, V value) {	
 		maybeCleanUp(); 
 		
-		data.put(key, new SoftReference<>(value));
+		data.put(key, new SoftReference<V>(value));
 		// add to recently accessed list
 		hardReferenceBuffer.add(value);
 		
