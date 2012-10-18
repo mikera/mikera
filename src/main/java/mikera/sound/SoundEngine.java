@@ -13,7 +13,7 @@ import mikera.util.Resource;
 
 public class SoundEngine {
 
-	private static HashMap<String,Sample> samples=new HashMap<>();
+	private static HashMap<String,Sample> samples=new HashMap<String, Sample>();
 	
 	public static final AudioFormat STEREO_FORMAT=new AudioFormat(
 			AudioFormat.Encoding.PCM_SIGNED,
