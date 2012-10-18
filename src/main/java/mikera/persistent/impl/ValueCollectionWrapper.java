@@ -24,7 +24,7 @@ public final class ValueCollectionWrapper<K,V> extends PersistentCollection<V> {
 	}
 
 	public Iterator<V> iterator() {
-		return new ValueCollectionIterator<>(source);
+		return new ValueCollectionIterator<K, V>(source);
 	}
 	
 	public static class ValueCollectionIterator<K,V> implements Iterator<V> {
