@@ -10,7 +10,7 @@ import org.junit.Test;
 public class TestRankedQueue {
 	
 	@Test public void testAdds() {
-		RankedQueue<Integer> rq=new RankedQueue<>();
+		RankedQueue<Integer> rq=new RankedQueue<Integer>();
 		
 		rq.add(1,0.2);
 		rq.add(2,0.3);
@@ -35,7 +35,7 @@ public class TestRankedQueue {
 	}
 	
 	@Test public void testRandom() {
-		RankedQueue<Integer> rq=new RankedQueue<>();
+		RankedQueue<Integer> rq=new RankedQueue<Integer>();
 		
 		Integer[] is=new Integer[100];
 		
