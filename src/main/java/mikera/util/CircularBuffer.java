@@ -73,6 +73,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	 */
 	public void setMaxSize(int newSize) {
 		int vs=values.size();
+		
 		if (newSize>=vs) {
 			// extend
 			// shifting to add nulls if needed (i.e. if there is wrap around)
@@ -93,35 +94,35 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 			
 			maxSize=newSize;
 			return;
-		} else {
-			// shrink
-			int wrap=Math.max(0,count-end);
-			int keepWrap=Math.min(wrap, newSize-end); // number of items rolling around at end of values that we want to keep
-			
-			if (keepWrap>=0) {
-				// we know newSize>=end
-				// move wrapped items to fill up to newSize
-				for (int i=0; i<keepWrap; i++) {
-					values.set(newSize-keepWrap+i,values.get(vs-keepWrap+i));
-				}	
-			} else {
-				// we know either end>=count or end>newSize
-				// either way, we just want the items running up to end
-				// pull items back to start of array, filling up to newSize = new end position
-				for (int i=0; i<newSize; i++) {
-					values.set(i,values.get(end-newSize+i));
-				}
-				end=newSize; // start position
-			}
-			
-			// shorten array by removing end values
-			for (int i=vs-1; i>=newSize; i--) {
-				values.remove(i);
-			}
-			
-			maxSize=newSize;
-			count=Math.min(count,newSize); // number removed
 		}
+		
+		// shrink
+		int wrap=Math.max(0,count-end);
+		int keepWrap=Math.min(wrap, newSize-end); // number of items rolling around at end of values that we want to keep
+		
+		if (keepWrap>=0) {
+			// we know newSize>=end
+			// move wrapped items to fill up to newSize
+			for (int i=0; i<keepWrap; i++) {
+				values.set(newSize-keepWrap+i,values.get(vs-keepWrap+i));
+			}	
+		} else {
+			// we know either end>=count or end>newSize
+			// either way, we just want the items running up to end
+			// pull items back to start of array, filling up to newSize = new end position
+			for (int i=0; i<newSize; i++) {
+				values.set(i,values.get(end-newSize+i));
+			}
+			end=newSize; // start position
+		}
+		
+		// shorten array by removing end values
+		for (int i=vs-1; i>=newSize; i--) {
+			values.remove(i);
+		}
+		
+		maxSize=newSize;
+		count=Math.min(count,newSize); // number removed
 	}
 	
 	/**
@@ -164,9 +165,8 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	public boolean offer(V value) {
 		if (count<maxSize) {
 			return add(value);
-		} else {
-			return false;
 		}
+		return false;
 	}
 	
 	/**
@@ -228,9 +228,8 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 		if (count>0) {
 			removeFirstAdded();
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 	
 	public V remove() {
@@ -243,31 +242,27 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	}
 	
 	public V removeFirstAdded() {
-		if (count>0) {
-			int i=positionIndex(count-1);
-			V value=values.get(i);
-			values.set(i,null);
-			count-=1;
-			return value;
-		} else {
-			return null;
-		}
+		if (count<=0) return null;
+		
+		int i=positionIndex(count-1);
+		V value=values.get(i);
+		values.set(i,null);
+		count-=1;
+		return value;
 	}
 	
 	public V removeLastAdded() {
-		if (count>0) {
-			int i=positionIndex(0);
-			V value=values.get(i);
-			values.set(i,null);
-			count-=1;
-			end-=1;
-			
-			// handle wrap - this is OK, since values.size()=maxSize when there is any wrap
-			if ((end<=0)&&(count>0)) end+=maxSize;
-			return value;
-		} else {
-			return null;
-		}
+		if (count<=0) return null;
+		
+		int i=positionIndex(0);
+		V value=values.get(i);
+		values.set(i,null);
+		count-=1;
+		end-=1;
+		
+		// handle wrap - this is OK, since values.size()=maxSize when there is any wrap
+		if ((end<=0)&&(count>0)) end+=maxSize;
+		return value;
 	}
 	
 	/**

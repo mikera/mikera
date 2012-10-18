@@ -94,14 +94,12 @@ public final class ArraySet<T> extends BasePersistentSet<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public PersistentSet<T> include(T value) {
-		if (!contains(value)) {
-			T[] ndata=(T[])new Object[data.length+1];
-			System.arraycopy(data, 0, ndata, 0, data.length);
-			ndata[data.length]=value;
-			return new ArraySet<T>(ndata);
-		} else {
-			return this;
-		}
+		if (contains(value)) return this;
+		
+		T[] ndata=(T[])new Object[data.length+1];
+		System.arraycopy(data, 0, ndata, 0, data.length);
+		ndata[data.length]=value;
+		return new ArraySet<T>(ndata);
 	}
 	
 	@SuppressWarnings("unchecked")

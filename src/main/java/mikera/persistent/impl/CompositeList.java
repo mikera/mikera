@@ -84,9 +84,8 @@ public class CompositeList<T> extends BasePersistentList<T> {
 		int fs=front.size();
 		if (i<fs) {
 			return front.get(i);
-		} else {
-			return back.get(i-fs);
 		}
+		return back.get(i-fs);
 	}
 
 	public int size() {

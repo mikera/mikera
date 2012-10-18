@@ -187,9 +187,8 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 		if (size==1) {
 			if (i==0) {
 				size=0; return;
-			} else {
-				throw new IllegalArgumentException();
 			}
+			throw new IllegalArgumentException();
 		}
 		
 		// get the object to place from end of list

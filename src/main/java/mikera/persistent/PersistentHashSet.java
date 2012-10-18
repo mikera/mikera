@@ -430,9 +430,8 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			newData[i]=node;
 			if (data.length==31) {
 				return new PHSFullNode<T>(newData,shift);
-			} else {
-				return new PHSBitSetNode<T>(newData,shift,bitSet|(1<<s));				
 			}
+			return new PHSBitSetNode<T>(newData,shift,bitSet|(1<<s));
 		}
 		
 		
@@ -660,11 +659,9 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 
 		@Override
 		protected PHSEntry<T> findNext(PHSIterator<T> it) {
-			if (it.index>=entries.length) {
-				return null;
-			} else {
-				return entries[it.index++];
-			}
+			if (it.index>=entries.length) return null;
+			
+			return entries[it.index++];
 		}
 
 		@Override
@@ -769,10 +766,9 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 		protected PHSEntry<T> findNext(PHSIterator<T> it) {
 			if (it.index>0) {
 				return null;
-			} else {
-				it.index=1;
-				return this;
 			}
+			it.index=1;
+			return this;
 		}
 
 		@Override

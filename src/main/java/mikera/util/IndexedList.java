@@ -139,9 +139,8 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 	private int compare(K a, K b) {
 		if (comparator!=null) {
 			return comparator.compare(a, b);
-		} else {
-			return a.compareTo(b);
 		}
+		return a.compareTo(b);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -25,10 +25,10 @@ public class HashCache<T> {
 			// cache new value
 			data[i]=new SoftReference<T>(value);
 			return value;
-		} else {
-			// return cached value
-			return result;
 		}
+		
+		// return cached value
+		return result;
 	}
 	
 	public T getCachedValueForHashCode(int hc) {

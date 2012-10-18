@@ -63,14 +63,13 @@ public final class SparseMap<T> extends PersistentObject {
 	private T getInternal(int ix, int iy) {	
 		if (bits==2) {		
 			return (T)data[getIndex(ix,iy)];
-		} else {
-			int zx=ix>>(bits-2);
-			int zy=iy>>(bits-2);
-			int si=getIndex(zx,zy);
-			SparseMap<T> submap=(SparseMap<T>)data[si]; 
-			if (submap==null) return null;
-			return submap.getInternal(ix-(zx<<(bits-2)),iy-(zy<<(bits-2)));
 		}
+		int zx=ix>>(bits-2);
+		int zy=iy>>(bits-2);
+		int si=getIndex(zx,zy);
+		SparseMap<T> submap=(SparseMap<T>)data[si]; 
+		if (submap==null) return null;
+		return submap.getInternal(ix-(zx<<(bits-2)),iy-(zy<<(bits-2)));
 	}
 	
 	private static int getIndex(int ix, int iy) {
@@ -80,15 +79,14 @@ public final class SparseMap<T> extends PersistentObject {
 	public SparseMap<T> update(int x, int y, T value) {
 		if (value==null) {		
 			return clear(x,y);		
-		} else {			
-			int bo=baseOffset(bits);
-			int ix=x-bo;
-			int iy=y-bo;
-			if ((ix<0)||(iy<0)) return extend().update(x, y,value);
-			int size=1<<bits;
-			if ((ix>=size)||(iy>=size)) return extend().update(x, y,value);
-			return updateNotNullInternal(ix,iy,value);
 		}
+		int bo=baseOffset(bits);
+		int ix=x-bo;
+		int iy=y-bo;
+		if ((ix<0)||(iy<0)) return extend().update(x, y,value);
+		int size=1<<bits;
+		if ((ix>=size)||(iy>=size)) return extend().update(x, y,value);
+		return updateNotNullInternal(ix,iy,value);
 	}
 
 	
@@ -105,17 +103,16 @@ public final class SparseMap<T> extends PersistentObject {
 			T current= (T)data[i];
 			if (value.equals(current)) return this;
 			return update(i,value);
-		} else {
-			int zx=ix>>(bits-2);
-			int zy=iy>>(bits-2);
-			int si=getIndex(zx,zy);
-			SparseMap<T> submap=(SparseMap<T>)data[si]; 
-			if (submap==null) return update(si,createInternal(bits-2,ix-(zx<<(bits-2)),iy-(zy<<(bits-2)),value));
-			
-			SparseMap<T> newSubmap=submap.updateNotNullInternal(ix-(zx<<(bits-2)),iy-(zy<<(bits-2)), value);
-			if (submap==newSubmap) return this;
-			return update(si,newSubmap);
-		}		
+		}
+		int zx=ix>>(bits-2);
+		int zy=iy>>(bits-2);
+		int si=getIndex(zx,zy);
+		SparseMap<T> submap=(SparseMap<T>)data[si]; 
+		if (submap==null) return update(si,createInternal(bits-2,ix-(zx<<(bits-2)),iy-(zy<<(bits-2)),value));
+		
+		SparseMap<T> newSubmap=submap.updateNotNullInternal(ix-(zx<<(bits-2)),iy-(zy<<(bits-2)), value);
+		if (submap==newSubmap) return this;
+		return update(si,newSubmap);		
 	}
 	
 	// creates series -1, -1-4 , -1-4-16 etc.
@@ -128,13 +125,12 @@ public final class SparseMap<T> extends PersistentObject {
 		if (bits==2) {
 			data[getIndex(ix,iy)]=value;
 			return new SparseMap<T>(bits,data);
-		} else {
-			int zx=ix>>(bits-2);
-			int zy=iy>>(bits-2);
-			int si=getIndex(zx,zy);
-			data[si]=createInternal(bits-2,ix-(zx<<(bits-2)),iy-(zy<<(bits-2)),value);
-			return new SparseMap<T>(bits,data);
 		}
+		int zx=ix>>(bits-2);
+		int zy=iy>>(bits-2);
+		int si=getIndex(zx,zy);
+		data[si]=createInternal(bits-2,ix-(zx<<(bits-2)),iy-(zy<<(bits-2)),value);
+		return new SparseMap<T>(bits,data);
 	}
 
 	private SparseMap<T> update(int i, Object val) {
@@ -161,17 +157,16 @@ public final class SparseMap<T> extends PersistentObject {
 			T current= (T)data[i];
 			if (current==null) return this;
 			return update(i,null);
-		} else {
-			int zx=ix>>(bits-2);
-			int zy=iy>>(bits-2);
-			int si=getIndex(zx,zy);
-			SparseMap<T> submap=(SparseMap<T>)data[si]; 
-			if (submap==null) return this;
-			
-			SparseMap<T> newSubmap=submap.clearInternal(ix-(zx<<(bits-2)),iy-(zy<<(bits-2)));
-			if (submap==newSubmap) return this;
-			return update(si,newSubmap);
-		}		
+		}
+		int zx=ix>>(bits-2);
+		int zy=iy>>(bits-2);
+		int si=getIndex(zx,zy);
+		SparseMap<T> submap=(SparseMap<T>)data[si]; 
+		if (submap==null) return this;
+		
+		SparseMap<T> newSubmap=submap.clearInternal(ix-(zx<<(bits-2)),iy-(zy<<(bits-2)));
+		if (submap==newSubmap) return this;
+		return update(si,newSubmap);		
 	}
 	
 	public <P> void visit(Visitor<T,P> v, P param) {

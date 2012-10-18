@@ -99,11 +99,9 @@ public abstract class PersistentList<T> extends PersistentCollection<T> implemen
 	}
 	
 	public PersistentList<T> include(final T value) {
-		if (!contains(value)) {
-			return this.append(value);
-		} else {
-			return this;
-		}
+		if (contains(value)) return this;
+		
+		return this.append(value);
 	}
 
 	public T remove(int index) {

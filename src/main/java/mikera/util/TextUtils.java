@@ -216,9 +216,8 @@ public class TextUtils {
 		String half=whiteSpace2(l/2);
 		if ((l&1)!=0) {
 			return half+" "+half;
-		} else {
-			return half+half;
 		}
+		return half+half;
 	}
 
 	public static String leftPad(String s, int l) {

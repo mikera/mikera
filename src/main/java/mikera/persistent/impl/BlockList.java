@@ -67,9 +67,8 @@ public final class BlockList<T> extends BasePersistentList<T> {
 					shift-SHIFT_STEP);
 			
 			return new BlockList<T>(bs,shift,size,0);			
-		} else {
-			return createLowestLevel(list,fromIndex, toIndex,DEFAULT_SHIFT);
 		}
+		return createLowestLevel(list,fromIndex, toIndex,DEFAULT_SHIFT);
 	}
 		
 	@SuppressWarnings("unchecked")
@@ -93,9 +92,8 @@ public final class BlockList<T> extends BasePersistentList<T> {
 					shift-SHIFT_STEP);
 			
 			return new BlockList<T>(bs,shift,size,0);			
-		} else {
-			return createLowestLevel(list,fromIndex, toIndex,DEFAULT_SHIFT);
 		}
+		return createLowestLevel(list,fromIndex, toIndex,DEFAULT_SHIFT);
 	}
 	
 	@SuppressWarnings("unchecked")

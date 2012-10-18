@@ -54,10 +54,11 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 			char[] chars=new char[length];
 			s.getChars(start, end, chars, 0);
 			return new Text(chars);
-		} else {
-			int mid=((start+end+(BLOCK_SIZE-1))>>(BLOCK_SIZE_BITS+1))<<(BLOCK_SIZE_BITS);
-			return new Text(create(s,start, mid),create(s,mid, end));
 		}
+		
+		// need to create a Text with multiple blocks
+		int mid=((start+end+(BLOCK_SIZE-1))>>(BLOCK_SIZE_BITS+1))<<(BLOCK_SIZE_BITS);
+		return new Text(create(s,start, mid),create(s,mid, end));
 	}
 
 	private Text(Text f, Text b) {
@@ -86,28 +87,27 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 			char[] ndata=new char[len];
 			System.arraycopy(data, start, ndata, 0, len);
 			return new Text(ndata);			
-		} else {
-			int frontCount=front.count;
-			if (end<=frontCount) return front.subText(start,end);
-			if (start>=frontCount) return back.subText(start-frontCount,end-frontCount);
-			return concat(front.subText(start, frontCount),back.subText(0, end-frontCount));
 		}
+		int frontCount=front.count;
+		if (end<=frontCount) return front.subText(start,end);
+		if (start>=frontCount) return back.subText(start-frontCount,end-frontCount);
+		return concat(front.subText(start, frontCount),back.subText(0, end-frontCount));
 	}
 	
 	public int countNodes() {
 		if (data!=null) {
+			// this is a leaf node
 			return 1;
-		} else {
-			return 1+front.countNodes()+back.countNodes();
 		}
+		return 1+front.countNodes()+back.countNodes();
 	}
 	
 	public int countBlocks() {
 		if (data!=null) {
+			// this is a leaf node
 			return 1;
-		} else {
-			return front.countBlocks()+back.countBlocks();
 		}
+		return front.countBlocks()+back.countBlocks();
 	}
 	
 	/**
@@ -177,9 +177,8 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 	private static boolean isFullyPacked(Text t, boolean end) {
 		if (t.data!=null) {
 			return (end)||(t.data.length==BLOCK_SIZE);
-		} else {
-			return isFullyPacked(t.front,false)&&(isFullyPacked(t.back,true));
 		}
+		return isFullyPacked(t.front,false)&&(isFullyPacked(t.back,true));
 	}
 	
 	public String substring(int start, int end) {
@@ -265,14 +264,13 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 	private char charAtLocal(int index) {
 		if (data!=null) {
 			return data[index];
-		} else {
-			int fc=front.count;
-			if (fc>index) {
-				return front.charAtLocal(index);
-			} else {
-				return back.charAtLocal(index);
-			}
 		}
+		
+		int fc=front.count;
+		if (fc>index) {
+			return front.charAtLocal(index);
+		}
+		return back.charAtLocal(index);
 	}
 
 	public int length() {

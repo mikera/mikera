@@ -425,9 +425,8 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 			newData[i]=node;
 			if (data.length==31) {
 				return new PHMFullNode<K, V>(newData,shift);
-			} else {
-				return new PHMBitMapNode<K, V>(newData,shift,bitmap|(1<<s));				
 			}
+			return new PHMBitMapNode<K, V>(newData,shift,bitmap|(1<<s));
 		}
 		
 		
@@ -627,11 +626,9 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 
 		@Override
 		protected PHMEntry<K, V> findNext(PHMEntrySetIterator<K, V> it) {
-			if (it.index>=entries.length) {
-				return null;
-			} else {
-				return entries[it.index++];
-			}
+			if (it.index>=entries.length) return null;
+			
+			return entries[it.index++];
 		}
 
 		@Override
@@ -732,10 +729,9 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 		protected PHMEntry<K,V> findNext(PHMEntrySetIterator<K, V> it) {
 			if (it.index>0) {
 				return null;
-			} else {
-				it.index=1;
-				return this;
 			}
+			it.index=1;
+			return this;
 		}
 
 		@Override

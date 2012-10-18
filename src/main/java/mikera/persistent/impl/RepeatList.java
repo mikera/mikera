@@ -71,8 +71,7 @@ public class RepeatList<T> extends BasePersistentList<T> {
 	public PersistentList<T> delete(final T v) {
 		if (Tools.equalsWithNulls(v,value)) {
 			return ListFactory.emptyList();
-		} else {
-			return this;
 		}
+		return this;
 	}
 }

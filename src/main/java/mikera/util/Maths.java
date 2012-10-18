@@ -82,12 +82,11 @@ public final class Maths {
 				return b;
 			}
 			return (a<c)?c:a;
-		} else {
-			if (a<c) {
-				return a;
-			}
-			return (b<c)?c:b;
 		}
+		if (a<c) {
+			return a;
+		}
+		return (b<c)?c:b;
 	}
 	
 	/**
@@ -101,12 +100,11 @@ public final class Maths {
 				return b;
 			}
 			return (a<c)?c:a;
-		} else {
-			if (a<c) {
-				return a;
-			}
-			return (b<c)?c:b;
 		}
+		if (a<c) {
+			return a;
+		}
+		return (b<c)?c:b;
 	}
 	
 	public static int sign(double a) {

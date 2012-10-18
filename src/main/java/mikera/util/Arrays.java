@@ -111,9 +111,8 @@ public class Arrays {
 			int[] ndata=new int[di];
 			System.arraycopy(sortedData, 0, ndata, 0, di);
 			return ndata;
-		} else {
-			return sortedData;
 		}
+		return sortedData;
 	}
 	
 	public static void boundToRange(double[] data, double min, double max) {
