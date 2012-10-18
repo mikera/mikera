@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class TestSoftHashMap {
 	@Test public void test1() {
-		SoftHashMap<Integer,String> sh=new SoftHashMap<>();
+		SoftHashMap<Integer,String> sh=new SoftHashMap<Integer, String>();
 		
 		sh.put(1,"dfevev");
 		sh.put(2,"gbnfrvev");
@@ -42,7 +42,7 @@ public class TestSoftHashMap {
 	*/
 	
 	@Test public void testHashCache() {
-		HashCache<Integer> h=new HashCache<>(1000);
+		HashCache<Integer> h=new HashCache<Integer>(1000);
 	
 		Integer a = Integer.valueOf(100);
 		Integer b = Integer.valueOf(200);
