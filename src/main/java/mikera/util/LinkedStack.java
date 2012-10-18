@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class LinkedStack<T> implements Queue<T> {
 
-AtomicReference<Node<T>> topOfStack=new AtomicReference<>();
+AtomicReference<Node<T>> topOfStack=new AtomicReference<Node<T>>();
 
 
 private static final class Node<T> {
@@ -79,7 +79,7 @@ private static final class Node<T> {
 	}
 
 	public Iterator<T> iterator() {
-		return new StackIterator<>(topOfStack.get());
+		return new StackIterator<T>(topOfStack.get());
 	}
 
 	public Object[] toArray() {
@@ -118,7 +118,7 @@ private static final class Node<T> {
 	public boolean add(T e) {
 		while(true) {
 			Node<T> oldTop=topOfStack.get();
-			Node<T> newTop=new Node<>(e,oldTop);
+			Node<T> newTop=new Node<T>(e,oldTop);
 			if (topOfStack.compareAndSet(oldTop, newTop)) break;
 		} 
 		return true;
