@@ -192,7 +192,7 @@ public class TextUtils {
 	/**
 	 * Soft HashMap containing whitespace strings of various lengths
 	 */
-	private static SoftHashMap<Integer,String> whiteSpaceStore=new SoftHashMap<>();
+	private static SoftHashMap<Integer,String> whiteSpaceStore=new SoftHashMap<Integer, String>();
 	private static String whiteSpaceString="                                "; // initial length of 32
 	
 	public static String whiteSpace(int l) {
