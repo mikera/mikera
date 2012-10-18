@@ -165,7 +165,7 @@ public final class Tools {
 	 * @param b
 	 * @return
 	 */
-	public static <T extends Comparable<T>> int compareWithNulls(T a, T b) {
+	public static <T extends Comparable<? super T>> int compareWithNulls(T a, T b) {
 		if (a==b) return 0;
 		if (a==null) return -1;
 		if (b==null) return 1;
