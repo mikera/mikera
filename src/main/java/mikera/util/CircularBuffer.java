@@ -18,7 +18,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	// ArrayList size is always less than or equal to maxSize
 	// ArrayList size equal to maxSize if buffer is full, or if there is any wraparound
 	private int maxSize;
-	private ArrayList<V> values=new ArrayList<>();
+	private ArrayList<V> values=new ArrayList<V>();
 	
 	private int end=0; // end index, always one more than last value added
 	private int count=0;
