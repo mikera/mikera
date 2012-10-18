@@ -23,7 +23,7 @@ public class HashCache<T> {
 		
 		if ((result==null)||(!result.equals(value))) {
 			// cache new value
-			data[i]=new SoftReference<>(value);
+			data[i]=new SoftReference<T>(value);
 			return value;
 		} else {
 			// return cached value
