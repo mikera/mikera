@@ -9,8 +9,8 @@ public class Client {
 	protected ClientConnector clientConnector=new ClientConnector();
 	protected Connection connection=null;
 	
-	private ArrayList<Data> incomingMessages=new ArrayList<>();
-	private ArrayList<Data> requeueMessages=new ArrayList<>();
+	private ArrayList<Data> incomingMessages=new ArrayList<Data>();
+	private ArrayList<Data> requeueMessages=new ArrayList<Data>();
 	
 	public void connectLocal() {
 		connect("127.0.0.1", Server.SERVER_PORT);

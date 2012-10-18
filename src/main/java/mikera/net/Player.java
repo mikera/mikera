@@ -14,7 +14,7 @@ public class Player {
 	Connection connection=null;
 	
 	private Data outgoingMessages=new Data();
-	private ArrayList<Data> incomingMessages=new ArrayList<>();
+	private ArrayList<Data> incomingMessages=new ArrayList<Data>();
 	
 	public Integer id=null;
 	

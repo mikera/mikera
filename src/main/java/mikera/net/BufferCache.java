@@ -11,7 +11,7 @@ import java.util.TreeMap;
  *
  */
 public final class BufferCache {
-	public TreeMap<Integer,ByteBuffer> buffers=new TreeMap<>();
+	public TreeMap<Integer,ByteBuffer> buffers=new TreeMap<Integer, ByteBuffer>();
 	
 	private BufferCache() {
 
