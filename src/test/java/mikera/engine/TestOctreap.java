@@ -57,7 +57,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testNulls() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		m.set(10, 10, 10, 1);
 		assertEquals(1,m.countNodes());
@@ -80,7 +80,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testCut() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		m.setRange(1, 10, 1);
 		assertEquals(1,(int)m.get(5));
 		
@@ -99,7 +99,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testSet() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		m.setRange(1,2,1);
 		assertEquals(1,m.countLevels());
 		m.setRange(2,3,2);
@@ -122,7 +122,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testClone() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		m.setRange(1,2,1);
 		m.setRange(2,3,2);
 		m.setRange(3,7,3);
@@ -142,7 +142,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testFillSpace() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		m.fillSpace(3);
 		assertEquals((Integer)3,m.get(100,1000,10000));
 		assertEquals((Integer)3,m.get(-100,-10000,-1000));
@@ -150,7 +150,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testSlice() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		m.setRange(1, 10, 1);
 		assertEquals(1,(int)m.get(5));
 		
@@ -168,8 +168,8 @@ public class TestOctreap {
 	}
 	
 	@Test public void testRandom() {
-		Octreap<Integer> m=new Octreap<>();
-		HashMap<Integer,Integer> h=new HashMap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
+		HashMap<Integer,Integer> h=new HashMap<Integer, Integer>();
 		
 		for (int i=0; i<3000; i++) {
 			int x=Rand.d(11)-6;
@@ -208,7 +208,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testSpeed() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		for (int i=0; i<1000; i++) {
 			int x1=Rand.d(110);
@@ -238,7 +238,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testIterator() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		assertEquals(false,m.getNodeIterator().hasNext());
 		assertEquals(null,m.nextNode(0));
@@ -253,7 +253,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testSeries() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		for (int i=-10; i<10; i++) {
 			m.set(i, 10-i, 2*i, i);
@@ -270,7 +270,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testMerge() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		m.set(0, 0, 0, 1);
 		assertEquals(1,m.countNodes());
@@ -292,7 +292,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testBlock() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		m.setBlock(0,0,0,1,1,1,2);
 		assertEquals(null,m.get(-1,-1,-1));
@@ -324,7 +324,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testSetBlock() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		m.setBlock(-2,-2,-2,1,1,1,2);
 		assertEquals(2,(int)m.get(-1,-1,-1));
@@ -348,7 +348,7 @@ public class TestOctreap {
 	private static class BCounter extends BlockVisitor<Integer>  {
 		long count=0;
 		long size=0;
-		Octreap<Integer> oct=new Octreap<>();
+		Octreap<Integer> oct=new Octreap<Integer>();
 		
 		public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 				Integer value) {
@@ -361,7 +361,7 @@ public class TestOctreap {
 	}
 
 	@Test public void testBlock2x() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 			
 		m.setBlock(-1,0,0,1,0,0,3);
 		assertEquals(2,m.countNodes());
@@ -375,7 +375,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testBlock2y() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 			
 		m.setBlock(0,-1,0,0,1,0,3);
 		assertEquals(3,m.countNodes());
@@ -397,7 +397,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testBlock2z() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 			
 		m.setBlock(0,0,-1,0,0,1,3);
 		assertEquals(3,m.countNodes());
@@ -411,7 +411,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testExpand() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 			
 		m.setBlock(0,0,0,0,0,1,1); // 2 cells
 		m.setBlock(100,0,0,100,0,0,1);  // 1 cell
@@ -422,7 +422,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testChange() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 			
 		m.set(0,0,0,1); 
 		m.set(0,0,1,2); 
@@ -449,7 +449,7 @@ public class TestOctreap {
 	}
 	
 	@Test public void testBlock3() {
-		Octreap<Integer> m=new Octreap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
 		
 		m.setBlock(-1,-1,-1,1,1,1,2);
 		assertEquals(14,m.countNodes());
@@ -472,8 +472,8 @@ public class TestOctreap {
 	}
 		
 	@Test public void testRandomBlock() {
-		Octreap<Integer> m=new Octreap<>();
-		HashMap<Integer,Integer> h=new HashMap<>();
+		Octreap<Integer> m=new Octreap<Integer>();
+		HashMap<Integer,Integer> h=new HashMap<Integer, Integer>();
 		
 		for (int i=0; i<3000; i++) {
 			int x=Rand.d(11)-6;
