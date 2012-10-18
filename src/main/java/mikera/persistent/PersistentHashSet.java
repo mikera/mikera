@@ -47,7 +47,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 	}
 
 	public static<T> PersistentHashSet<T> createFromSet(Set<T> values) {
-		PersistentHashSet<T> pm=new PersistentHashSet<>();
+		PersistentHashSet<T> pm=new PersistentHashSet<T>();
 		if (values==null) return pm;
 		for (T ent: values) {
 			pm=pm.include(ent);
@@ -56,7 +56,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 	}
 	
 	public static<T> PersistentHashSet<T> createFromIterator(Iterator<T> values) {
-		PersistentHashSet<T> pm=new PersistentHashSet<>();
+		PersistentHashSet<T> pm=new PersistentHashSet<T>();
 		while(values.hasNext()) {
 			pm=pm.include(values.next());
 		}
@@ -64,12 +64,12 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 	}
 	
 	public static<T> PersistentHashSet<T> create() {
-		PersistentHashSet<T> pm=new PersistentHashSet<>();
+		PersistentHashSet<T> pm=new PersistentHashSet<T>();
 		return pm;
 	}
 	
 	public static<T> PersistentHashSet<T> createSingleValueSet(T value) {
-		return new PersistentHashSet<>(new PHSEntry<>(value));
+		return new PersistentHashSet<T>(new PHSEntry<T>(value));
 	}
 
 	public static <T> int countEntries(PHSNode<T> node) {
@@ -197,7 +197,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			PHSNode<T>[] newdata=new PHSNode[DATA_SIZE-1];
 			System.arraycopy(data, 0, newdata, 0, i);
 			System.arraycopy(data, i+1, newdata, i, DATA_SIZE-i-1);
-			return new PHSBitSetNode<>(newdata,shift,0xFFFFFFFF&(~(1<<i)));
+			return new PHSBitSetNode<T>(newdata,shift,0xFFFFFFFF&(~(1<<i)));
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -205,7 +205,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			PHSNode<T>[] newData=new PHSNode[DATA_SIZE];
 			System.arraycopy(data, 0, newData, 0, DATA_SIZE);
 			newData[i]=node;
-			return new PHSFullNode<>(newData,shift);
+			return new PHSFullNode<T>(newData,shift);
 		}
 		
 		@Override
@@ -362,7 +362,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			PHSNode<T>[] newData=new PHSNode[data.length-1];
 			System.arraycopy(data, 0, newData, 0, i);
 			System.arraycopy(data, i+1, newData, i, data.length-i-1);
-			return new PHSBitSetNode<>(newData,shift,bitSet&(~(1<<slotFromIndex(i))));
+			return new PHSBitSetNode<T>(newData,shift,bitSet&(~(1<<slotFromIndex(i))));
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -370,7 +370,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			PHSNode<T>[] newData=new PHSNode[data.length];
 			System.arraycopy(data, 0, newData, 0, data.length);
 			newData[i]=node;
-			return new PHSBitSetNode<>(newData,shift,bitSet);
+			return new PHSBitSetNode<T>(newData,shift,bitSet);
 		}
 		
 		@Override
@@ -405,7 +405,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			int s=slotFromHash(hash,shift);
 			int i=indexFromSlot(s,bitSet);
 			if (((1<<s)&bitSet)==0) {
-				return insertSlot(i,s,new PHSEntry<>(key));
+				return insertSlot(i,s,new PHSEntry<T>(key));
 			}
 			PHSNode<T> n=data[i];
 			return replace(i,n.include(key, hash, shift+SHIFT_AMOUNT));
@@ -429,9 +429,9 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			System.arraycopy(data, i, newData, i+1, data.length-i);
 			newData[i]=node;
 			if (data.length==31) {
-				return new PHSFullNode<>(newData,shift);
+				return new PHSFullNode<T>(newData,shift);
 			} else {
-				return new PHSBitSetNode<>(newData,shift,bitSet|(1<<s));				
+				return new PHSBitSetNode<T>(newData,shift,bitSet|(1<<s));				
 			}
 		}
 		
@@ -451,7 +451,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 				nodes=new PHSNode[1];
 				nodes[0]=concat(a,ha,b,hb,shift+SHIFT_AMOUNT);
 			}
-			PHSBitSetNode<T> fn=new PHSBitSetNode<>(nodes,shift,bitSet);
+			PHSBitSetNode<T> fn=new PHSBitSetNode<T>(nodes,shift,bitSet);
 			return fn;
 		}
 
@@ -518,7 +518,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 
 		@Override
 		protected PHSNode<T> include(T key, int hash, int shift) {
-			return new PHSEntry<>(key);
+			return new PHSEntry<T>(key);
 		}
 		
 		@Override
@@ -578,7 +578,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 		@Override
 		protected PHSNode<T> include(T key, int hash, int shift) {
 			if (hashCode!=hash) {
-				return PHSBitSetNode.concat(this,hashCode,new PHSEntry<>(key),hash,shift);
+				return PHSBitSetNode.concat(this,hashCode,new PHSEntry<T>(key),hash,shift);
 
 			}
 			
@@ -594,11 +594,11 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			PHSEntry<T>[] ndata=new PHSEntry[nlen];
 			System.arraycopy(entries, 0, ndata, 0, entries.length);
 			if (pos>=0) {
-				ndata[pos]=new PHSEntry<>(key);
+				ndata[pos]=new PHSEntry<T>(key);
 			} else {
-				ndata[olen]=new PHSEntry<>(key);
+				ndata[olen]=new PHSEntry<T>(key);
 			}
-			return new PHSCollisionList<>(ndata,hash);
+			return new PHSCollisionList<T>(ndata,hash);
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -625,7 +625,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			} else {
 				ndata[olen]=entry;
 			}
-			return new PHSCollisionList<>(ndata,hash);
+			return new PHSCollisionList<T>(ndata,hash);
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -650,7 +650,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			PHSEntry<T>[] ndata=new PHSEntry[len-1];
 			System.arraycopy(entries,0,ndata,0,pos);
 			System.arraycopy(entries,pos+1,ndata,pos,len-pos-1);
-			return new PHSCollisionList<>(ndata,hash);
+			return new PHSCollisionList<T>(ndata,hash);
 		}
 
 		@Override
@@ -726,13 +726,13 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			}
 
 			int hashCode=calcHash(localKey);
-			if (hash==hashCode) return new PHSCollisionList<>(
+			if (hash==hashCode) return new PHSCollisionList<T>(
 					new PHSEntry[] {
 							this,
-							new PHSEntry<>(newkey)},
+							new PHSEntry<T>(newkey)},
 					hash);
 			
-			return PHSBitSetNode.concat(this,hashCode,new PHSEntry<>(newkey),hash,shift);
+			return PHSBitSetNode.concat(this,hashCode,new PHSEntry<T>(newkey),hash,shift);
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -744,7 +744,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			}
 
 			int hashCode=calcHash(localKey);
-			if (hash==hashCode) return new PHSCollisionList<>(
+			if (hash==hashCode) return new PHSCollisionList<T>(
 					new PHSEntry[] {
 							this,
 							entry},
@@ -860,13 +860,13 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 	public PersistentHashSet<T> include(T key) {
 		PHSNode<T> newRoot=root.include(key, calcHash(key),0);
 		if (root==newRoot) return this;
-		return new PersistentHashSet<>(newRoot);
+		return new PersistentHashSet<T>(newRoot);
 	}
 	
 	private PersistentHashSet<T> include(PHSEntry<T> entry) {
 		PHSNode<T> newRoot=root.include(entry, entry.hash(),0);
 		if (root==newRoot) return this;
-		return new PersistentHashSet<>(newRoot);
+		return new PersistentHashSet<T>(newRoot);
 	}
 	
 	public static<T> int calcHash(T key) {
@@ -902,7 +902,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 	public PersistentSet<T> delete(T key) {
 		PHSNode<T> newRoot=root.delete(key,calcHash(key));
 		if (root==newRoot) return this;
-		return new PersistentHashSet<>(newRoot);
+		return new PersistentHashSet<T>(newRoot);
 	}
 	
 	@Override
@@ -912,6 +912,6 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 	}
 
 	public PHSIterator<T> iterator() {
-		return new PHSIterator<>(this);
+		return new PHSIterator<T>(this);
 	}
 }

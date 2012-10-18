@@ -70,7 +70,7 @@ public final class Pair<A,B> extends PersistentObject implements Comparable<Pair
 	}
 	
 	public Pair<B,A> swap() {
-		return new Pair<>(b,a);
+		return new Pair<B, A>(b,a);
 	}
 	
 	public Pair<A,B> clone() {

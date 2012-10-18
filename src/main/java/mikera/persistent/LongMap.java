@@ -20,7 +20,7 @@ import mikera.util.Tools;
 public final class LongMap<V> extends PersistentMap<Long,V> {
 	private static final long serialVersionUID = 4829272016323285638L;
 
-	public static final LongMap<?> EMPTY = new LongMap<>();
+	public static final LongMap<?> EMPTY = new LongMap<Object>();
 	
 	// nested IntMap using high words
 	private IntMap<IntMap<MapEntry<Long,V>>> data;
@@ -192,7 +192,7 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 
 	@Override
 	public PersistentSet<Long> keySet() {
-		return new Wrappers.KeySet<>(this);
+		return new Wrappers.KeySet<Long>(this);
 	}
 
 	@Override
@@ -226,13 +226,13 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 		IntMap<MapEntry<Long,V>> newInnerMap=im.delete(lo);
 		assert (newInnerMap!=im);
 		IntMap<IntMap<MapEntry<Long, V>>> newData = data.include(Bits.highWord(key),newInnerMap);		
-		return new LongMap<>(newData,count-1);
+		return new LongMap<V>(newData,count-1);
 	}
 
 	@Override
 	public PersistentMap<Long, V> include(Long key, V value) {
 		IntMap<MapEntry<Long,V>> im = getInner(key);
-		MapEntry<Long,V> entry = new MapEntry<>(key,value);
+		MapEntry<Long,V> entry = new MapEntry<Long, V>(key,value);
 		long newCount=count;
 		int lo=Bits.lowWord(key);
 		if (im==null) {
@@ -245,7 +245,7 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 		
 		IntMap<IntMap<MapEntry<Long, V>>> newData = data.include(Bits.highWord(key),im);
 		if (data==newData) return this;
-		return new LongMap<>(newData,newCount);
+		return new LongMap<V>(newData,newCount);
 
 	}
 
