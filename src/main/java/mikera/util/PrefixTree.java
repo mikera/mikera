@@ -15,7 +15,7 @@ public class PrefixTree<K,V> {
 	}
 	
 	public class KeyIterator implements Iterator<K[]> {
-		private ArrayList<Integer> indexes=new ArrayList<>();
+		private ArrayList<Integer> indexes=new ArrayList<Integer>();
 		
 		private KeyIterator() {
 			
@@ -114,12 +114,12 @@ public class PrefixTree<K,V> {
 	
 	private void ensureTails() {
 		if (tails==null) {
-			tails=new ArrayList<>();
+			tails=new ArrayList<PrefixTree<K, V>>();
 		}
 	}
 	
 	private PrefixTree<K,V> addBranch(K a) {
-		PrefixTree<K,V> t=new PrefixTree<>();
+		PrefixTree<K,V> t=new PrefixTree<K, V>();
 		t.head=a;
 		ensureTails();
 		tails.add(t);
