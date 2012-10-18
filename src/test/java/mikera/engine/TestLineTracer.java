@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class TestLineTracer {
 	@Test public void testPaths() {
-		final Octreap<Integer> o=new Octreap<>();
+		final Octreap<Integer> o=new Octreap<Integer>();
 		
 		float d=0;
 		

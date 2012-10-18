@@ -30,7 +30,7 @@ public class TestDirections {
 	}
 	
 	@Test public void testDirDirections() {
-		Octreap<Integer> o=new Octreap<>();
+		Octreap<Integer> o=new Octreap<Integer>();
 		
 		for (int i=0; i<Dir.MAX_DIR; i++) {
 			int d=i;
@@ -60,7 +60,7 @@ public class TestDirections {
 	@Test public void testPathFinding() {
 		PathFinder pf=new PathFinder();
 		
-		final TreeGrid<Float> costs=new TreeGrid<>();
+		final TreeGrid<Float> costs=new TreeGrid<Float>();
 		pf.setCostFunction(new PathFinder.CostFunction() {
 			@Override
 			public float moveCost(int x, int y, int z, int tx, int ty, int tz) {

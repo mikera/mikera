@@ -91,7 +91,7 @@ public class TestGrid {
 
 	
 	public void testPaste(Grid<Integer> g) {
-		ArrayGrid<Integer> ag=new ArrayGrid<>();
+		ArrayGrid<Integer> ag=new ArrayGrid<Integer>();
 		ag=ag.setBlock(0, 0, 0, 5,5, 5, 1);
 		assertEquals(216,ag.dataLength());
 		
@@ -155,7 +155,7 @@ public class TestGrid {
 
 	
 	@Test public void testTreeGidBlockSet() {
-		TreeGrid<Integer> tg=new TreeGrid<>();
+		TreeGrid<Integer> tg=new TreeGrid<Integer>();
 		
 		tg.set(0,0,0, 1);
 	}
