@@ -12,7 +12,7 @@ import org.junit.Test;
 public class TestIndexedList {
 	
 	@Test public void testAdds() {
-		IndexedList<Integer,String> list = new IndexedList<>();
+		IndexedList<Integer,String> list = new IndexedList<Integer, String>();
 		
 		assertEquals(0,list.size());
 		
@@ -32,7 +32,7 @@ public class TestIndexedList {
 	}
 	
 	@Test public void testRandomly() {
-		IndexedList<Integer,Integer> list = new IndexedList<>();
+		IndexedList<Integer,Integer> list = new IndexedList<Integer, Integer>();
 
 		for (int i=0; i<1000; i++) {
 			list.put(Rand.d(10),i);
@@ -43,7 +43,7 @@ public class TestIndexedList {
 	}
 	
 	@Test public void testFindIndex() {
-		IndexedList<Integer,Integer> list = new IndexedList<>();
+		IndexedList<Integer,Integer> list = new IndexedList<Integer, Integer>();
 
 		for (int i=0; i<100; i++) {
 			list.put(i,i+100);
@@ -56,12 +56,12 @@ public class TestIndexedList {
 	}
 	
 	@Test public void testMerge() {
-		IndexedList<Integer,Integer> list1 = new IndexedList<>();
-		IndexedList<Integer,Integer> list2 = new IndexedList<>();
-		IndexedList<Integer,Integer> dest = new IndexedList<>();
+		IndexedList<Integer,Integer> list1 = new IndexedList<Integer, Integer>();
+		IndexedList<Integer,Integer> list2 = new IndexedList<Integer, Integer>();
+		IndexedList<Integer,Integer> dest = new IndexedList<Integer, Integer>();
 		
 		// can also add from other Maps!
-		HashMap<Integer,Integer> hm=new HashMap<>();
+		HashMap<Integer,Integer> hm=new HashMap<Integer, Integer>();
 		
 		for (int i=0; i<50; i++) {
 			list1.put(i*2,i*2);
@@ -88,7 +88,7 @@ public class TestIndexedList {
 	}
 	
 	@Test public void testIterator() {
-		IndexedList<Integer,Integer> list = new IndexedList<>();
+		IndexedList<Integer,Integer> list = new IndexedList<Integer, Integer>();
 
 		for (int i=0; i<100; i++) {
 			list.put(i,i);
