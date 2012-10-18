@@ -286,7 +286,7 @@ public class Arrays {
 		mergeInOrder(src,dst,start,middle,middle+1,end);
 	}
 	
-	private static ThreadLocal<Comparable<?>[]> mergeSortTemp=new ThreadLocal<>();
+	private static ThreadLocal<Comparable<?>[]> mergeSortTemp=new ThreadLocal<Comparable<?>[]>();
 	
 	@SuppressWarnings("unchecked")
 	public static <T extends Comparable<? super T>> void mergeSort(T[] src) {
@@ -300,7 +300,7 @@ public class Arrays {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> al=new ArrayList<>();
+		ArrayList<Integer> al=new ArrayList<Integer>();
 		System.out.println(Arrays.isSorted(al));
 		al.add(1);
 		System.out.println(Arrays.isSorted(al));
