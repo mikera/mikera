@@ -117,11 +117,11 @@ public class Util {
 				data.appendByte((byte)(src.charAt(i)));
 			}
 			return hlen+len;
-		} else {
-			// send -1 for null string
-			writeCompacted(data,-1);	
-			return 1;
 		}
+		
+		// send -1 for null string
+		writeCompacted(data,-1);	
+		return 1;
 	}
 	
 	public static int readASCIIString(ByteBuffer bb, String[] dest) {

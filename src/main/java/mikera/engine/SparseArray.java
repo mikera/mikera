@@ -40,16 +40,15 @@ public final class SparseArray<T> extends AbstractList<T> {
 	public T get(long index) {
 		if (shift==0) {
 			return (T)data[(int)index];
-		} else {
-			int si=(int)(index>>shift);
-			Object d=data[si];
-			if (d==null) return null;
-			if (d instanceof SparseArray) {
-				return ((SparseArray<T>)d).get(index-(((long)si)<<shift));
-			} else {
-				return (T)d;
-			}
 		}
+		
+		int si=(int)(index>>shift);
+		Object d=data[si];
+		if (d==null) return null;
+		if (d instanceof SparseArray) {
+			return ((SparseArray<T>)d).get(index-(((long)si)<<shift));
+		}
+		return (T)d;
 	}
 	
 	@Override

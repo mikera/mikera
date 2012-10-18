@@ -158,9 +158,8 @@ public class Tasks {
 				R1 test=cond.run(actor, param);
 				if (test!=null) {
 					return a.run(actor, param);
-				} else {
-					return b.run(actor, param);
 				}
+				return b.run(actor, param);
 			}
 		};
 	}

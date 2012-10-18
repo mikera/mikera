@@ -131,11 +131,8 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
 
     private static final boolean checkEquals(Object a, Object b) {
     	if (a==b) return true;
-    	if (a==null) {
-    		return false;
-    	} else {
-    		return a.equals(b);
-    	}
+    	if (a==null) return false;
+		return a.equals(b);
     }
     
     private boolean realSet(String key, Object value) {

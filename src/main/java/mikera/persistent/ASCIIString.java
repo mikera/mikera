@@ -95,18 +95,16 @@ public class ASCIIString implements CharSequence, java.io.Serializable,
 
 		while ((pos < count) && (value[pos] != oldByte))
 			pos++;
+		
+		if (pos>=count) return this;
 
-		if (pos < count) {
-			ASCIIString s = new ASCIIString(this);
-			s.value[pos] = newByte;
-			for (int i = pos + 1; i < count; i++) {
-				if (s.value[pos] == oldByte)
-					s.value[pos] = newByte;
-			}
-			return s;
-		} else {
-			return this;
+		ASCIIString s = new ASCIIString(this);
+		s.value[pos] = newByte;
+		for (int i = pos + 1; i < count; i++) {
+			if (s.value[pos] == oldByte)
+				s.value[pos] = newByte;
 		}
+		return s;
 	}
 
 	public boolean matches(String regex) {
@@ -181,9 +179,8 @@ public class ASCIIString implements CharSequence, java.io.Serializable,
 			if (pos >= len1) {
 				if (pos >= len2) {
 					return 0;
-				} else {
-					return 1;
-				}
+				}	
+				return 1;
 			} else if (pos >= len2) {
 				return -1;
 			}

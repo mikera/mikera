@@ -32,9 +32,8 @@ public class SparseGrid<T> extends BaseGrid<T> {
 		long zz=calculateIndex(x, y, z);
 		if (inRange(zz)) {
 			return data.get(zz);
-		} else {
-			return null;
 		}
+		return null;
 	}
 
 	@Override

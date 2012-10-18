@@ -67,29 +67,24 @@ public class Hex {
 			if (c>=0) {
 				// South or south east
 				return (b==0)?S:SE;
-			} else {
-				if (a>=0) {
-					// North east
-					return NE;
-				} else {
-					// North
-					return N;
-				}
 			}
-		} else {
-			if (c<=0) {
-				// North west
-				return NW;
-			} else {
-				if (a<=0) {
-					// South West
-					return SW;
-				} else {
-					// South
-					return S;
-				}
+			if (a>=0) {
+				// North east
+				return NE;
 			}
+			// North
+			return N;
 		}
+		if (c<=0) {
+			// North west
+			return NW;
+		}
+		if (a<=0) {
+			// South West
+			return SW;
+		}
+		// South
+		return S;
 	}
 	
 	public static float toPositionX (int lx, int ly) {
@@ -112,10 +107,9 @@ public class Hex {
 		if (dx*dy>0) {
 			// dx and dy have same sign (i.e. within 60 degrees between same-signed x and y axes)
 			return Maths.abs(dx)+Maths.abs(dy);
-		} else {
-			// dx and dy have opposite signs (i.e. in 120 degrees between opposite signed x and y axes)
-			return Maths.max(Maths.abs(dx),Maths.abs(dy));
 		}
+		// dx and dy have opposite signs (i.e. in 120 degrees between opposite signed x and y axes)
+		return Maths.max(Maths.abs(dx),Maths.abs(dy));
 	}
 	
 	

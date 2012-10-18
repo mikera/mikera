@@ -255,11 +255,9 @@ public final class Octreap<T> extends BaseGrid<T> {
 	
     private boolean checkEquals(T a, T b) {
     	if (a==b) return true;
-    	if (a==null) {
-    		return false;
-    	} else {
-    		return a.equals(b);
-    	}
+    	if (a==null) return false;
+    	
+		return a.equals(b);
     }
 	
 	public void delete(Octreap<T> t) {
@@ -730,15 +728,15 @@ public final class Octreap<T> extends BaseGrid<T> {
 			node.z2=za-1; // shrink range
 			addRange(nza,nzb,(T)node.object);
 			return;
-		} else {
-			// delete ranges on either side 
-			// this does not alter structure since can't be cutting out any holes 
-			if (za<node.z1) deleteRange(za,zb,node.left);
-			if (zb>node.z2) deleteRange(za,zb,node.right);
-			
-			// exit if no overlap
-			if ((zb<node.z1)||(za>node.z2)) return;
 		}
+		
+		// delete ranges on either side 
+		// this does not alter structure since can't be cutting out any holes 
+		if (za<node.z1) deleteRange(za,zb,node.left);
+		if (zb>node.z2) deleteRange(za,zb,node.right);
+		
+		// exit if no overlap
+		if ((zb<node.z1)||(za>node.z2)) return;
 		
 		// at least some overlap, not a hole....
 		if ((za<=node.z1)&&(zb>=node.z2)) {
@@ -763,14 +761,14 @@ public final class Octreap<T> extends BaseGrid<T> {
 		if (node==head) {
 			ZNode result= raiseUp(node);
 			return result;
+		}
+		
+		int dir=node.compareTo(head);
+		if (dir<0) {
+			head.left=deleteNode(node,head.left);
 		} else {
-			int dir=node.compareTo(head);
-			if (dir<0) {
-				head.left=deleteNode(node,head.left);
-			} else {
-				// if (dir==0) throw new Error("Duplicate z1 in deleteNode");
-				head.right=deleteNode(node,head.right);
-			}
+			// if (dir==0) throw new Error("Duplicate z1 in deleteNode");
+			head.right=deleteNode(node,head.right);
 		}
 		return head;
 	}

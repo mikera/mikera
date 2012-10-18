@@ -418,9 +418,8 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			newData[i]=node;
 			if (data.length==31) {
 				return new IMFullNode<V>(newData,shift);
-			} else {
-				return new IMBitMapNode<V>(newData,shift,bitmap|(1<<s));				
 			}
+			return new IMBitMapNode<V>(newData,shift,bitmap|(1<<s));
 		}
 		
 		
@@ -624,12 +623,10 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 
 		@Override
 		protected IMEntry<V> findNext(IMEntrySetIterator<V> it) {
-			if (it.index>0) {
-				return null;
-			} else {
-				it.index=1;
-				return this;
-			}
+			if (it.index>0) return null;
+			
+			it.index=1;
+			return this;
 		}
 
 		@Override

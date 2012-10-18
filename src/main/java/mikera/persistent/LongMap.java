@@ -60,9 +60,8 @@ public final class LongMap<V> extends PersistentMap<Long,V> {
 	private long toKey(Object key) {
 		if (!(key instanceof Long)) {
 			throw new IllegalArgumentException("Key must be Long!");
-		} else {
-			return (Long)key;
-		}		
+		}
+		return (Long)key;		
 	}
 
 	@Override

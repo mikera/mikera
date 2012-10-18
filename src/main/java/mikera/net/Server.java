@@ -158,11 +158,10 @@ public abstract class Server {
 			if (c.userTag==null) {
 				handleConnectRequest(buffer,c);
 				return true; // since message should be fully handled, can safely recycle
-			} else {
-				Data data=Data.create(buffer);
-				queueIncomingMessage(data,(Integer)c.userTag);
-				return false; // since we want to keep the ByteBuffer data.....
 			}
+			Data data=Data.create(buffer);
+			queueIncomingMessage(data,(Integer)c.userTag);
+			return false; // since we want to keep the ByteBuffer data.....
 		}
 	}
 	

@@ -28,11 +28,10 @@ public class BigRational extends Number implements Comparable<BigRational> {
 			return create(
 					BigInteger.valueOf(Long.parseLong(ss[0])),
 					BigInteger.ONE);
-		} else {
-			return create(
-					Long.parseLong(ss[0]),
-					Long.parseLong(ss[1]));
 		}
+		return create(
+				Long.parseLong(ss[0]),
+				Long.parseLong(ss[1]));
 	}
 	
 	public BigRational create(BigInteger num, BigInteger denom) {
@@ -112,9 +111,8 @@ public class BigRational extends Number implements Comparable<BigRational> {
 	public String toString() {
 		if (denominator.equals(BigInteger.ONE)) {
 			return numerator.toString();
-		} else {
-			return numerator.toString()+"/"+denominator.toString();			
 		}
+		return numerator.toString()+"/"+denominator.toString();
 	}
 	
 	public BigRational subtract(BigRational b) {

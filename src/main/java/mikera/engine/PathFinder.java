@@ -264,18 +264,18 @@ public final class PathFinder {
 			addNode(pn);
 			
 			return pn;
-		} else {
-			if (target.travelled<=(cost+travelled)) return target;
-			
-			// we have found a shorter path to target
-			target.last=node;
-			target.travelled=cost+travelled;
-			target.checkedDirCount=0;
-			
-			// ensure place on search list
-			addNode(target);
-			return target;
 		}
+		
+		if (target.travelled<=(cost+travelled)) return target;
+		
+		// we have found a shorter path to target
+		target.last=node;
+		target.travelled=cost+travelled;
+		target.checkedDirCount=0;
+		
+		// ensure place on search list
+		addNode(target);
+		return target;
 	}
 		
 	private void setFound(PathNode pn) {
