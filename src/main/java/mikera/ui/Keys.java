@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class Keys extends KeyAdapter {
 	 
-	private final HashMap<Integer,Boolean> keys=new HashMap<>();
+	private final HashMap<Integer,Boolean> keys=new HashMap<Integer, Boolean>();
 	
 	public void setKey(int i, boolean b) {
 		keys.put(i, b);
