@@ -23,7 +23,7 @@ public class RepeatList<T> extends BasePersistentList<T> {
 	}
 	
 	public static <T> RepeatList<T> create(T object, int number) {
-		return new RepeatList<>(object,number);
+		return new RepeatList<T>(object,number);
 	}
 	
 	public int size() {

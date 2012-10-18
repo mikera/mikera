@@ -17,7 +17,7 @@ public final class SingletonList<T> extends BasePersistentList<T> {
 	final T value;
 	
 	public static <T> SingletonList<T> create(T object) {
-		return new SingletonList<>(object);
+		return new SingletonList<T>(object);
 	}
 	
 	public int size() {

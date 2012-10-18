@@ -20,7 +20,7 @@ public final class SubTuple<T> extends BasePersistentList<T>   {
 	private final int length;
 	
 	static <T> SubTuple<T> create(T[] valuesDirect, int off, int len) {
-		return new SubTuple<>(valuesDirect,off,len);
+		return new SubTuple<T>(valuesDirect,off,len);
 	}
 	
 	public int size() {

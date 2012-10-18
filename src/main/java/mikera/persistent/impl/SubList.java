@@ -52,7 +52,7 @@ public final class SubList<T> extends BasePersistentList<T>   {
 	}
 	
 	private static <T> SubList<T> createLocal(PersistentList<T> source, int fromIndex, int toIndex) {
-		return new SubList<>(source,fromIndex,toIndex-fromIndex);
+		return new SubList<T>(source,fromIndex,toIndex-fromIndex);
 	}
 	
 	public int size() {
@@ -91,7 +91,7 @@ public final class SubList<T> extends BasePersistentList<T>   {
 		if ((data==sl.data)&&((offset+length)==sl.offset)) {
 			int newLength=length+sl.length;
 			if (newLength==data.size()) return data;
-			return new SubList<>(data,offset,newLength);
+			return new SubList<T>(data,offset,newLength);
 		}
 		return super.append(sl);
 	}
