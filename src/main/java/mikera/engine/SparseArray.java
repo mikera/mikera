@@ -59,7 +59,7 @@ public final class SparseArray<T> extends AbstractList<T> {
 	}
 
 	public SparseArray<T> grow() {
-		SparseArray<T> sa=new SparseArray<>(BLOCK_SIZE,shift+BLOCK_BITS);
+		SparseArray<T> sa=new SparseArray<T>(BLOCK_SIZE,shift+BLOCK_BITS);
 		sa.data[0]=this;
 		return sa;
 	}
@@ -83,7 +83,7 @@ public final class SparseArray<T> extends AbstractList<T> {
 
 	private SparseArray<T> growChild(int si, Object d) {
 		int childShift=Math.max(0, shift-BLOCK_BITS);
-		SparseArray<T> child=new SparseArray<>(1<<(shift-childShift), childShift);
+		SparseArray<T> child=new SparseArray<T>(1<<(shift-childShift), childShift);
 		data[si]=child;
 		return child;
 	}

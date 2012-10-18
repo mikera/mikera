@@ -74,7 +74,7 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
     
 	public void replaceWith(BaseObject t) {
 	    if (t.local != null) {
-            local = new HashMap<>(t.local);
+            local = new HashMap<String, Object>(t.local);
         } else {
             local = null;
         }
@@ -183,7 +183,7 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
     }
 
     private final void ensureLocal() {
-    	if (local==null) local=new HashMap<>();
+    	if (local==null) local=new HashMap<String, Object>();
     }
     
     public final String getString(String s) {
@@ -263,7 +263,7 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
      * Get a single Map of all property pairs
      */
     public Map<String,Object> getAll() {
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<String, Object>();
         putAll(map);
         return map;
     }
@@ -304,7 +304,7 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
      */
     public static BaseObject getFlattened(BaseObject source) {
         BaseObject destination = new BaseObject();
-        destination.local=new HashMap<>();
+        destination.local=new HashMap<String, Object>();
         source.putAll(destination.local);
         return destination;
     }
