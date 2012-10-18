@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class TestPrefixTree {
 	@Test public void testPT() {
-		PrefixTree<Integer,String> pt=new PrefixTree<>();
+		PrefixTree<Integer,String> pt=new PrefixTree<Integer, String>();
 		
 		Integer[] a1=new Integer[] {1,2,3};
 		pt.add(a1,"A");
