@@ -1,8 +1,6 @@
 package mikera.util;
 
 import static org.junit.Assert.assertEquals;
-import mikera.data.BigDouble;
-import mikera.data.BigRational;
 import mikera.math.PerlinNoise;
 import mikera.util.Maths;
 import mikera.util.Rand;
@@ -150,28 +148,6 @@ public class TestMaths {
 			assertEquals(f,f,0.01f);
 		}
 	}
-	
-	@Test public void testBigFloat() {
-		BigDouble bf=new BigDouble(2.0);
-		bf=bf.multiply(2);
-		bf=bf.subtract(1.5);
-		bf=bf.add(0.5);
-		bf=bf.divide(3);
-		assertEquals(1,bf.doubleValue(),0.000001);
-		
-		bf=BigDouble.exp(9);
-		bf=bf.multiply(bf);
-		assertEquals(18,bf.log(),0.000001);
-	}
-	
-	@Test public void testBigRational() {
-		BigRational br=new BigRational(10,2);
-		assertEquals("5",br.toString());
-		
-		BigRational br2=new BigRational(1,-2);
-		assertEquals("-1/2",br2.toString());
-		assertEquals(-0.5,br2.doubleValue(),0.0001);
-		
-		assertEquals("9/2",br.add(br2).toString());
-	}
+
+
 }
