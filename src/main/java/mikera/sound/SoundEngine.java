@@ -51,7 +51,7 @@ public class SoundEngine {
 	
 	private static Clip loadClip(String url) {
 		try {
-			URL soundURL = Resource.getResource(url);	
+			URL soundURL = Resource.getResourceURL(url);	
 			if (soundURL==null) throw new Error("File not found: "+url);
 			AudioInputStream stream = AudioSystem.getAudioInputStream(soundURL);
 			

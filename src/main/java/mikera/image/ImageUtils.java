@@ -30,7 +30,7 @@ public class ImageUtils {
 	 */
 	
 	public static BufferedImage getImage(String filename) {
-		URL imageURL = Resource.getResource(filename);
+		URL imageURL = Resource.getResourceURL(filename);
 		if (imageURL != null) {
 			return getImage(imageURL);
 		}

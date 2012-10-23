@@ -13,7 +13,7 @@ import java.net.URL;
  *
  */
 public class Resource {
-	public static URL getResource(String filename) {
+	public static URL getResourceURL(String filename) {
 		return Thread.currentThread().getContextClassLoader().getResource(filename);
 	}
 	
