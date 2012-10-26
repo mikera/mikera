@@ -439,6 +439,12 @@ public class Arrays {
 		}
 	}
 	
+	public static void applySoftplus(double[] data, int offset, int length) {
+		for (int i=offset; i<(offset+length); i++) {
+			data[i]=Maths.softplus(data[i]);
+		}
+	}
+	
 	public static void applySigmoid(float[] data, int offset, int length, float gain) {
 		for (int i=offset; i<(offset+length); i++) {
 			data[i]=Maths.sigmoid(data[i]*gain);
