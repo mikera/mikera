@@ -14,6 +14,7 @@ package mikera.math;
 
 import mikera.util.Maths;
 import mikera.util.Rand;
+import mikera.util.mathz.FloatMaths;
 
 /**
  * Computes Perlin Noise for three dimensions.
@@ -415,9 +416,9 @@ public class PerlinNoise
                                 float h,
                                 float d)
     {
-    	x=Maths.fmod(x,w);
-    	y=Maths.fmod(y,h);
-    	z=Maths.fmod(z,d);
+    	x=FloatMaths.mod(x,w);
+    	y=FloatMaths.mod(y,h);
+    	z=FloatMaths.mod(z,d);
 
     	return (noise3(x,     y,     z)     * (w - x) * (h - y) * (d - z) +
                 noise3(x - w, y,     z)     *      x  * (h - y) * (d - z) +

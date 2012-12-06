@@ -5,6 +5,7 @@ import mikera.math.BaseVectorFunction;
 import mikera.math.Vector;
 import mikera.math.VectorFunction;
 import mikera.util.Maths;
+import mikera.util.mathz.FloatMaths;
 
 /**
  * Utility functions for hexagonal grids
@@ -39,17 +40,17 @@ public class Hex {
 		return HEX_DY[Maths.mod(dir, 6)];
 	}
 	
-	public static int toLocationX(float px, float py) {
-		float b=Maths.floor(py+px/(RATIO*2.0f/3.0f));
-		float c=Maths.floor(py-px/(RATIO*2.0f/3.0f));	
+	public static int toLocationX(double px, double py) {
+		double b=Math.floor(py+px/(RATIO*2.0/3.0));
+		double c=Math.floor(py-px/(RATIO*2.0/3.0));	
 		
 		return (int)Math.floor((1+b-c)/3);
 	}
 	
-	public static int toLocationY(float px, float py) {
-		float a=Maths.floor(py*2.0f);
-		float b=Maths.floor(py+px/(RATIO*2.0f/3.0f));
-		float c=Maths.floor(py-px/(RATIO*2.0f/3.0f));	
+	public static int toLocationY(double px, double py) {
+		double a=Math.floor(py*2.0f);
+		double b=Math.floor(py+px/(RATIO*2.0/3.0));
+		double c=Math.floor(py-px/(RATIO*2.0/3.0));	
 		
 		return (int)Math.floor((4+3*a-b+c)/6);
 	}
@@ -106,10 +107,10 @@ public class Hex {
 		
 		if (dx*dy>0) {
 			// dx and dy have same sign (i.e. within 60 degrees between same-signed x and y axes)
-			return Maths.abs(dx)+Maths.abs(dy);
+			return Math.abs(dx)+Math.abs(dy);
 		}
 		// dx and dy have opposite signs (i.e. in 120 degrees between opposite signed x and y axes)
-		return Maths.max(Maths.abs(dx),Maths.abs(dy));
+		return Maths.max(Math.abs(dx),Math.abs(dy));
 	}
 	
 	

@@ -1,11 +1,10 @@
 package mikera.engine;
 
-import mikera.util.Maths;
 
 public class FluidSystem {
 	public boolean isWaterPassable(int x, int y, int z) {
 		return ((z>=0)&&(y==0)
-				&&((Maths.abs(x)==1))||((z>0)&&(x==0)));
+				&&((Math.abs(x)==1))||((z>0)&&(x==0)));
 	}
 	
 	public static class FluidNode {

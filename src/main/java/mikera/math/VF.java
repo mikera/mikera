@@ -1,6 +1,7 @@
 package mikera.math;
 
 import mikera.util.Maths;
+import mikera.util.mathz.FloatMaths;
 
 public class VF {
 
@@ -117,7 +118,7 @@ public class VF {
 			public void calculate(Vector input, Vector output) {
 				f.calculate(input, output);
 				for (int i=0; i<outputDimensions; i++) {
-					output.data[i]=Maths.bound(min, input.data[i], max);
+					output.data[i]=FloatMaths.bound(input.data[i], min, max);
 				}
 			}
 		};
@@ -376,7 +377,7 @@ public class VF {
 	public static VectorFunction sin(final float freq) {
 		BaseVectorFunction vf=new BaseVectorFunction(1,1) {
 			public void calculate(Vector input, Vector output) {
-				output.data[0]=Maths.sin(input.data[0]*freq);
+				output.data[0]=FloatMaths.sin(input.data[0]*freq);
 			}
 		};		
 		return vf;
@@ -385,7 +386,7 @@ public class VF {
 	public static VectorFunction cos(final float freq) {
 		BaseVectorFunction vf=new BaseVectorFunction(1,1) {
 			public void calculate(Vector input, Vector output) {
-				output.data[0]=Maths.cos(input.data[0]*freq);
+				output.data[0]=FloatMaths.cos(input.data[0]*freq);
 			}
 		};		
 		return vf;

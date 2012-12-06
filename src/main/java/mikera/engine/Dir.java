@@ -76,11 +76,11 @@ public class Dir {
 	}
 	
 	public static int manhattanDistance(int dx, int dy, int dz) {
-		return Maths.abs(dx)+Maths.abs(dy)+Maths.abs(dz);
+		return Math.abs(dx)+Math.abs(dy)+Math.abs(dz);
 	}
 	
 	public static int rogueDistance(int dx, int dy, int dz) {
-		return Maths.max(Maths.abs(dx),Maths.abs(dy),Maths.abs(dz));
+		return Maths.max(Math.abs(dx),Math.abs(dy),Math.abs(dz));
 	}
 	
 	public static void visitDirections(int dirSet, PointVisitor<Integer> p, int x, int y, int z) {

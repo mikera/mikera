@@ -42,7 +42,7 @@ public class TestRayCaster {
 				if (i==null) i=Integer.valueOf(0);
 				is[0]++;
 				tg.set(x,y,z,i+1);
-				return (Maths.abs(x)<RANGE)&&(Maths.abs(y)<RANGE)&&(Maths.abs(z)<RANGE);
+				return (Math.abs(x)<RANGE)&&(Math.abs(y)<RANGE)&&(Math.abs(z)<RANGE);
 			}	
 		});
 		

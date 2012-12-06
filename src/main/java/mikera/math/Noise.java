@@ -2,6 +2,7 @@ package mikera.math;
 
 import mikera.util.Maths;
 import mikera.util.Rand;
+import mikera.util.mathz.FloatMaths;
 
 /**
  * Mike Anderson's implementation of value based noise
@@ -119,31 +120,31 @@ public class Noise {
 
 	
 	public float noise(float x) {
-		int ix=Maths.floor(x);
+		int ix=Maths.roundDown(x);
 		return noiseLocal(x-ix,ix);
 	}
 	
 	public float tiledNoise(float x, int grid) {
-		int ix=Maths.floor(x);
+		int ix=Maths.roundDown(x);
 		return noiseLocal(x-ix,Maths.mod(ix,grid));
 	}
 		
 	private float noiseLocal(float x, int ix) {
 		float v0=gridValue(ix);
 		float v1=gridValue(ix+1);
-		float fx=Maths.smoothFactor(x);
-		return Maths.lerp(fx, v0, v1);
+		float fx=FloatMaths.smoothFactor(x);
+		return FloatMaths.lerp(fx, v0, v1);
 	}
 	
 	public float noise(float x, float y) {
-		int ix=Maths.floor(x);
-		int iy=Maths.floor(y);
+		int ix=Maths.roundDown(x);
+		int iy=Maths.roundDown(y);
 		return noiseLocal(x-ix,y-iy,ix,iy);
 	}
 	
 	public float tiledNoise(float x, float y,int grid) {
-		int ix=Maths.floor(x);
-		int iy=Maths.floor(y);
+		int ix=Maths.roundDown(x);
+		int iy=Maths.roundDown(y);
 		return noiseLocal(x-ix,y-iy,Maths.mod(ix,grid),Maths.mod(iy,grid));
 	}
 
@@ -153,22 +154,22 @@ public class Noise {
 		float v01=gridValue(ix+1,iy);
 		float v10=gridValue(ix,iy+1);
 		float v11=gridValue(ix+1,iy+1);
-		float fx=Maths.smoothFactor(x);
-		float fy=Maths.smoothFactor(y);
-		return Maths.lerp(fy, Maths.lerp(fx, v00,v01), Maths.lerp(fx, v10,v11));
+		float fx=FloatMaths.smoothFactor(x);
+		float fy=FloatMaths.smoothFactor(y);
+		return FloatMaths.lerp(fy, FloatMaths.lerp(fx, v00,v01), FloatMaths.lerp(fx, v10,v11));
 	}
 	
 	public float noise(float x, float y, float z) {
-		int ix=Maths.floor(x);
-		int iy=Maths.floor(y);
-		int iz=Maths.floor(z);
+		int ix=Maths.roundDown(x);
+		int iy=Maths.roundDown(y);
+		int iz=Maths.roundDown(z);
 		return noiseLocal(x-ix,y-iy,z-iz,ix,iy,iz);
 	}
 
 	public float tiledNoise(float x, float y, float z,int grid) {
-		int ix=Maths.floor(x);
-		int iy=Maths.floor(y);
-		int iz=Maths.floor(z);
+		int ix=Maths.roundDown(x);
+		int iy=Maths.roundDown(y);
+		int iz=Maths.roundDown(z);
 		return noiseLocal(x-ix,y-iy, z-iz,Maths.mod(ix,grid),Maths.mod(iy,grid),Maths.mod(iz,grid));
 	}
 
@@ -181,27 +182,27 @@ public class Noise {
 		float v101=gridValue(ix+1,iy,iz+1);
 		float v110=gridValue(ix,iy+1,iz+1);
 		float v111=gridValue(ix+1,iy+1,iz+1);
-		float fx=Maths.smoothFactor(x);
-		float fy=Maths.smoothFactor(y);
-		float fz=Maths.smoothFactor(z);
-		return Maths.lerp(fz,
-				Maths.lerp(fy, Maths.lerp(fx, v000,v001), Maths.lerp(fx, v010,v011)),
-				Maths.lerp(fy, Maths.lerp(fx, v100,v101), Maths.lerp(fx, v110,v111)));
+		float fx=FloatMaths.smoothFactor(x);
+		float fy=FloatMaths.smoothFactor(y);
+		float fz=FloatMaths.smoothFactor(z);
+		return FloatMaths.lerp(fz,
+				FloatMaths.lerp(fy, FloatMaths.lerp(fx, v000,v001), FloatMaths.lerp(fx, v010,v011)),
+				FloatMaths.lerp(fy, FloatMaths.lerp(fx, v100,v101), FloatMaths.lerp(fx, v110,v111)));
 	}
 	
 	public float noise(float x, float y, float z, float t) {
-		int ix=Maths.floor(x);
-		int iy=Maths.floor(y);
-		int iz=Maths.floor(z);
-		int it=Maths.floor(t);
+		int ix=Maths.roundDown(x);
+		int iy=Maths.roundDown(y);
+		int iz=Maths.roundDown(z);
+		int it=Maths.roundDown(t);
 		return noiseLocal(x-ix,y-iy,z-iz,t-it,ix,iy,iz,it);
 	}
 	
 	public float tiledNoise(float x, float y, float z, float t, int grid) {
-		int ix=Maths.floor(x);
-		int iy=Maths.floor(y);
-		int iz=Maths.floor(z);
-		int it=Maths.floor(z);
+		int ix=Maths.roundDown(x);
+		int iy=Maths.roundDown(y);
+		int iz=Maths.roundDown(z);
+		int it=Maths.roundDown(z);
 		return noiseLocal(x-ix,y-iy, z-iz, t-it,Maths.mod(ix,grid),Maths.mod(iy,grid),Maths.mod(iz,grid),Maths.mod(it,grid));
 	}
 
@@ -223,17 +224,17 @@ public class Noise {
 		float v1101=gridValue(ix+1,iy,iz+1,it+1);
 		float v1110=gridValue(ix,iy+1,iz+1,it+1);
 		float v1111=gridValue(ix+1,iy+1,iz+1,it+1);
-		float fx=Maths.smoothFactor(x);
-		float fy=Maths.smoothFactor(y);
-		float fz=Maths.smoothFactor(z);
-		float ft=Maths.smoothFactor(t);
-		return Maths.lerp(ft, 
-				Maths.lerp(fz,
-					Maths.lerp(fy, Maths.lerp(fx, v0000,v0001), Maths.lerp(fx, v0010,v0011)),
-					Maths.lerp(fy, Maths.lerp(fx, v0100,v0101), Maths.lerp(fx, v0110,v0111))),
-				Maths.lerp(fz,
-					Maths.lerp(fy, Maths.lerp(fx, v1000,v1001), Maths.lerp(fx, v1010,v1011)),
-					Maths.lerp(fy, Maths.lerp(fx, v1100,v1101), Maths.lerp(fx, v1110,v1111))));
+		float fx=FloatMaths.smoothFactor(x);
+		float fy=FloatMaths.smoothFactor(y);
+		float fz=FloatMaths.smoothFactor(z);
+		float ft=FloatMaths.smoothFactor(t);
+		return FloatMaths.lerp(ft, 
+				FloatMaths.lerp(fz,
+					FloatMaths.lerp(fy, FloatMaths.lerp(fx, v0000,v0001), FloatMaths.lerp(fx, v0010,v0011)),
+					FloatMaths.lerp(fy, FloatMaths.lerp(fx, v0100,v0101), FloatMaths.lerp(fx, v0110,v0111))),
+				FloatMaths.lerp(fz,
+					FloatMaths.lerp(fy, FloatMaths.lerp(fx, v1000,v1001), FloatMaths.lerp(fx, v1010,v1011)),
+					FloatMaths.lerp(fy, FloatMaths.lerp(fx, v1100,v1101), FloatMaths.lerp(fx, v1110,v1111))));
 	}
 	
 

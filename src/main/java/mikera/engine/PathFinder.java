@@ -135,9 +135,9 @@ public final class PathFinder {
 	}
 	
 	public static float estimate(int x, int y, int z, int tx, int ty, int tz) {
-		int dx=Maths.abs(tx-x);
-		int dy=Maths.abs(ty-y);
-		int dz=Maths.abs(tz-z);
+		int dx=Math.abs(tx-x);
+		int dy=Math.abs(ty-y);
+		int dz=Math.abs(tz-z);
 		return dx+dy+dz;
 	}
 	

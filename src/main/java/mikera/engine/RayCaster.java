@@ -47,9 +47,9 @@ public class RayCaster {
 		
 		if (!shouldContinue) return;
 		
-		int ax=Maths.abs(dx);
-		int ay=Maths.abs(dy);
-		int az=Maths.abs(dz);
+		int ax=Math.abs(dx);
+		int ay=Math.abs(dy);
+		int az=Math.abs(dz);
 		if ((ax>=maxRange)||(ay>=maxRange)||(az>=maxRange)) {
 			return;
 		}
