@@ -1,4 +1,4 @@
-package mikera.image;
+package mikera.image.generation;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

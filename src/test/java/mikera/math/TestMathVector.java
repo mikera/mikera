@@ -1,7 +1,7 @@
 package mikera.math;
 
 import static org.junit.Assert.assertEquals;
-import mikera.image.Colours;
+import mikera.image.generation.Colours;
 import mikera.math.Matrix;
 import mikera.math.Vector;
 import mikera.util.Rand;

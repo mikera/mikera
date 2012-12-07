@@ -1,4 +1,4 @@
-package mikera.image;
+package mikera.image.generation;
 
 import java.awt.Dimension;
 import java.awt.Frame;

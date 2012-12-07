@@ -1,6 +1,6 @@
 package mikera.engine;
 
-import mikera.image.ImageUtils;
+import mikera.image.generation.ImageUtils;
 import mikera.math.BaseVectorFunction;
 import mikera.math.Vector;
 import mikera.math.VectorFunction;
