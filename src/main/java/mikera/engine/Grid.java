@@ -51,6 +51,6 @@ public abstract class Grid<T> {
 	}
 	
 	public void validate() {
-		// TODO: some vaidation
+		// TODO: some validation
 	}
 }

@@ -124,7 +124,6 @@ public final class Matrix extends VectorFunction {
 	}
 
 	public int outputDimensions() {
-		// TODO Auto-generated method stub
 		return rows;
 	}
 }

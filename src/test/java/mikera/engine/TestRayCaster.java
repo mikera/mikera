@@ -8,8 +8,6 @@ import mikera.engine.RayCaster;
 import mikera.engine.RayCaster.CastFunction;
 import mikera.engine.TreeGrid;
 import mikera.math.Point3i;
-import mikera.util.Maths;
-
 import org.junit.Test;
 
 public class TestRayCaster {
