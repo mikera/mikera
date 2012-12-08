@@ -12,7 +12,6 @@
 
 package mikera.math;
 
-import mikera.util.Maths;
 import mikera.util.Rand;
 import mikera.util.mathz.FloatMaths;
 

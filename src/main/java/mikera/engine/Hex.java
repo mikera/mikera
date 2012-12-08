@@ -5,7 +5,6 @@ import mikera.math.BaseVectorFunction;
 import mikera.math.Vector;
 import mikera.math.VectorFunction;
 import mikera.util.Maths;
-import mikera.util.mathz.FloatMaths;
 
 /**
  * Utility functions for hexagonal grids
