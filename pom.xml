@@ -110,5 +110,11 @@
 			<artifactId>mathz</artifactId>
 			<version>0.0.3</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.caliper</groupId>
+			<artifactId>caliper</artifactId>
+			<version>0.5-rc1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
