@@ -27,6 +27,15 @@ public class PerformanceBenchmark extends SimpleBenchmark {
 			r=result;		
 		}
 	}
+	
+	public void timeImprovedWithMultiply(int runs) {
+		for (int i=0; i<runs; i++) {
+			long input = i;
+			long a = (input * 0x10001);
+			long result = (a & 0xFF000000FFL) + ((a & 0xFF000000FF00L) <<8);
+			r=result;		
+		}
+	}
 
 	/**
 	 * @param args
