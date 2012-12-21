@@ -429,6 +429,13 @@ public final class Bits {
 	}
 	
 	/**
+	 * Gets the sign bit of a floating point value
+	 */
+	public static int signBit(float f) {
+		return (Float.floatToIntBits(f)>>>31);
+	}
+	
+	/**
 	 * Creates a long value out of high and low integer components
 	 * 
 	 * @param high

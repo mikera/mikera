@@ -150,6 +150,13 @@ public class TestBits {
 		assertEquals(1,Bits.parity(0x0100F000));
 	}
 	
+	@Test public void testFloatSign() {
+		assertEquals(0,Bits.signBit(1.0f));
+		assertEquals(1,Bits.signBit(-1.0f));
+		assertEquals(0,Bits.signBit(Float.POSITIVE_INFINITY));
+		assertEquals(1,Bits.signBit(Float.NEGATIVE_INFINITY));
+	}
+	
 	@Test public void testRoll() {
 		assertEquals(0xFFF0000F,Bits.rollLeft(0x0000FFFF,20));
 		assertEquals(0xFFF0000F,Bits.rollLeft(0x0000FFFF,52));
