@@ -6,12 +6,19 @@ import java.util.List;
 
 import mikera.util.emptyobjects.NullArrays;
 
+/**
+ * Miscelleneous array utulities
+ * @author Mike
+ */
 public class Arrays {
 	public static final float[] NULL_FLOATS=NullArrays.NULL_FLOATS;
 	public static final int[] NULL_INTS=NullArrays.NULL_INTS;
 	public static final byte[] NULL_BYTES=NullArrays.NULL_BYTES;
 	public static final double[] NULL_DOUBLES=NullArrays.NULL_DOUBLES;
 	
+	/**
+	 * Returns true if an array is sorted.
+	 */
 	public static <T extends Comparable<? super T>> boolean isSorted(T[] a, int start, int end) {
 		while (start<end) {
 			if (a[start].compareTo(a[start+1])>0) return false;
@@ -20,6 +27,9 @@ public class Arrays {
 		return true;
 	}
 	
+	/**
+	 * Returns true if an array is sorted.
+	 */
 	public static <T extends Comparable<? super T>> boolean isSorted(List<T> a) {
 		int length=a.size();
 		if (length<=1) return true;

@@ -13,13 +13,13 @@ import mikera.persistent.impl.Tuple;
 /**
  * Indexed list class <K,V>
  * 
- * Implemented using binary searchable key array 
+ * Implemented using binary-searchable key array 
  * and value array of same size
  * 
  * @author Mike
  *
- * @param <K>
- * @param <V>
+ * @param <K> Key type, must be comparable
+ * @param <V> Value type
  */
 @Mutable
 public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {

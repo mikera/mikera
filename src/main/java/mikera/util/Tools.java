@@ -311,6 +311,9 @@ public final class Tools {
 		return MapFactory.create(a).equals(MapFactory.create(b));
 	}
 	
+	/**
+	 * Factory method for Integer objects
+	 */
 	public static Integer integer(int i) {	
 		// TODO: Consider larger cache
 		return Integer.valueOf(i);	
