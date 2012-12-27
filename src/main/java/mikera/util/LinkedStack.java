@@ -6,20 +6,27 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * A stack implemented as a linked list.
+ * @author Mike
+ * @param <T> Type of object held in the stack
+ */
 public class LinkedStack<T> implements Queue<T> {
 
-AtomicReference<Node<T>> topOfStack=new AtomicReference<Node<T>>();
+	AtomicReference<Node<T>> topOfStack=new AtomicReference<Node<T>>();
 
-
-private static final class Node<T> {
-	final T object;
-	final Node<T> next;
-	
-	private Node (T object, Node<T> next) {
-		this.object=object;
-		this.next=next;
+	/**
+	 * Private inner class used to represent linked list nodes
+	 */
+	private static final class Node<T> {
+		final T object;
+		final Node<T> next;
+		
+		private Node (T object, Node<T> next) {
+			this.object=object;
+			this.next=next;
+		}
 	}
-}
 	
 	private static final class StackIterator<T> implements Iterator<T> {
 		Node<T> head;
@@ -43,6 +50,7 @@ private static final class Node<T> {
 		}	
 	}
 
+	@Override
 	public int size() {
 		Node<T> head=topOfStack.get();
 		int result=0;
@@ -53,6 +61,7 @@ private static final class Node<T> {
 		return result;
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return (topOfStack.get()==null);
 	}
@@ -68,7 +77,7 @@ private static final class Node<T> {
 		return -1;		
 	}
 	
-
+	@Override
 	public boolean contains(Object o) {
 		Node<T> head=topOfStack.get();
 		while (head!=null) {
@@ -78,43 +87,53 @@ private static final class Node<T> {
 		return false;
 	}
 
+	@Override
 	public Iterator<T> iterator() {
 		return new StackIterator<T>(topOfStack.get());
 	}
 
+	@Override
 	public Object[] toArray() {
 		throw new UnsupportedOperationException();
 	}
 
 	@SuppressWarnings("hiding")
+	@Override
 	public <T> T[] toArray(T[] a) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean remove(Object o) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean containsAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean addAll(Collection<? extends T> c) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean removeAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean retainAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public void clear() {
 		topOfStack=null;
 	}
 	
+	@Override
 	public boolean add(T e) {
 		while(true) {
 			Node<T> oldTop=topOfStack.get();
@@ -124,6 +143,7 @@ private static final class Node<T> {
 		return true;
 	}
 
+	@Override
 	public T remove() {
 		while(true) {
 			Node<T> oldTop=topOfStack.get();
@@ -134,10 +154,12 @@ private static final class Node<T> {
 	}
 
 
+	@Override
 	public boolean offer(T e) {
 		return add(e);
 	}
 
+	@Override
 	public T poll() {
 		while(true) {
 			Node<T> oldTop=topOfStack.get();
@@ -147,12 +169,14 @@ private static final class Node<T> {
 		} 
 	}
 
+	@Override
 	public T element() {
 		Node<T> top=topOfStack.get();
 		if (top==null) throw new NoSuchElementException();
 		return top.object;
 	}
 
+	@Override
 	public T peek() {
 		Node<T> top=topOfStack.get();
 		if (top==null) return null;
