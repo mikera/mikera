@@ -8,7 +8,7 @@ import mikera.annotations.Mutable;
 import mikera.util.emptyobjects.NullArrays;
 
 /**
- * Priority queue with a double rank for each element
+ * Priority queue with a double "rank" for each element.
  * 
  * @author Mike Anderson
  *
@@ -70,6 +70,7 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 		ranks=nr;
 	}
 	
+	@Override
 	public int size() {
 		return size;
 	}
@@ -83,10 +84,12 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 		return new RankedQueueIterator();
 	}
 
+	@Override
 	public boolean offer(T e) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public T peek() {
 		if (size==0) return null;
 		return objects[0];
@@ -124,6 +127,7 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 		return ((i-1)>>1);
 	}
 
+	@Override
 	public T poll() {
 		if (size==0) return null;
 		T result=objects[0];
@@ -133,12 +137,22 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 		return result;
 	}
 	
+	/**
+	 * Delete all instances equal to a specific object in the queue
+	 * @param object
+	 */
 	public void deleteAll(T object) {
 		while (delete(object)!=null) {
 			// loop
 		}
 	}
 	
+	/**
+	 * Delete one object equal to the given object from the queue. 
+	 * There is no guarantee that this is of the highest priority if there are 
+	 * multiple such objects.
+	 * @return The object deleted, or null if not found
+	 */
 	public T delete(T object) {
 		int n=size();
 		for (int i=0; i<n; i++) {
@@ -270,6 +284,9 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 		percolate(size-1);
 	}
 
+	/**
+	 * Validates the ranks are all correct for the current queue data
+	 */
 	public void validate() {
 		for (int i=0; i<size; i++) {
 			int ch=child1(i);
