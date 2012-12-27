@@ -2,6 +2,9 @@ package mikera.util.emptyobjects;
 
 import mikera.data.DataType;
 
+/**
+ * Null array type Singletons
+ */
 public class NullArrays {
 	public static final Object[] NULL_OBJECTS=new Object[0];
 	public static final float[] NULL_FLOATS=new float[0];
