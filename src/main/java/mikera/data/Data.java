@@ -275,6 +275,7 @@ public final class Data extends AbstractList<Byte> implements Cloneable, Compara
 	
 	public int appendFullLong(final long lv) {
 		int sizeResult=0;
+		
 		sizeResult+=appendFullInt((int)(lv>>32));
 		sizeResult+=appendFullInt((int)(lv));
 		return sizeResult;
