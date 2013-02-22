@@ -1,6 +1,6 @@
 package mikera.engine;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import mikera.engine.LineTracer;
 import mikera.engine.Octreap;
 import mikera.engine.PointVisitor;
@@ -11,7 +11,7 @@ public class TestLineTracer {
 	@Test public void testPaths() {
 		final Octreap<Integer> o=new Octreap<Integer>();
 		
-		float d=0;
+		double d=0;
 		
 		o.fillSpace(1);
 		o.set(3,0,0, 101);

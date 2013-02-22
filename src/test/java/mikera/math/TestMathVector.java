@@ -21,7 +21,7 @@ public class TestMathVector {
 		
 		float len=v.normalise();
 		assertEquals("{1.0, 0.0, 0.0}",v.toString());
-		assertEquals(6,len,0.0001f);
+		assertEquals(6,len,0.0001);
 	}
 	
 	@Test public void testRotation() {
@@ -34,7 +34,7 @@ public class TestMathVector {
 		
 		Matrix.multiplyVector(m,v,v2);
 		
-		assertEquals(1.0f,v2.length(),0.0001f);
+		assertEquals(1.0f,v2.length(),0.0001);
 	}
 	
 	@Test public void testColours() {

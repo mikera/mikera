@@ -75,14 +75,14 @@ public class TestDirections {
 		
 		pf.pathFind(0, 0, 0, 0,0,0);
 		assertTrue(pf.isFound());
-		assertEquals(0,pf.foundNode().travelled,0.01f);
+		assertEquals(0,pf.foundNode().travelled,0.01);
 		
 		
 		pf.pathFind(0, 0, 0, 10,10,0);
 		//System.out.println("Nodes: "+pf.nodeCount);
 		//System.out.println("Costs: "+pf.costCount);
 		assertTrue(pf.isFound());
-		assertEquals(30,pf.foundNode().travelled,0.01f);
+		assertEquals(30,pf.foundNode().travelled,0.01);
 		
 		PathNode dpn=pf.getLastDirect();
 		assertEquals(4,dpn.x);

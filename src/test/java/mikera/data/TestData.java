@@ -98,17 +98,17 @@ public class TestData {
 		
 		float fv=Rand.nextFloat();
 		size=d.appendFloat(fv);
-		assertEquals(fv,d.getFloat(pos),0);
+		assertEquals(fv,d.getFloat(pos),0.0);
 		pos+=size;
 		
 		double dv=Rand.nextDouble();
 		size=d.appendDouble(dv);
-		assertEquals(dv,d.getDouble(pos),0);
+		assertEquals(dv,d.getDouble(pos),0.0);
 		pos+=size;
 
 		char cv=(char)Rand.nextInt();
 		size=d.appendChar(cv);
-		assertEquals(cv,d.getChar(pos),0);
+		assertEquals(cv,d.getChar(pos),0.0);
 		pos+=size;
 		
 		assertEquals(pos,d.size());
