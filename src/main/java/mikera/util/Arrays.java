@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mikera.util.emptyobjects.NullArrays;
+import mikera.util.mathz.FloatMaths;
 
 /**
  * Miscelleneous array utulities
@@ -473,7 +474,7 @@ public class Arrays {
 	
 	public static void applyTanh(float[] data, int offset, int length) {
 		for (int i=offset; i<(offset+length); i++) {
-			data[i]=Maths.tanh(data[i]);
+			data[i]=FloatMaths.tanh(data[i]);
 		}
 	}
 	
@@ -483,7 +484,7 @@ public class Arrays {
 	
 	public static void applyTanh(double[] data, int offset, int length) {
 		for (int i=offset; i<(offset+length); i++) {
-			data[i]=Maths.tanh(data[i]);
+			data[i]=Math.tanh(data[i]);
 		}
 	}
 	
