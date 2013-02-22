@@ -439,13 +439,13 @@ public class Arrays {
 	
 	public static void applySigmoid(float[] data, int offset, int length) {
 		for (int i=offset; i<(offset+length); i++) {
-			data[i]=Maths.sigmoid(data[i]);
+			data[i]=(float) Maths.logistic(data[i]);
 		}
 	}
 	
 	public static void applySigmoid(double[] data, int offset, int length) {
 		for (int i=offset; i<(offset+length); i++) {
-			data[i]=Maths.sigmoid(data[i]);
+			data[i]=Maths.logistic(data[i]);
 		}
 	}
 	
@@ -457,13 +457,13 @@ public class Arrays {
 	
 	public static void applySigmoid(float[] data, int offset, int length, float gain) {
 		for (int i=offset; i<(offset+length); i++) {
-			data[i]=Maths.sigmoid(data[i]*gain);
+			data[i]=(float) Maths.logistic(data[i]*gain);
 		}
 	}
 	
 	public static void applySigmoid(double[] data, int offset, int length, double gain) {
 		for (int i=offset; i<(offset+length); i++) {
-			data[i]=Maths.sigmoid(data[i]*gain);
+			data[i]=Maths.logistic(data[i]*gain);
 		}
 	}
 	
@@ -506,7 +506,7 @@ public class Arrays {
 			} else if (v>=30f) {
 				data[i]=1.0f;
 			} else {
-				data[i]=Rand.nextFloat()<Maths.sigmoid(v)?1:0;
+				data[i]=Rand.nextFloat()<Maths.logistic(v)?1:0;
 			}
 		}	
 	}
@@ -520,7 +520,7 @@ public class Arrays {
 			} else if (v>=30f) {
 				data[i]=1.0f;
 			} else {
-				data[i]=Rand.nextDouble()<Maths.sigmoid(v)?1:0;
+				data[i]=Rand.nextDouble()<Maths.logistic(v)?1:0;
 			}
 		}	
 	}
@@ -533,7 +533,7 @@ public class Arrays {
 			} else if (v>=30) {
 				data[i]=1.0;
 			} else {
-				data[i]=Rand.nextDouble()<Maths.sigmoid(v)?1:0;
+				data[i]=(Rand.nextDouble()<Maths.logistic(v))?1:0;
 			}
 		}	
 	}
