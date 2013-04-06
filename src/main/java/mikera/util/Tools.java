@@ -16,7 +16,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.transform.OutputKeys;
@@ -327,5 +329,21 @@ public final class Tools {
 		}
 	}
 
+	public static boolean distinctObjects(Object... objects) {
+		int n=objects.length;
+		IdentityHashMap<Object, Integer> im=new IdentityHashMap<Object, Integer>();
+		for (int i=0; i<n; i++) {
+			im.put(objects[i], 1);
+		}
+		return im.size()==n;
+	}
 	
+	public static boolean distinctObjects(List<?> objects) {
+		int n=objects.size();
+		IdentityHashMap<Object, Integer> im=new IdentityHashMap<Object, Integer>();
+		for (int i=0; i<n; i++) {
+			im.put(objects.get(i), 1);
+		}
+		return im.size()==n;
+	}
 }

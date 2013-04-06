@@ -100,4 +100,11 @@ public class TestTools {
 		assertEquals(true, Tools.equalsWithNulls(null, null));
 		assertEquals(true, Tools.equalsWithNulls(1, 1));
 	}
+	
+	@Test public void testDistinct() {
+		assertEquals(true, Tools.distinctObjects());
+		assertEquals(true, Tools.distinctObjects(new Boolean(true),new Boolean(true)));
+		assertEquals(false, Tools.distinctObjects(true,true));
+		assertEquals(false, Tools.distinctObjects("Hello","Hello"));
+	}
 }
