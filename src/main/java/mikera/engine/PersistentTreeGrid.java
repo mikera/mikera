@@ -306,7 +306,6 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 				TOP_SHIFT);
 	}
 
-	// TODO: make persistent update
 	@SuppressWarnings("unchecked")
 	protected Object setBlockLocal(int x1, int y1, int z1, int x2, int y2, int z2, T value, int shift) {
 		int bmask=3<<shift;
