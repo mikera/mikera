@@ -16,14 +16,26 @@ public class TestLists {
 		for (int i=0; i<100; i++) {
 			a.add(i);
 		}
+		assertEquals(101,a.size());
+		assertEquals(0,a.indexOf(1));
+		assertEquals(2,a.lastIndexOf(1));
+		assertEquals(100,a.indexOf(99));
 		testList(a);
+		
 		testList(a.subList(10, 20));
 		
+		a.remove(0);
+		testList(a);	
 	}
 	
 	public static <T> void testList(List<T> list) {
+		testImmutableList(list);
+	}
+	
+	public static <T> void testImmutableList(List<T> list) {
 		testIterator(list);
 	}
+
 	
 	public static <T> void testIterator(List<T> list) {
 		int i=0;
