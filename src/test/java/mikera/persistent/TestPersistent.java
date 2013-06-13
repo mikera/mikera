@@ -24,6 +24,7 @@ import mikera.persistent.impl.SingletonSet;
 import mikera.persistent.impl.SubList;
 import mikera.persistent.impl.Tuple;
 import mikera.util.Rand;
+import mikera.util.TestLists;
 import mikera.util.Tools;
 import mikera.util.emptyobjects.NullCollection;
 import mikera.util.emptyobjects.NullList;
@@ -179,6 +180,7 @@ public class TestPersistent {
 		testPersistentCollection(a);
 		testFrontBack(a);
 		testHashCode(a);
+		TestLists.testImmutableList(a);
 	}
 
 	public <T> void testFrontBack(PersistentList<T> a) {
