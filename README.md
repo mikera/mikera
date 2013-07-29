@@ -11,5 +11,9 @@ Lots of good stuff inside including:
  - Resource handling utility functions
  - GUI utilities
  - Sound utilities
- - Random number generation and algorithms (via the Randomz library)
+ - Random number generation and algorithms (also available via the Randomz library - https://github.com/mikera/randomz)
+ 
+ ### Status
+ 
+[![Build Status](https://travis-ci.org/mikera/mikera.png?branch=release-1.5.0)](https://travis-ci.org/mikera/mikera)
   
