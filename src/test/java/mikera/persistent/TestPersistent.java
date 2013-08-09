@@ -97,6 +97,7 @@ public class TestPersistent {
 	
 	public <T> void testSizing(PersistentCollection<T> a) {
 		assertTrue(a.size()>=0);
+		@SuppressWarnings("unchecked")
 		T[] output=(T[]) a.toArray();
 		assertEquals(a.size(),output.length);
 		
@@ -130,6 +131,7 @@ public class TestPersistent {
 		//assertTrue(ca!=a);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T> void testInclude(PersistentCollection<T> a) {
 		T[] ar=(T[])a.toArray();
 		if (ar.length>0) {
@@ -191,6 +193,7 @@ public class TestPersistent {
 		assertEquals(a,f.append(b));
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T> void testHashCode(PersistentList<T> a) {
 		int ah=a.hashCode();
 		
@@ -272,6 +275,7 @@ public class TestPersistent {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public <T> void testEquals(PersistentList<T> a) {
 		assertEquals(a,a.clone());
 		assertTrue(a==a.append((PersistentList<T>)ListFactory.emptyList()));
