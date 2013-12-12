@@ -55,7 +55,6 @@ public class Arrays {
 
 		return newarray;
 	}
-	
 
 	public static float[] insertElement(float[] array, float value, int i) {
 		int count=array.length;

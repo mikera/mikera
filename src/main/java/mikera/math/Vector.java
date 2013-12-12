@@ -6,6 +6,8 @@ import mikera.util.Maths;
 /**
  * Multi-dimension vector class
  * 
+ * Do not use: Deprecated in favour of equivalents in Vectorz library
+ * 
  * @author Mike
  *
  */

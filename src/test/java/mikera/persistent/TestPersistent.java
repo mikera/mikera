@@ -271,7 +271,6 @@ public class TestPersistent {
 
 	}
 
-	
 	public <T> void testEquals(PersistentList<T> a) {
 		assertEquals(a,a.clone());
 		assertTrue(a==a.append((PersistentList<T>)ListFactory.emptyList()));

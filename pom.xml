@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>mikera</artifactId>
-	<version>1.5.2</version>
+	<version>1.6.0</version>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>net.mikera</groupId>
 		<artifactId>mikera-pom</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5</version>
 	</parent>
 
 	<name>mikera.jar - Mike's Java Library</name>
@@ -20,7 +20,7 @@
 		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
 		<url>scm:git:git@github.com:mikera/${project.artifactId}.git</url>
 		<developerConnection>scm:git:git@github.com:mikera/${project.artifactId}.git</developerConnection>
-		<tag>mikera-1.5.2</tag>
+		<tag>mikera-1.6.0</tag>
 	</scm>
 
 	<licenses>
@@ -97,12 +97,12 @@
 		<dependency>
 			<groupId>net.mikera</groupId>
 			<artifactId>randomz</artifactId>
-			<version>0.2.0</version>
+			<version>0.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.mikera</groupId>
 			<artifactId>mathz</artifactId>
-			<version>0.2.0</version>
+			<version>0.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.caliper</groupId>
