@@ -59,7 +59,6 @@ public abstract class PersistentMap<K,V> extends PersistentObject implements IPe
 
 	public abstract PersistentCollection<V> values();
 
-	@SuppressWarnings("unchecked")
 	public PersistentMap<K,V> clone() {
 		return (PersistentMap<K,V>)super.clone();
 	}

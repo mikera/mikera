@@ -173,7 +173,6 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public PersistentTreeGrid<T> clear() {
 		return EMPTY;
