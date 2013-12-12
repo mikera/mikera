@@ -439,6 +439,7 @@ public final class IntSet extends BasePersistentSet<Integer> {
 		return toArrayLocal(a);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private <T> T[] toArrayLocal(T[] a) {
 		for (int i=0; i<a.length; i++) {
 			a[i]=(T)Integer.valueOf(data[i]);

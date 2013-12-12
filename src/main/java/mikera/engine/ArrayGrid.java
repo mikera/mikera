@@ -112,6 +112,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 	
 
 	
+	@SuppressWarnings("unchecked")
 	public ArrayGrid<T> clone() {
 		ArrayGrid<T> nbg;
 		try {
