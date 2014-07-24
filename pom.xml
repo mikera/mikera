@@ -14,12 +14,11 @@
 	<name>mikera.jar - Mike's Java Library</name>
 
 	<description>General purpose utilities for Java by Mike Anderson</description>
-
-	<url>git@github.com:mikera/${project.artifactId}.git</url>
+	<url>https://github.com/mikera/${project.artifactId}</url>
 
 	<scm>
 		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
-		<url>scm:git:git@github.com:mikera/${project.artifactId}.git</url>
+		<url>https://github.com/mikera/${project.artifactId}</url>
 		<developerConnection>scm:git:git@github.com:mikera/${project.artifactId}.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
