@@ -9,6 +9,8 @@ import mikera.util.Maths;
 public final class BigDouble extends Number {
 	private static final long serialVersionUID = 8944436596909296283L;
 
+    public static final BigDouble ONE = valueOf(1);
+
 	final double factor;
 	final double exponent;
 	
@@ -73,7 +75,7 @@ public final class BigDouble extends Number {
 		}
 		return new BigDouble(d,e);
 	}
-	
+
 	public static BigDouble exp(Number n) {
 		return new BigDouble(1,n.doubleValue());
 	}
@@ -81,6 +83,27 @@ public final class BigDouble extends Number {
 	public double log() {
 		return Math.log(factor)+exponent;
 	}
+
+    public BigDouble pow(double exponent) {
+        return new BigDouble(Maths.sign(factor), exponent * normalizeFactorTo1(factor, this.exponent));
+    }
+
+    private double normalizeFactorTo1(double factor, double exponent) {
+        double af=Math.abs(factor);
+        if (af!=0) {
+            double e=Math.log(af);
+            return exponent+e;
+        }
+        return 1;
+    }
+
+    public static BigDouble valueOf(Number n) {
+        return new BigDouble(n);
+    }
+
+    public static BigDouble valueOf(double n) {
+        return new BigDouble(n);
+    }
 
 
 	@Override
