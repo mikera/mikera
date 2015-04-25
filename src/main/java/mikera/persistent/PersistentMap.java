@@ -38,7 +38,7 @@ public abstract class PersistentMap<K,V> extends PersistentObject implements IPe
 	public abstract V get(Object key);
 
 	public boolean isEmpty() {
-		return (size()>0);
+		return size()==0;
 	}
 
 	public abstract PersistentSet<K> keySet();
