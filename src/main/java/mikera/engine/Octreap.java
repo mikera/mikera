@@ -345,6 +345,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return o3;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Octreap<T> clone() {
 		try {
 			Octreap<T> zn=(Octreap<T>)super.clone();

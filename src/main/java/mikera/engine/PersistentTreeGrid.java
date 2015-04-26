@@ -27,7 +27,7 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 	private static final int TOP_MAX=SIGNIFICANT_MASK;
 	
 	@SuppressWarnings("rawtypes")
-	public static final PersistentTreeGrid EMPTY=new PersistentTreeGrid();
+	public static final PersistentTreeGrid<?> EMPTY=new PersistentTreeGrid();
 	
 	// each cell contains either object of type T or a sub-grid
 	private final Object[] data;
@@ -173,9 +173,10 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public PersistentTreeGrid<T> clear() {
-		return EMPTY;
+		return (PersistentTreeGrid<T>) EMPTY;
 	}
 	
 	@Override
@@ -337,7 +338,7 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 						if (d==null) {
 							if (value==null) continue;
 							PersistentTreeGrid<T> subGrid=(PersistentTreeGrid<T>)
-								EMPTY.setBlockLocal(
+								((PersistentTreeGrid<T>)EMPTY).setBlockLocal(
 										Maths.max(lx, x1)-lx,
 										Maths.max(ly, y1)-ly,
 										Maths.max(lz, z1)-lz,
