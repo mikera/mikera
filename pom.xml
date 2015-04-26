@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>mikera</artifactId>
 	<groupId>net.mikera</groupId>
-	<version>1.6.1</version>
+	<version>1.6.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -20,7 +20,7 @@
 		<connection>scm:git:git@github.com:mikera/${project.artifactId}.git</connection>
 		<url>https://github.com/mikera/${project.artifactId}</url>
 		<developerConnection>scm:git:git@github.com:mikera/${project.artifactId}.git</developerConnection>
-		<tag>mikera-1.6.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<licenses>
