@@ -346,4 +346,19 @@ public final class Tools {
 		}
 		return im.size()==n;
 	}
+	
+	/**
+	 * Re-throws an exception in unchecked form, without wrapping in a new
+	 * exception. Useful for avoiding the need to declare unchecked exceptions.
+	 * 
+	 * @param t
+	 */
+	public static void sneakyThrow(Throwable t) {
+		Tools.<RuntimeException> sneakyRethrow(t);
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T extends Throwable> void sneakyRethrow(Throwable t) throws T {
+		throw (T) t;
+	}
 }
