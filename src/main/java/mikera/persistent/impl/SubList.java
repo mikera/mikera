@@ -54,6 +54,7 @@ public final class SubList<T> extends BasePersistentList<T>   {
 		return new SubList<T>(source,fromIndex,toIndex-fromIndex);
 	}
 	
+	@Override
 	public int size() {
 		return length;
 	}
@@ -64,11 +65,13 @@ public final class SubList<T> extends BasePersistentList<T>   {
 		length=len;	
 	}
 	
+	@Override
 	public T get(int i) {
 		if ((i<0)||(i>=length)) throw new IndexOutOfBoundsException();
 		return data.get(i+offset);
 	}
 	
+	@Override
 	public SubList<T> clone() {
 		return this;
 	}
@@ -77,6 +80,7 @@ public final class SubList<T> extends BasePersistentList<T>   {
 	 * Special append version for SubList 
 	 * Attempts to merge adjacent sublists
 	 */
+	@Override
 	public PersistentList<T> append(PersistentList<T> values) {
 		if (values instanceof SubList<?>) {
 			SubList<T> sl=(SubList<T>)values;
@@ -95,6 +99,7 @@ public final class SubList<T> extends BasePersistentList<T>   {
 		return super.append(sl);
 	}
 	
+	@Override
 	public PersistentList<T> subList(int fromIndex, int toIndex) {
 		if ((fromIndex<0)||(toIndex>size())) throw new IndexOutOfBoundsException();
 		if (fromIndex>=toIndex) {

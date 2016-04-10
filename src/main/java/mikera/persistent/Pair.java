@@ -21,6 +21,7 @@ public final class Pair<A,B> extends PersistentObject implements Comparable<Pair
 		this.b=b;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean equals(Object o) {
 		if (o instanceof Pair<?,?>) {
@@ -47,6 +48,7 @@ public final class Pair<A,B> extends PersistentObject implements Comparable<Pair
 		return true;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public int compareTo(Pair<A,B> p) {
 		if (a instanceof Comparable<?>) {
@@ -73,10 +75,12 @@ public final class Pair<A,B> extends PersistentObject implements Comparable<Pair
 		return new Pair<B, A>(b,a);
 	}
 	
+	@Override
 	public Pair<A,B> clone() {
 		return this;
 	}
 	
+	@Override
 	public int hashCode() {
 		int result=0;
 		if (a!=null) result+=a.hashCode();

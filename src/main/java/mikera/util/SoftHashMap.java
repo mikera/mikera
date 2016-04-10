@@ -37,10 +37,12 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 		hardReferenceBuffer=new CircularBuffer<V>(minSizeRetained);
 	}
 	
+	@Override
 	public int size() {
 		return data.size();
 	}
 
+	@Override
 	public V get(Object key) {
 		SoftReference<V> reference = data.get(key);
 		if (reference != null) {
@@ -79,6 +81,7 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 		}		
 	}
 	
+	@Override
 	public V put(K key, V value) {	
 		maybeCleanUp(); 
 		
@@ -89,6 +92,7 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 		return value;
 	}
 
+	@Override
 	public V remove(Object key) {
 		maybeCleanUp(); 
 		
@@ -96,12 +100,14 @@ public class SoftHashMap<K,V> extends AbstractMap<K,V> {
 		return value;
 	}
 
+	@Override
 	public void clear() {
 		hardReferenceBuffer.clear();
 		data.clear();
 	}
 
 
+	@Override
 	public Set<java.util.Map.Entry<K, V>> entrySet() {
 		throw new Error("SoftHashMap entrySet not supported");
 	}

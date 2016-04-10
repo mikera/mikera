@@ -81,6 +81,7 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		System.arraycopy(values, src, values, dst, num);
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public V get(Object key) {
 		int i=findIndex((K)key);
@@ -117,6 +118,7 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		return -1;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public void clear() {
 		count=0;
@@ -132,6 +134,7 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		}
 	}
 	
+	@Override
 	public boolean isEmpty() {
 		return count<=0;
 	}
@@ -143,21 +146,25 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		return a.compareTo(b);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean containsKey(Object key) {
 		return findIndex((K)key)>=0;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean containsValue(Object value) {
 		return findValueIndex((V)value)>=0;
 		
 	}
 
+	@Override
 	public Set<K> keySet() {
 		return ArraySet.createFromArray(keys);
 	}
 
+	@Override
 	public V put(K key, V value) {
 		int max=count;
 		int min=0;
@@ -187,6 +194,7 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		return null;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends K, ? extends V> map) {
 		if (map instanceof IndexedList<?,?>) {
@@ -278,6 +286,7 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		count=newCount;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public V remove(Object key) {
 		int i=findIndex((K)key);
@@ -291,14 +300,17 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 		return value;
 	}
 
+	@Override
 	public int size() {
 		return count;
 	}
 
+	@Override
 	public Collection<V> values() {
 		return Tuple.create(values);
 	}
 
+	@Override
 	public Set<java.util.Map.Entry<K, V>> entrySet() {
 		return new AbstractSet<java.util.Map.Entry<K, V>>() {
 
@@ -307,22 +319,27 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 				return new Iterator<java.util.Map.Entry<K, V>>() {
 					int pos=0;
 					
+					@Override
 					public boolean hasNext() {
 						return pos<count;
 					}
 
+					@Override
 					public java.util.Map.Entry<K, V> next() {
 						return new java.util.Map.Entry<K, V>() {
 							int i=pos;
 							
+							@Override
 							public K getKey() {
 								return keys[i];
 							}
 
+							@Override
 							public V getValue() {
 								return values[i];
 							}
 
+							@Override
 							public V setValue(V value) {
 								throw new UnsupportedOperationException();
 							}
@@ -330,6 +347,7 @@ public class IndexedList<K extends Comparable<K>,V> implements Map<K,V> {
 						};
 					}
 
+					@Override
 					public void remove() {
 						throw new UnsupportedOperationException();
 					}

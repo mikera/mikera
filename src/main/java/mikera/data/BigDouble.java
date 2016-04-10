@@ -103,6 +103,7 @@ public final class BigDouble extends Number {
 		return (long)doubleValue();
 	}
 	
+	@Override
 	public String toString() {
 		return Double.toString(doubleValue());
 	}

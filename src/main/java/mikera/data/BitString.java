@@ -115,6 +115,7 @@ public final class BitString implements Cloneable, Serializable{
 		return Data.wrap(toByteArray());
 	}
 	
+	@Override
 	public BitString clone() {
 		return new BitString(this);
 	}
@@ -129,6 +130,7 @@ public final class BitString implements Cloneable, Serializable{
 		return bitset;
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (this==o) return true;
 		
@@ -140,10 +142,12 @@ public final class BitString implements Cloneable, Serializable{
 		return Arrays.equals(data, bs.data);
 	}
 	
+	@Override
 	public int hashCode() {
 		return Arrays.hashCode(data);
 	}
 	
+	@Override
 	public String toString() {
 		return Arrays.toString(data);
 	}

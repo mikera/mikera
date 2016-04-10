@@ -71,6 +71,7 @@ public class ASCIIString implements CharSequence, java.io.Serializable,
 		return new ASCIIString(this, str);
 	}
 
+	@Override
 	public int hashCode() {
 		int h = hash;
 		if (h == 0 && count > 0) {

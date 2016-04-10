@@ -23,6 +23,7 @@ public final class SubTuple<T> extends BasePersistentList<T>   {
 		return new SubTuple<T>(valuesDirect,off,len);
 	}
 	
+	@Override
 	public int size() {
 		return length;
 	}
@@ -33,15 +34,18 @@ public final class SubTuple<T> extends BasePersistentList<T>   {
 		length=len;	
 	}
 	
+	@Override
 	public T get(int i) {
 		if ((i<0)||(i>=length)) throw new IndexOutOfBoundsException();
 		return data[i+offset];
 	}
 	
+	@Override
 	public SubTuple<T> clone() {
 		return this;
 	}
 	
+	@Override
 	public PersistentList<T> subList(int fromIndex, int toIndex) {
 		if ((fromIndex<0)||(toIndex>size())) throw new IndexOutOfBoundsException();
 		if (fromIndex>=toIndex) {

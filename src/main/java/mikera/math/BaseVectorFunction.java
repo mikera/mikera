@@ -13,10 +13,12 @@ public abstract class BaseVectorFunction extends VectorFunction {
 		outputDimensions=outputs;
 	}
 	
+	@Override
 	public int inputDimensions() {
 		return inputDimensions;
 	}
 
+	@Override
 	public int outputDimensions() {
 		return outputDimensions;
 	}

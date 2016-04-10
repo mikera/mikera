@@ -185,6 +185,7 @@ public final class BlockList<T> extends BasePersistentList<T> {
 		return subBlockList(fromIndex,toIndex);
 	}
 	
+	@Override
 	public int hashCode() {
 		if (blocks.length==0) return 0;
 		int r=blocks[0].hashCode();

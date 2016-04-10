@@ -27,14 +27,17 @@ public abstract class PersistentSet<T> extends PersistentCollection<T> implement
 	 * @param values
 	 * @return
 	 */
+	@Override
 	public PersistentSet<T> includeAll(final PersistentSet<T> values) {
 		return includeAll((Collection<T>)values);
 	}
 
+	@Override
 	public PersistentSet<T> clone() {
 		return (PersistentSet<T>)super.clone();
 	}
 	
+	@Override
 	public PersistentSet<T> delete(final T value) {
 		if (!contains(value)) return this;
 		Iterator<T> it=new FilteredIterator<T>(iterator()) {
@@ -46,6 +49,7 @@ public abstract class PersistentSet<T> extends PersistentCollection<T> implement
 		return SetFactory.createFrom(it);
 	}
 
+	@Override
 	public PersistentSet<T> deleteAll(final Collection<T> values) {
 		Iterator<T> it=new FilteredIterator<T>(iterator()) {
 			PersistentCollection<T> col=ListFactory.createFromCollection(values);
@@ -58,6 +62,7 @@ public abstract class PersistentSet<T> extends PersistentCollection<T> implement
 		return SetFactory.createFrom(it);
 	}
 	
+	@Override
 	public PersistentSet<T> deleteAll(final PersistentCollection<T> values) {
 		if ( values==null) throw new Error();
 		Iterator<T> it=new FilteredIterator<T>(iterator()) {
@@ -70,6 +75,7 @@ public abstract class PersistentSet<T> extends PersistentCollection<T> implement
 		return SetFactory.createFrom(it);
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean equals(Object o) {
 		if ((o instanceof PersistentSet<?>)) return equals((PersistentSet<T>)o);
@@ -81,10 +87,12 @@ public abstract class PersistentSet<T> extends PersistentCollection<T> implement
 		return s.containsAll(this)&&(this.containsAll(s));
 	}
 	
+	@Override
 	public boolean allowsNulls() {
 		return true;
 	}
 	
+	@Override
 	public int hashCode() {
 		return Tools.hashCode(iterator());
 	}

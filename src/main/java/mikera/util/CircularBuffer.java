@@ -40,18 +40,22 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 		return maxSize;
 	}
 	
+	@Override
 	public final int size() {
 		return getCount();
 	}
 	
+	@Override
 	public Iterator<V> iterator() {
 		return new Iterator<V>() {
 			int pos=0;
 			
+			@Override
 			public boolean hasNext() {
 				return (pos<count);
 			}
 			
+			@Override
 			public V next() {
 				if (!hasNext()) throw new NoSuchElementException();
 				V value=getLocal(pos);
@@ -59,6 +63,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 				return value;
 			}
 			
+			@Override
 			public void remove() {
 				if (pos<=0) return; // not yet called
 				CircularBuffer.this.remove(get(pos-1));
@@ -162,6 +167,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	/**
 	 * Adds the value only if the queue has spare capacity
 	 */
+	@Override
 	public boolean offer(V value) {
 		if (count<maxSize) {
 			return add(value);
@@ -173,6 +179,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	 * Unconditionally adds a value to the buffer
 	 * If full, first added item will be deleted to make space
 	 */
+	@Override
 	public boolean add(V value) {
 		if (maxSize<=0) return false;
 		
@@ -196,6 +203,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 		return true;
 	}
 	
+	@Override
 	public void clear() {
 		// clear values from arraylist
 		values.clear();
@@ -232,11 +240,13 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 		return false;
 	}
 	
+	@Override
 	public V remove() {
 		if (count==0) throw new NoSuchElementException("Empty CircularBuffer in CircularBufer.remove()");
 		return removeFirstAdded();
 	}
 	
+	@Override
 	public V poll() {
 		return removeFirstAdded();
 	}
@@ -268,6 +278,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	/**
 	 * Retrieves but does not remove the first added (FI) element of the buffer
 	 */
+	@Override
 	public V element() {
 		if (count<=0) throw new NoSuchElementException("Empty CircularBuffer in CircularBufer.element()");
 		return values.get(firstAddedIndex());
@@ -276,6 +287,7 @@ public final class CircularBuffer<V> extends AbstractQueue<V> {
 	/**
 	 * Returns the first added (FI) element of the buffer, null if empty
 	 */
+	@Override
 	public V peek() {
 		if (count<=0) return null;
 		return values.get(firstAddedIndex());

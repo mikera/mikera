@@ -23,12 +23,15 @@ public interface IPersistentCollection<T> extends Collection<T>, Cloneable, Seri
 
 	// query methods
 	
+	@Override
 	public boolean contains(Object o);
 
+	@Override
 	public boolean containsAll(Collection<?> c);
 	
 	public boolean containsAny(Collection<?> c);
 	
+	@Override
 	public boolean isEmpty();
 	
 	// testing methods

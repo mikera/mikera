@@ -62,6 +62,7 @@ public class Client {
 	 * ===============================================================
 	 */
 	private class Receiver implements MessageHandler {
+		@Override
 		public boolean handleMessage(ByteBuffer buffer, Connection c) {
 			Data data=Data.create(buffer);
 			queueIncomingMessage(data);

@@ -42,6 +42,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 		return gd;
 	}
 	
+	@Override
 	public int countNonNull() {
 		Object[] dt=data;
 		if (dt==null) return 0;
@@ -52,6 +53,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 		return result;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public T get(int x, int y, int z) {
 		if (data==null) return null;
@@ -95,6 +97,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 		}	
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public void visitBlocks(BlockVisitor<T> bf) {
 		if (data==null) return;
@@ -110,6 +113,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 		}			
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public ArrayGrid<T> clone() {
 		ArrayGrid<T> nbg;
@@ -199,14 +203,17 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 		gd=ngd;
 	}
 	
+	@Override
 	public ArrayGrid<T> paste(Grid<T> t) {
 		return paste(t,0,0,0);
 	}
 	
+	@Override
 	public ArrayGrid<T> paste(Grid<T> t, final int dx, final int dy, final int dz) {
 		return (ArrayGrid<T>) super.paste(t,dx,dy,dz);
 	}
 	
+	@Override
 	public ArrayGrid<T> set(int x, int y, int z, T v) {
 		if (data==null) {
 			init(x,y,z);

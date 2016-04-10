@@ -247,6 +247,7 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 	}
 
 	
+	@Override
 	public int hashCode() {
 		return hashCode;
 	}
@@ -256,6 +257,7 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 		return true;
 	}
 
+	@Override
 	public char charAt(int index) {
 		if ((index<0)||(index>count)) throw new IndexOutOfBoundsException();
 		return charAtLocal(index);
@@ -273,6 +275,7 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 		return back.charAtLocal(index);
 	}
 
+	@Override
 	public int length() {
 		return count;
 	}
@@ -323,18 +326,22 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 		return result;
 	}
 
+	@Override
 	public CharSequence subSequence(int start, int end) {
 		return new TextUtils.SourceSubSequence(this, start, end);
 	}
 	
+	@Override
 	public String toString() {
 		return substring(0,count);
 	}
 	
+	@Override
 	public Text clone() {
 		return (Text)super.clone();
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Text) {
 			Text t=(Text)o;
@@ -344,6 +351,7 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 		return false;
 	}
 
+	@Override
 	public int compareTo(CharSequence cs) {
 		if (cs instanceof Text) {
 			return compareTo((Text)cs);
@@ -396,10 +404,12 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 		private Text block=getBlock(0);
 		private int blockStart=0;
 		
+		@Override
 		public boolean hasNext() {
 			return pos<count;
 		}
 
+		@Override
 		public Character next() {
 			char c=block.data[pos-blockStart];
 			pos++;
@@ -411,11 +421,13 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 			return Character.valueOf(c);
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
 	}
 	
+	@Override
 	public Iterator<Character> iterator() {
 		return new TextIterator();
 	}

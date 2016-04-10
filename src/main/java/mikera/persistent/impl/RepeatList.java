@@ -26,15 +26,18 @@ public class RepeatList<T> extends BasePersistentList<T> {
 		return new RepeatList<T>(object,number);
 	}
 	
+	@Override
 	public int size() {
 		return count;
 	}
 	
+	@Override
 	public T get(int i) {
 		if ((i<0)||(i>=count)) throw new IndexOutOfBoundsException();
 		return value;
 	}
 	
+	@Override
 	public PersistentList<T> subList(int start, int end) {
 		if ((start<0)||(end>count)) throw new IndexOutOfBoundsException();
 		if (start>=end) {
@@ -46,6 +49,7 @@ public class RepeatList<T> extends BasePersistentList<T> {
 		return create(value,num);
 	}
 	
+	@Override
 	public PersistentList<T> deleteRange(int start, int end) {
 		if ((start<0)||(end>count)) throw new IndexOutOfBoundsException();
 		if (start>=end) {
@@ -58,6 +62,7 @@ public class RepeatList<T> extends BasePersistentList<T> {
 		return create(value,count-numDeleted);
 	}
 	
+	@Override
 	public PersistentList<T> append(PersistentList<T> values) {
 		if (values instanceof RepeatList<?>) {
 			RepeatList<T> ra=(RepeatList<T>)values;
@@ -68,6 +73,7 @@ public class RepeatList<T> extends BasePersistentList<T> {
 		return super.append(values);
 	}
 	
+	@Override
 	public PersistentList<T> delete(final T v) {
 		if (Tools.equalsWithNulls(v,value)) {
 			return ListFactory.emptyList();

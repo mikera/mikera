@@ -226,6 +226,7 @@ public final class SparseMap<T> extends PersistentObject {
 	};
 
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
@@ -241,6 +242,7 @@ public final class SparseMap<T> extends PersistentObject {
 		return super.hashCode();
 	}
 	
+	@Override
 	@SuppressWarnings("rawtypes")
 	public boolean equals(Object o) {
 		if (o==this) return true;

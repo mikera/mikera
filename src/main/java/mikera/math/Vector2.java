@@ -33,7 +33,8 @@ public final class Vector2 extends BaseVector {
         return this;
     }
     
-    public float get(int i) {
+    @Override
+	public float get(int i) {
         switch (i) {
             case 0:
                 return x;
@@ -49,10 +50,12 @@ public final class Vector2 extends BaseVector {
         return String.format("(%.2f, %.2f)", x, y);
     }
 
+	@Override
 	public int size() {
 		return 2;
 	}
 	
+	@Override
 	public Vector2 clone() {
 		return new Vector2(this);
 	}

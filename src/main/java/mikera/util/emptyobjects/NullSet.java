@@ -32,15 +32,18 @@ public final class NullSet<T> extends PersistentSet<T> {
 		return 0;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public Iterator<T> iterator() {
 		return (Iterator<T>) NullIterator.INSTANCE;
 	}
 	
+	@Override
 	public PersistentSet<T> delete(final T value) {
 		return this;
 	}
 
+	@Override
 	public PersistentSet<T> deleteAll(final Collection<T> values) {
 		return this;
 	}
@@ -59,6 +62,7 @@ public final class NullSet<T> extends PersistentSet<T> {
 		return INSTANCE;
 	}
 	
+	@Override
 	public int hashCode() {
 		return 0;
 	}

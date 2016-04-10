@@ -135,6 +135,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		/**
 		 * Testing function to validate internal structure of IMNode
 		 */
+		@Override
 		public abstract void validate();
 	}
 	
@@ -510,6 +511,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			return new IMEntry<V>(key,value);
 		}
 		
+		@Override
 		protected IMNode<V> include(IMEntry<V> entry, int shift) {
 			return entry;
 		}
@@ -555,14 +557,17 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			return key;
 		}
 		
+		@Override
 		public Integer getKey() {
 			return Integer.valueOf(key);
 		}
 		
+		@Override
 		public V getValue() {
 			return value;
 		}
 				
+		@Override
 		public V setValue(V value) {
 			throw new UnsupportedOperationException();
 		}	
@@ -640,6 +645,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		}
 		
 		// toString() consistent with java.util.AbstractMap
+		@Override
 		public String toString() {
 			return String.valueOf(key)+'='+String.valueOf(value);
 		}
@@ -661,6 +667,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			return false;			
 		}
 		
+		@Override
 		public int hashCode() {
 			// defined same as java.util.Map.Entry
 			return (getKey()==null   ? 0 : getKey().hashCode()) ^
@@ -680,6 +687,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			return IntMap.this.size();
 		}
 		
+		@Override
 		public boolean contains(Object o) {
 			if (!(o instanceof Map.Entry<?,?>)) return false;
 			Map.Entry<?,?> ent=(Map.Entry<?,?>)o;
@@ -688,10 +696,12 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			return Tools.equalsWithNulls(pe.value, ent.getValue());
 		}
 
+		@Override
 		public Iterator<Map.Entry<Integer,V>> iterator() {
 			return new IMEntrySetIterator<V>(IntMap.this);
 		}
 
+		@Override
 		public PersistentSet<Map.Entry<Integer,V>> include(
 				Map.Entry<Integer,V> value) {
 			return SetFactory.create(this).include(value);
@@ -717,10 +727,12 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			findNext();
 		}
 
+		@Override
 		public boolean hasNext() {
 			return (next!=null);
 		}
 
+		@Override
 		public IMEntry<V> next() {
 			IMEntry<V> result=next;
 			findNext();
@@ -731,6 +743,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 			next=root.findNext(this);
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
@@ -779,6 +792,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		throw new TODOException();
 	}
 	
+	@Override
 	public java.util.Map.Entry<Integer,V> getMapEntry(Object key) {
 		return getEntry((Integer)key);
 	}
@@ -847,6 +861,7 @@ public final class IntMap<V> extends PersistentMap<Integer,V> {
 		return new IntMap<V>(newRoot);
 	}
 	
+	@Override
 	public boolean allowsNullKey() {
 		return false;
 	}

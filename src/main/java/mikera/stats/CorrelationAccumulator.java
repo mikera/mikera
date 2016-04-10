@@ -86,6 +86,7 @@ public final class CorrelationAccumulator implements Comparable<CorrelationAccum
 		return ((CorrelationAccumulator)o).corr()==this.corr();
 	}
 	
+	@Override
 	public int compareTo(CorrelationAccumulator b) {
 		CorrelationAccumulator bcc=b;
 		
@@ -96,6 +97,7 @@ public final class CorrelationAccumulator implements Comparable<CorrelationAccum
 		return 0;
 	}
 	
+	@Override
 	public CorrelationAccumulator clone() {
 		CorrelationAccumulator acc=null;
 		try {

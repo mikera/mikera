@@ -151,6 +151,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 		/**
 		 * Testing function to validate internal structure of PHMNode
 		 */
+		@Override
 		public abstract void validate();
 	}
 	
@@ -659,14 +660,17 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 		private final K key;
 		private final V value;		
 		
+		@Override
 		public K getKey() {
 			return key;
 		}
 		
+		@Override
 		public V getValue() {
 			return value;
 		}
 				
+		@Override
 		public V setValue(V value) {
 			throw new UnsupportedOperationException();
 		}	
@@ -745,6 +749,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 		}
 		
 		// toString() consistent with java.util.AbstractMap
+		@Override
 		public String toString() {
 			return String.valueOf(key)+'='+String.valueOf(value);
 		}
@@ -761,6 +766,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 			return PersistentHashMap.this.size();
 		}
 		
+		@Override
 		@SuppressWarnings("unchecked")
 		public boolean contains(Object o) {
 			if (!(o instanceof Map.Entry<?,?>)) return false;
@@ -770,10 +776,12 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 			return Tools.equalsWithNulls(pe.value, ent.getValue());
 		}
 
+		@Override
 		public Iterator<Map.Entry<K, V>> iterator() {
 			return new PHMEntrySetIterator<K, V>(PersistentHashMap.this);
 		}
 
+		@Override
 		public PersistentSet<Map.Entry<K, V>> include(
 				Map.Entry<K, V> value) {
 			return SetFactory.create(this).include(value);
@@ -799,10 +807,12 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 			findNext();
 		}
 
+		@Override
 		public boolean hasNext() {
 			return (next!=null);
 		}
 
+		@Override
 		public PHMEntry<K, V> next() {
 			PHMEntry<K, V> result=next;
 			findNext();
@@ -813,6 +823,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 			next=root.findNext(this);
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
@@ -845,6 +856,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 		return root.getEntry(key);
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public Map.Entry<K,V> getMapEntry(Object key) {
 		return getEntry((K)key);
@@ -907,6 +919,7 @@ public final class PersistentHashMap<K,V> extends PersistentMap<K,V> {
 		root.validate();
 	}
 	
+	@Override
 	public boolean allowsNullKey() {
 		return false;
 	}

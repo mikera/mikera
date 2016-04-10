@@ -37,15 +37,18 @@ public final class RankedQueue<T> extends AbstractQueue<T>{
 			throw new UnsupportedOperationException();
 		}
 
+		@Override
 		public boolean hasNext() {
 			return (i<size());
 		}
 
+		@Override
 		public T next() {
 			if (i>=size) throw new NoSuchElementException();
 			return getObjectAtIndex(i++);
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}

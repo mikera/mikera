@@ -13,40 +13,50 @@ import mikera.util.Tools;
 public abstract class PersistentCollection<T> extends PersistentObject implements IPersistentCollection<T> {
 	private static final long serialVersionUID = -962303316004942025L;
 
+	@Override
 	public abstract int size();
 	
+	@Override
 	public PersistentCollection<T> clone() {
 		return (PersistentCollection<T>)super.clone();
 	}
 	
+	@Override
 	public boolean isEmpty() {
 		return size()==0;
 	}
 
+	@Override
 	public boolean removeAll(Collection<?> c) {
 		throw new UnsupportedOperationException("Unsupported on immutable collection");
 	}
 
+	@Override
 	public boolean retainAll(Collection<?> c) {
 		throw new UnsupportedOperationException("Unsupported on immutable collection");
 	}
 	
+	@Override
 	public boolean remove(Object o) {
 		throw new UnsupportedOperationException("Unsupported on immutable collection: use delete(...) instead");
 	}
 
+	@Override
 	public boolean add(T e) {
 		throw new UnsupportedOperationException("Unsupported on immutable collection: use include(...) instead");
 	}
 
+	@Override
 	public boolean addAll(Collection<? extends T> c) {
 		throw new UnsupportedOperationException("Unsupported on immutable collection: use includeAll(...) instead");
 	}
 
+	@Override
 	public void clear() {
 		throw new UnsupportedOperationException("Unsupported on immutable collection: use an empty instance instead");
 	}
 	
+	@Override
 	public boolean contains(Object o) {
 		for (T it: this) {
 			if (Tools.equalsWithNulls(it, o)) return true;
@@ -54,6 +64,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return false;
 	}
 
+	@Override
 	public boolean containsAll(Collection<?> c) {
 		for (Object it: c) {
 			if (!contains(it)) return false;
@@ -61,6 +72,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return true;
 	}
 	
+	@Override
 	public boolean containsAny(Collection<?> c) {
 		for (Object it: c) {
 			if (contains(it)) return true;
@@ -68,6 +80,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return false;
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof PersistentCollection<?>) {
 			return equals((PersistentCollection<T>)o);
@@ -79,6 +92,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return this.containsAll(pm)&&pm.containsAll(this);
 	}
 	
+	@Override
 	public int hashCode() {
 		return Tools.hashCode(this.iterator());
 	}
@@ -88,6 +102,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return false;
 	}
 	
+	@Override
 	public Object[] toArray() {
 		Object[] os=new Object[size()];
 		int i=0;
@@ -97,6 +112,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return os;
 	}
 
+	@Override
 	public <V> V[] toArray(V[] a) {
 		return toArray(a,0);
 	}
@@ -113,6 +129,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return a;
 	}
 
+	@Override
 	public PersistentCollection<T> delete(final T value) {
 		Iterator<T> it=new FilteredIterator<T>(iterator()) {
 			@Override
@@ -123,6 +140,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return ListFactory.createFromIterator(it);
 	}
 	
+	@Override
 	public PersistentCollection<T> deleteAll(final PersistentCollection<T> values) {
 		Iterator<T> it=new FilteredIterator<T>(iterator()) {
 			@Override
@@ -133,6 +151,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return ListFactory.createFromIterator(it);
 	}
 
+	@Override
 	public PersistentCollection<T> deleteAll(final Collection<T> values) {
 		Iterator<T> it=new FilteredIterator<T>(iterator()) {
 			PersistentCollection<T> col=ListFactory.createFromCollection(values);
@@ -145,6 +164,7 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return ListFactory.createFromIterator(it);
 	}
 	
+	@Override
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
 		sb.append('{');
@@ -161,8 +181,10 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return sb.toString();
 	}
 	
+	@Override
 	public abstract PersistentCollection<T> include(final T value);
 	
+	@Override
 	public PersistentCollection<T> includeAll(final Collection<T> values) {
 		PersistentCollection<T> ps=this;
 		for (T t: values) {
@@ -171,10 +193,12 @@ public abstract class PersistentCollection<T> extends PersistentObject implement
 		return ps;
 	}
 	
+	@Override
 	public PersistentCollection<T> includeAll(final PersistentCollection<T> values) {
 		return includeAll((Collection<T>)values);
 	}
 	
+	@Override
 	public void validate() {
 		// TODO: validation
 	}

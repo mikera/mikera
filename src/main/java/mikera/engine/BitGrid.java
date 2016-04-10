@@ -97,6 +97,7 @@ public final class BitGrid extends BaseGrid<Boolean> {
 		return counter[0];
 	}
 	
+	@Override
 	public Boolean get(int x, int y, int z) {
 		return test(x,y,z) ? Boolean.TRUE:Boolean.FALSE;
 	}
@@ -199,6 +200,7 @@ public final class BitGrid extends BaseGrid<Boolean> {
 		return ((bitIndex>>(XLOWBITS+YLOWBITS))&ZLOWMASK);
 	}
 	
+	@Override
 	public BitGrid clone() {
 		BitGrid nbg;
 		try {
@@ -375,6 +377,7 @@ public final class BitGrid extends BaseGrid<Boolean> {
 		visitBits(bf);
 	}
 
+	@Override
 	public void validate() {
 		if (data.length!=gw*gh*gd) throw new Error();
 		if ((gx&XLOWMASK)!=0) throw new Error();

@@ -156,6 +156,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 		/**
 		 * Testing function to validate internal structure of PHSNode
 		 */
+		@Override
 		public abstract void validate();
 	}
 	
@@ -782,6 +783,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 		}
 		
 		// toString() consistent with java.util.AbstractSet
+		@Override
 		public String toString() {
 			return String.valueOf(localKey);
 		}
@@ -804,10 +806,12 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			findNext();
 		}
 
+		@Override
 		public boolean hasNext() {
 			return (next!=null);
 		}
 
+		@Override
 		public T next() {
 			PHSEntry<T> result=next;
 			findNext();
@@ -824,6 +828,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 			next=root.findNext(this);
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
@@ -907,6 +912,7 @@ public final class PersistentHashSet<T> extends BasePersistentSet<T> {
 		root.validate();
 	}
 
+	@Override
 	public PHSIterator<T> iterator() {
 		return new PHSIterator<T>(this);
 	}

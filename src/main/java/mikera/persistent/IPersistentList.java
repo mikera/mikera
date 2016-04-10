@@ -19,6 +19,7 @@ public interface IPersistentList<T> extends IPersistentCollection<T>, List<T>, C
 
 	public PersistentList<T> copyFrom(int index, PersistentList<T> values, int srcIndex, int length);
 	
+	@Override
 	public PersistentList<T> delete(T value);
 
 	public PersistentList<T> deleteAt(int index);
@@ -59,10 +60,12 @@ public interface IPersistentList<T> extends IPersistentCollection<T>, List<T>, C
 	 * Returns a subset of the given list
 	 * Can be the whole list, or an empty list
 	 */
+	@Override
 	public PersistentList<T> subList(int fromIndex, int toIndex);
 
 	// access methods
 	
+	@Override
 	public T get(int i);
 	
 }

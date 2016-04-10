@@ -26,7 +26,8 @@ public final class Vector3 extends BaseVector {
         z = v.z;
     }
 
-    public float get(int i) {
+    @Override
+	public float get(int i) {
         switch (i) {
             case 0:
                 return x;
@@ -164,10 +165,12 @@ public final class Vector3 extends BaseVector {
         return dest;
     }
 
+	@Override
 	public int size() {
 		return 3;
 	}
 	
+	@Override
 	public Vector3 clone() {
 		return new Vector3(this);
 	}

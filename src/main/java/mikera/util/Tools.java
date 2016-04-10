@@ -39,6 +39,7 @@ public final class Tools {
 	public static class HashComparator<T> implements Comparator<T>, Serializable {
 		private static final long serialVersionUID = -568440287836864164L;
 
+		@Override
 		public int compare(T o1, T o2) {
 			return o2.hashCode()-o1.hashCode();
 		}
@@ -47,6 +48,7 @@ public final class Tools {
 	public static class DefaultComparator<T> implements Comparator<T>, Serializable {
 		private static final long serialVersionUID = 1695713461396657889L;
 
+		@Override
 		@SuppressWarnings("unchecked")
 		public int compare(T o1, T o2) {
 			return ((Comparable<T>)o1).compareTo(o2);
