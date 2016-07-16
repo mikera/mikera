@@ -16,14 +16,17 @@ public abstract class PersistentObject implements IPersistentObject {
 	 * and all subclasses must be immutable
 	 * 
 	 */
+	@Override
 	public PersistentObject clone() {
 		return this;
 	}
 	
+	@Override
 	public boolean hasFastHashCode() {
 		return false;
 	}
 	
+	@Override
 	public void validate() {
 		if (!this.clone().equals(this)) {
 			throw new Error("Clone problem!");

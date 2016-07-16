@@ -13,11 +13,13 @@ public abstract class BasePersistentList<T> extends PersistentList<T> {
 		throw new UnsupportedOperationException();
 	}
 	
+	@Override
 	public boolean contains(Object o) {
 		return indexOf(o)>=0;
 	}
 
 
+	@Override
 	public int lastIndexOf(Object o) {
 		int i=0;
 		int res=-1;
@@ -58,6 +60,7 @@ public abstract class BasePersistentList<T> extends PersistentList<T> {
 		return deleteRange(i,i+1);
 	}
 	
+	@Override
 	public PersistentList<T> delete(T value) {
 		PersistentList<T> pl=this;
 		int i=pl.indexOf(value);
@@ -68,6 +71,7 @@ public abstract class BasePersistentList<T> extends PersistentList<T> {
 		return pl;
 	}
 
+	@Override
 	public PersistentList<T> deleteAll(Collection<T> values) {
 		PersistentList<T> pl=this;
 		for (T t : values) { 
@@ -76,6 +80,7 @@ public abstract class BasePersistentList<T> extends PersistentList<T> {
 		return pl;
 	}
 
+	@Override
 	public int compareTo(PersistentList<T> o) {
 		int n=Maths.min(o.size(), size());
 		for (int i=0; i<n; i++) {

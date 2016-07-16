@@ -23,6 +23,7 @@ public final class ValueCollectionWrapper<K,V> extends PersistentCollection<V> {
 		return source.size();
 	}
 
+	@Override
 	public Iterator<V> iterator() {
 		return new ValueCollectionIterator<K, V>(source);
 	}
@@ -34,15 +35,18 @@ public final class ValueCollectionWrapper<K,V> extends PersistentCollection<V> {
 			source=base.iterator();
 		}
 
+		@Override
 		public boolean hasNext() {
 			return source.hasNext();
 		}
 
+		@Override
 		public V next() {
 			Map.Entry<K,V> next=source.next();
 			return next.getValue();
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}

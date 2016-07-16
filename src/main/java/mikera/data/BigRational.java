@@ -143,6 +143,7 @@ public class BigRational extends Number implements Comparable<BigRational> {
 		return false;
 	}
 
+	@Override
 	public int compareTo(BigRational b) {
 		return this.subtract(b).numerator.compareTo(BigInteger.ZERO);
 	}

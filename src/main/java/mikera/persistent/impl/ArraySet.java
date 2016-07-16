@@ -58,10 +58,12 @@ public final class ArraySet<T> extends BasePersistentSet<T> {
 		data=newData;
 	}
 	
+	@Override
 	public Iterator<T> iterator() {
 		return new ArraySetIterator<T>();
 	}
 
+	@Override
 	public int size() {
 		return data.length;
 	}
@@ -76,16 +78,19 @@ public final class ArraySet<T> extends BasePersistentSet<T> {
 	private class ArraySetIterator<K> implements Iterator<K> {
 		private int pos=0;
 		
+		@Override
 		public boolean hasNext() {
 			return pos<data.length;
 		}
 
+		@Override
 		@SuppressWarnings("unchecked")
 		public K next() {
 			if (pos>=data.length) throw new NoSuchElementException();
 			return (K)data[pos++];
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}

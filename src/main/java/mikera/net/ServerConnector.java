@@ -48,6 +48,7 @@ public class ServerConnector {
 	}
 
 	public static final MessageHandler ECHO_HANDLER = new MessageHandler() {
+		@Override
 		public boolean handleMessage(ByteBuffer data, Connection c) {
 			debugMessage("Echoing " + data.remaining() + " bytes");
 			c.write(data);
@@ -81,6 +82,7 @@ public class ServerConnector {
 	}
 
 	public Runnable listener = new Runnable() {
+		@Override
 		public void run() {
 			// loop continuously to handle selection events
 			while (true) {

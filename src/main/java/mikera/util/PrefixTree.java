@@ -21,16 +21,19 @@ public class PrefixTree<K,V> {
 			
 		}
 		
+		@Override
 		public boolean hasNext() {
 			return indexes.size()>0;
 		}
 		
 
+		@Override
 		public K[] next() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		@Override
 		public void remove() {
 			throw new Error("Not supported");
 		}

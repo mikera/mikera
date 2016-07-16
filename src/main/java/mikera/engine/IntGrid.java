@@ -90,6 +90,7 @@ public final class IntGrid  implements Cloneable {
 		}	
 	}
 	
+	@Override
 	public IntGrid clone() {
 		IntGrid nbg;
 		try {

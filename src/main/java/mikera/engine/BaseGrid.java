@@ -4,20 +4,25 @@ import mikera.util.Maths;
 
 public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 	
+	@Override
 	public BaseGrid<T> set(Grid<T> src) {		
 		return (BaseGrid<T>) clear().paste(src);
 	}
 	
+	@Override
 	public BaseGrid<T> paste(Grid<T> src) {
 		return paste(src,0,0,0);
 	}
 	
+	@Override
 	public int countNodes() {
 		return 1;
 	}
 	
+	@Override
 	public void visitPoints(final PointVisitor<T> pointVisitor) {
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
+			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 					T value) {
 				for (int z=z1; z<=z2; z++) {
@@ -33,8 +38,10 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 		visitBlocks(bv);
 	}
 	
+	@Override
 	public void visitBlocks(final BlockVisitor<T> bf, final int xmin, final int ymin, final int zmin, final int xmax, final int ymax, final int zmax) {
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
+			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 					T value) {
 				x1=Maths.max(x1,xmin);
@@ -53,8 +60,10 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 	}
 
 	
+	@Override
 	public void visitPoints(final PointVisitor<T> bf, final int xmin, final int xmax, final int ymin, final int ymax, final int zmin, final int zmax) {
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
+			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 					T value) {
 				x1=Maths.max(x1,xmin);
@@ -83,6 +92,7 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 	
 	public void changeAll(final T value) {
 		BlockVisitor<T> changer=new BlockVisitor<T>() {
+			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 					T v) {
 				if (v!=null) {
@@ -95,10 +105,12 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 		visitBlocks(changer);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public BaseGrid<T> paste(Grid<T> src, final int dx, final int dy, final int dz) {
 		final Object[] tmp=new Object[] {this};
 		BlockVisitor<T> paster=new BlockVisitor<T>() {
+			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 					T value) {
 				tmp[0]=((BaseGrid<T>)tmp[0]).setBlock(x1+dx,y1+dy,z1+dz,
@@ -110,6 +122,7 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 		return (BaseGrid<T>)tmp[0];
 	}
 	
+	@Override
 	public BaseGrid<T> setBlock(int x1, int y1, int z1, int x2, int y2, int z2, T value) {
 		BaseGrid<T> result=this;
 		for (int z=z1; z<=z2; z++) {

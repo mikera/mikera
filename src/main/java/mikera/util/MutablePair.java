@@ -21,6 +21,7 @@ public final class MutablePair<A,B> implements Cloneable, Comparable<MutablePair
 		this.b=b;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean equals(Object o) {
 		if (o instanceof MutablePair<?,?>) {
@@ -47,6 +48,7 @@ public final class MutablePair<A,B> implements Cloneable, Comparable<MutablePair
 		return true;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public int compareTo(MutablePair<A,B> p) {
 		if (a instanceof Comparable<?>) {
@@ -73,10 +75,12 @@ public final class MutablePair<A,B> implements Cloneable, Comparable<MutablePair
 		return new MutablePair<B, A>(b,a);
 	}
 	
+	@Override
 	public MutablePair<A,B> clone() {
 		return this;
 	}
 	
+	@Override
 	public int hashCode() {
 		int result=0;
 		if (a!=null) result+=a.hashCode();

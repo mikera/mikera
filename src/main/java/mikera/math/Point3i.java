@@ -100,6 +100,7 @@ public final class Point3i implements Comparable<Point3i>, Serializable {
         return new Vector3(x,y,z);
     }
     
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Point3i) {
 			return equals((Point3i)o);
@@ -116,6 +117,7 @@ public final class Point3i implements Comparable<Point3i>, Serializable {
 		return (x^(x<<20))+(y^(y<<10))+(z^(z<<15));
 	}
 
+	@Override
 	public int compareTo(Point3i o) {
 		int c=x-o.x;
 		if (c!=0) return c;

@@ -35,16 +35,19 @@ public class LinkedStack<T> implements Queue<T> {
 			head=top;
 		}		
 		
+		@Override
 		public boolean hasNext() {
 			return (head!=null);
 		}
 
+		@Override
 		public T next() {
 			T result=head.object;
 			head=head.next;
 			return result;
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}	

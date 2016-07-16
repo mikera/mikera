@@ -43,6 +43,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 			priority=Rand.nextInt();
 		}
 		
+		@Override
 		public int compareTo(ZNode b) {
 			long a=z1-b.z1;
 			if (a>0) return 1;
@@ -54,6 +55,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 			return object;
 		}
 		
+		@Override
 		public Object clone() {
 			try {
 				ZNode zn=(ZNode)super.clone();
@@ -65,6 +67,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 			}
 		}
 
+		@Override
 		public boolean equals(Object o) {
 			if (o instanceof ZNode) {
 				return equals((ZNode)o);
@@ -81,6 +84,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 			return true;
 		}
 		
+		@Override
 		public int hashCode() {
 			return object.hashCode()+(int)(z1*7+z2*1234567);
 		}
@@ -95,6 +99,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 	
 	public ZNode head;
 	
+	@Override
 	public Octreap<T> set(int x, int y, int z, T value) {
 		long zz=calculateZ(x,y,z);
 		setRange(zz,zz,value);
@@ -125,6 +130,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return clear();
 	}	
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean equals(Object b) {
 		if (!(b instanceof Octreap)) return false;
@@ -141,6 +147,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return true;
 	}
 	
+	@Override
 	public int hashCode() {
 		return 0;
 	}
@@ -149,10 +156,12 @@ public final class Octreap<T> extends BaseGrid<T> {
 	private class NodeIterator implements Iterator<ZNode> {
 		private ZNode current=getFirstNode();
 		
+		@Override
 		public boolean hasNext() {
 			return (current!=null);
 		}
 
+		@Override
 		public ZNode next() {
 			ZNode result=current;
 			if (result!=null) {
@@ -162,6 +171,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 			return result;
 		}
 
+		@Override
 		public void remove() {
 			throw new Error("Not supported");
 		}
@@ -186,6 +196,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return ni;
 	}
 	
+	@Override
 	public void visitBlocks(BlockVisitor<T> bf) {
 		visitBlocks(head,bf);
 	}
@@ -262,6 +273,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 	
 	public void delete(Octreap<T> t) {
 		NodeVisitor deleter=new NodeVisitor() {
+			@Override
 			public Object visit(ZNode n) {
 				deleteRange(n.z1,n.z2);
 				return null;
@@ -276,6 +288,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		setRange(0,FULL_MASK,value);
 	}
 	
+	@Override
 	public void changeAll(T value) {
 		changeAll(head,value);
 	}
@@ -345,6 +358,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return o3;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public Octreap<T> clone() {
 		try {
@@ -459,6 +473,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return null;			
 	}
 	
+	@Override
 	public final T get(int x, int y, int z) {
 		long zz=calculateZ(x,y,z);
 		return get(zz);
@@ -618,6 +633,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		head=addNode(nze,head);
 	}
 	
+	@Override
 	public int countNodes() {
 		return countNodes(head);
 	}
@@ -647,6 +663,7 @@ public final class Octreap<T> extends BaseGrid<T> {
 		return countArea(head);
 	}
 	
+	@Override
 	public int countNonNull() {
 		return countArea();
 	}

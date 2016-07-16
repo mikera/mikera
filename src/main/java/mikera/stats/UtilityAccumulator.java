@@ -56,6 +56,7 @@ public final class UtilityAccumulator implements Comparable<UtilityAccumulator>,
 		return ((UtilityAccumulator)b).mean()==this.mean();
 	}
 
+	@Override
 	public int compareTo(UtilityAccumulator b) {
 		double am=mean();
 		double bm=b.mean();
@@ -64,6 +65,7 @@ public final class UtilityAccumulator implements Comparable<UtilityAccumulator>,
 		return 0;
 	}
 	
+	@Override
 	public UtilityAccumulator clone() {
 		UtilityAccumulator acc=null;
 		try {

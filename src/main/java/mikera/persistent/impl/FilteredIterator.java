@@ -25,6 +25,7 @@ public abstract class FilteredIterator<T> implements Iterator<T> {
 	
 	public abstract boolean filter(T value);
 	
+	@Override
 	public boolean hasNext() {
 		return havenext;
 	}
@@ -40,6 +41,7 @@ public abstract class FilteredIterator<T> implements Iterator<T> {
 		return false;
 	}
 
+	@Override
 	public T next() {
 		if (havenext) {			
 			T result=next;
@@ -49,6 +51,7 @@ public abstract class FilteredIterator<T> implements Iterator<T> {
 		throw new NoSuchElementException();
 	}
 
+	@Override
 	public void remove() {
 		throw new UnsupportedOperationException();
 	}

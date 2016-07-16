@@ -56,6 +56,7 @@ public class ImageUtils {
 	public static Frame display(final Image image) {
 		JFrame f=new JFrame("Image popup");
 		JComponent c=new JComponent() {
+			@Override
 			public void paint(Graphics g) {
 				g.drawImage(image,0,0,null);
 			}
@@ -83,6 +84,7 @@ public class ImageUtils {
 			f=new JFrame(s);
 			imageFrames.put(s,f);
 			JComponent c=new JComponent() {
+				@Override
 				public void paint(Graphics g) {
 					g.drawImage(images.get(s),0,0,null);
 				}
@@ -105,6 +107,7 @@ public class ImageUtils {
 	public static Frame displayAndExit(Image image) {
 		final Frame frame=display(image);
 		frame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				frame.dispose();
 			}
@@ -117,6 +120,7 @@ public class ImageUtils {
 		
 		final Frame frame=display(image);
 		frame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				frame.dispose();
 			}

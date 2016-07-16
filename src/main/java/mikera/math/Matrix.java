@@ -87,6 +87,7 @@ public final class Matrix extends VectorFunction {
 		data[2+2*columns]=uz*uz+(1-uz*uz)*c;
 	}
 	
+	@Override
 	public String toString() {
 		StringBuilder result=new StringBuilder('{');
 		int max=data.length-1;
@@ -115,14 +116,17 @@ public final class Matrix extends VectorFunction {
 		}
 	}
 
+	@Override
 	public void calculate(Vector input, Vector output) {
 		multiplyVector(data,0,rows,columns,input.data,0,output.data,0);
 	}
 
+	@Override
 	public int inputDimensions() {
 		return columns;
 	}
 
+	@Override
 	public int outputDimensions() {
 		return rows;
 	}

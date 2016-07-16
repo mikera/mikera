@@ -350,6 +350,7 @@ public class TestOctreap {
 		long size=0;
 		Octreap<Integer> oct=new Octreap<Integer>();
 		
+		@Override
 		public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 				Integer value) {
 			count+=1;

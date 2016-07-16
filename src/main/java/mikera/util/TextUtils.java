@@ -461,22 +461,26 @@ public class TextUtils {
     		this.s_end=end;
     	}
     	
+		@Override
 		public char charAt(int index) {
 			if (index<0) throw new IndexOutOfBoundsException();
 			if (index>=length()) throw new IndexOutOfBoundsException();
 			return source.charAt(index-s_start);
 		}
 
+		@Override
 		public int length() {
 			return s_end-s_start;
 		}
 
+		@Override
 		public CharSequence subSequence(int start, int end) {
 			int length=length();
 			if ((start==0)&&(end==length)) return this;
 			return new SourceSubSequence(source,start+s_start, end+s_start);
 		}
 		
+		@Override
 		public SourceSubSequence clone() {
 			return this;
 		}

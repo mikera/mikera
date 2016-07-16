@@ -8,6 +8,7 @@ import mikera.annotations.Mutable;
 public class MutableObject implements Cloneable, Serializable {
 	private static final long serialVersionUID = -4651948305928784088L;
 
+	@Override
 	public MutableObject clone() {
 		try {
 			return (MutableObject) super.clone();

@@ -171,6 +171,7 @@ public class Dir {
 			// sort sub array by distance
 			final byte b1=(byte)i;
 			Arrays.sort(ds, new Comparator<Integer>() {
+				@Override
 				public int compare(Integer o1, Integer o2) {
 					return Float.compare(sqdist(o1),sqdist(o2));
 				}	

@@ -32,6 +32,7 @@ public class ImageFilters {
 	}
 
 	public static class GreyFilter extends RGBImageFilter {
+		@Override
 		public int filterRGB(int x, int y, int argb) {
 	    	return Colours.toGreyScale(argb);
 	    }
@@ -39,6 +40,7 @@ public class ImageFilters {
 	
 	public static class RGBtoHSBFilter extends RGBImageFilter {
 		private float[] hsbvals=new float[4];
+		@Override
 		public int filterRGB(int x, int y, int argb) {
 	    	int r=Colours.getRed(argb);
 	    	int g=Colours.getGreen(argb);
@@ -53,6 +55,7 @@ public class ImageFilters {
 	}
 	
 	public static class HSBtoRGBFilter extends RGBImageFilter {
+		@Override
 		public int filterRGB(int x, int y, int argb) {
 	    	float hu=Colours.getRed(argb)/255.0f;
 	    	float st=Colours.getGreen(argb)/255.0f;
@@ -110,6 +113,7 @@ public class ImageFilters {
 			a_factor=(float)a;
 		}
 		
+		@Override
 		public int filterRGB(int x, int y, int rgb) {
 	    	int r=Colours.getRed(rgb);
 	    	int g=Colours.getGreen(rgb);

@@ -19,6 +19,7 @@ public class TestLineTracer {
 		final int[] count=new int[1];
 		
 		PointVisitor<Integer> countingTracer=new PointVisitor<Integer>() {
+			@Override
 			public Object visit(int x, int y, int z, Integer v) {
 				count[0]+=o.get(x, y, z);
 				return null;

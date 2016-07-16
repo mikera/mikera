@@ -178,10 +178,12 @@ public final class Vector extends BaseVector {
 		return v;
 	}
 		
+	@Override
 	public int size() {
 		return data.length;
 	}
 	
+	@Override
 	public String toString() {
 		return toString(data);
 	}
@@ -207,6 +209,7 @@ public final class Vector extends BaseVector {
 		return true;
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Vector) {
 			return this.equals((Vector)o);
@@ -214,6 +217,7 @@ public final class Vector extends BaseVector {
 		return false;
 	}
 	
+	@Override
 	public int hashCode() {
 		int result=178;
 		for (int i=0; i<data.length; i++) {
@@ -321,6 +325,7 @@ public final class Vector extends BaseVector {
 		return Vector.normalise(data,0,data.length);
 	}
 	
+	@Override
 	public Vector clone() {
 		return new Vector(this);
 	}
@@ -347,6 +352,7 @@ public final class Vector extends BaseVector {
 		}
 	}
 
+	@Override
 	public float get(int i) {
 		return data[i];
 	}

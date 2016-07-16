@@ -62,6 +62,7 @@ public class CompositeList<T> extends BasePersistentList<T> {
 		size=a.size()+b.size();
 	}
 	
+	@Override
 	public PersistentList<T> subList(int fromIndex, int toIndex) {
 		if ((fromIndex<0)||(toIndex>size)) throw new IndexOutOfBoundsException();
 		if ((fromIndex==0)&&(toIndex==size)) return this;
@@ -71,15 +72,18 @@ public class CompositeList<T> extends BasePersistentList<T> {
 		return concat(front.subList(fromIndex, fs),back.subList(0, toIndex-fs));
 	}
 	
+	@Override
 	public PersistentList<T> front() {
 		return front;
 	}
 
+	@Override
 	public PersistentList<T> back() {
 		return back;
 	}
 
 
+	@Override
 	public T get(int i) {
 		int fs=front.size();
 		if (i<fs) {
@@ -88,19 +92,23 @@ public class CompositeList<T> extends BasePersistentList<T> {
 		return back.get(i-fs);
 	}
 
+	@Override
 	public int size() {
 		return size;
 	}
 
 
+	@Override
 	public PersistentList<T> append(T value) {
 		return concat(this,Tuple.create(value));
 	}
 
+	@Override
 	public PersistentList<T> append(PersistentList<T> value) {
 		return concat(this,value);
 	}
 
+	@Override
 	public int hashCode() {
 		int r= Integer.rotateRight(front.hashCode(),back.size());
 		r^=back.hashCode();

@@ -8,6 +8,7 @@ public class VF {
 	public static VectorFunction noiseFunction(int inputDimensions, int outputDimensions) {
 		BaseVectorFunction vf=new BaseVectorFunction() {
 			@Override public int outputDimensions() {return outputDimensions;}
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=input.size();
 				switch (isize) {
@@ -44,6 +45,7 @@ public class VF {
 	public static VectorFunction cloudFunction(int inputDimensions, int outputDimensions) {
 		BaseVectorFunction vf=new BaseVectorFunction() {
 			public final Noise noise=new Noise();
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=input.size();
 				switch (isize) {
@@ -80,6 +82,7 @@ public class VF {
 	public static VectorFunction tiledCloudFunction(int inputDimensions, int outputDimensions, final int grid) {
 		BaseVectorFunction vf=new BaseVectorFunction() {
 			public final Noise noise=new Noise();
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=input.size();
 				switch (isize) {
@@ -115,6 +118,7 @@ public class VF {
 	
 	public static VectorFunction clamp(final VectorFunction f, final float min, final float max) {
 		BaseVectorFunction vf=new BaseVectorFunction() {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f.calculate(input, output);
 				for (int i=0; i<outputDimensions; i++) {
@@ -129,6 +133,7 @@ public class VF {
 	
 	public static VectorFunction takeComponents(final VectorFunction f, final int start, final int count) {
 		BaseVectorFunction vf=new BaseVectorFunction() {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f.calculate(input, output);
 				for (int i=0; i<count; i++) {
@@ -146,6 +151,7 @@ public class VF {
 	public static VectorFunction zeroExtendComponents(final VectorFunction f, int outputDimensions) {
 		BaseVectorFunction vf=new BaseVectorFunction(f.inputDimensions(),outputDimensions) {
 			final int od=f.outputDimensions();
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f.calculate(input, output);
 				for (int i=od; i<outputDimensions; i++) {
@@ -159,6 +165,7 @@ public class VF {
 	public static VectorFunction fillComponents(final VectorFunction f, int outputDimensions) {
 		BaseVectorFunction vf=new BaseVectorFunction(f.inputDimensions(),outputDimensions) {
 			final int od=f.outputDimensions();
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f.calculate(input, output);
 				for (int i=0; i<outputDimensions; i++) {
@@ -172,6 +179,7 @@ public class VF {
 	public static VectorFunction add(final VectorFunction f1, final VectorFunction f2) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(f1.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=input.size();
 				if (temp.size()!=isize) temp=new Vector(isize);
@@ -188,6 +196,7 @@ public class VF {
 	public static VectorFunction setComponent(final VectorFunction f1, final int component, final VectorFunction scalarFunction) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(1);
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, output);
 				scalarFunction.calculate(input, temp);
@@ -200,6 +209,7 @@ public class VF {
 	public static VectorFunction getComponent(final VectorFunction f1, final int component) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),1) {
 			Vector temp=new Vector(f1.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, temp);
 				output.data[0]=temp.data[component];
@@ -211,6 +221,7 @@ public class VF {
 	public static VectorFunction setComponents(final VectorFunction f1, final int component, int count, final VectorFunction vectorFunction) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),count) {
 			Vector temp=new Vector(vectorFunction.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, output);
 				vectorFunction.calculate(input, temp);
@@ -225,6 +236,7 @@ public class VF {
 	public static VectorFunction select(final VectorFunction f1, final VectorFunction f2, final VectorFunction f3) {
 		BaseVectorFunction vf=new BaseVectorFunction(f2.inputDimensions(),f2.outputDimensions()) {
 			Vector temp=new Vector(f1.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, temp);
 				if (temp.data[0]>0) {
@@ -250,6 +262,7 @@ public class VF {
 	public static VectorFunction min(final VectorFunction f1, final VectorFunction f2) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(f2.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f2.calculate(input, temp);
 				f1.calculate(input, output);
@@ -274,6 +287,7 @@ public class VF {
 	public static VectorFunction max(final VectorFunction f1, final VectorFunction f2) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(f2.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f2.calculate(input, temp);
 				f1.calculate(input, output);
@@ -289,6 +303,7 @@ public class VF {
 		BaseVectorFunction vf=new BaseVectorFunction(f2.inputDimensions(),f2.outputDimensions()) {
 			Vector temp=new Vector(f2.outputDimensions());
 			float factor=(float)v;
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f2.calculate(input, temp);
 				f1.calculate(input, output);
@@ -310,6 +325,7 @@ public class VF {
 		if (v.size()!=f1.outputDimensions()) throw new Error("Wrong vector size ["+v.size()+"] for function ["+f1.outputDimensions()+"]");
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			final Vector value=new Vector(v);
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, output);
 				int isize=outputDimensions;
@@ -325,6 +341,7 @@ public class VF {
 		if (v.size()!=f1.outputDimensions()) throw new Error("Wrong vector size ["+v.size()+"] for function ["+f1.outputDimensions()+"]");
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			final Vector value=new Vector(v);
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=value.size();
 				f1.calculate(input, output);
@@ -339,6 +356,7 @@ public class VF {
 	public static VectorFunction multiply(final VectorFunction f1, final double v) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			final float value=(float)v;
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, output);
 				int osize=output.size();
@@ -353,6 +371,7 @@ public class VF {
 	public static VectorFunction compose(final VectorFunction outer,final VectorFunction inner) {
 		BaseVectorFunction vf=new BaseVectorFunction(inner.inputDimensions(),outer.outputDimensions()) {
 			Vector temp=new Vector(inner.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				inner.calculate(input, temp);
 				outer.calculate(temp, output);
@@ -364,6 +383,7 @@ public class VF {
 	public static VectorFunction constant(final Vector v) {
 		BaseVectorFunction vf=new BaseVectorFunction(0,v.size()) {
 			final Vector value=new Vector(v);
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=outputDimensions;
 				for (int i=0; i<isize; i++) {
@@ -376,6 +396,7 @@ public class VF {
 	
 	public static VectorFunction sin(final float freq) {
 		BaseVectorFunction vf=new BaseVectorFunction(1,1) {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				output.data[0]=FloatMaths.sin(input.data[0]*freq);
 			}
@@ -385,6 +406,7 @@ public class VF {
 	
 	public static VectorFunction cos(final float freq) {
 		BaseVectorFunction vf=new BaseVectorFunction(1,1) {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				output.data[0]=FloatMaths.cos(input.data[0]*freq);
 			}
@@ -394,6 +416,7 @@ public class VF {
 	
 	public static VectorFunction dist(final int inputDimensions) {
 		BaseVectorFunction vf=new BaseVectorFunction(inputDimensions,1) {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				float result=0;
 				for (int i=0; i<inputDimensions; i++) {
@@ -408,6 +431,7 @@ public class VF {
 	
 	public static VectorFunction hump(final int inputDimensions) {
 		BaseVectorFunction vf=new BaseVectorFunction(inputDimensions,1) {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				float result=0;
 				for (int i=0; i<inputDimensions; i++) {
@@ -422,6 +446,7 @@ public class VF {
 	
 	public static VectorFunction mandelbrot(final float step, final float max) {
 		BaseVectorFunction vf=new BaseVectorFunction(2,1) {
+			@Override
 			public void calculate(Vector input, Vector output) {
 				float result=0;
 				float cx=input.data[0];
@@ -444,6 +469,7 @@ public class VF {
 	public static VectorFunction concat(final VectorFunction f1, final VectorFunction f2) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()+f2.outputDimensions()) {
 			final Vector temp=new Vector(f2.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				f1.calculate(input, output);
 				f1.calculate(input, temp);
@@ -462,6 +488,7 @@ public class VF {
 	public static VectorFunction multiply(final VectorFunction f1, final VectorFunction f2) {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(f1.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=input.size();
 				if (temp.size()!=isize) temp=new Vector(isize);
@@ -486,6 +513,7 @@ public class VF {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			final float factor=(float)v;
 			Vector temp=new Vector(f2.outputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=inputDimensions;
 				f2.calculate(input, temp);
@@ -503,6 +531,7 @@ public class VF {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector vector=new Vector(v);
 			Vector temp=new Vector(f1.inputDimensions());
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=inputDimensions;
 				for (int i=0; i<isize; i++) {
@@ -518,6 +547,7 @@ public class VF {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(f1.inputDimensions());
 			Vector scaleFactor=new Vector(v);
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=inputDimensions;
 				for (int i=0; i<isize; i++) {
@@ -533,6 +563,7 @@ public class VF {
 		BaseVectorFunction vf=new BaseVectorFunction(f1.inputDimensions(),f1.outputDimensions()) {
 			Vector temp=new Vector(f1.inputDimensions());
 			float factor=(float)v;
+			@Override
 			public void calculate(Vector input, Vector output) {
 				int isize=inputDimensions;
 				for (int i=0; i<isize; i++) {

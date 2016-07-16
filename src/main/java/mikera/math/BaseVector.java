@@ -3,6 +3,7 @@ package mikera.math;
 public abstract class BaseVector implements Cloneable {
 	static final long serialVersionUID = 4591459378854897907L;
 
+	@Override
 	public BaseVector clone() {
 		try {
 			return (BaseVector)super.clone();
@@ -15,6 +16,7 @@ public abstract class BaseVector implements Cloneable {
 	
 	public abstract float get(int i);
 	
+	@Override
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
 		sb.append('(');

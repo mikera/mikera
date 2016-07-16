@@ -39,6 +39,7 @@ public final class Tools {
 	public static class HashComparator<T> implements Comparator<T>, Serializable {
 		private static final long serialVersionUID = -568440287836864164L;
 
+		@Override
 		public int compare(T o1, T o2) {
 			return o2.hashCode()-o1.hashCode();
 		}
@@ -47,6 +48,7 @@ public final class Tools {
 	public static class DefaultComparator<T> implements Comparator<T>, Serializable {
 		private static final long serialVersionUID = 1695713461396657889L;
 
+		@Override
 		@SuppressWarnings("unchecked")
 		public int compare(T o1, T o2) {
 			return ((Comparable<T>)o1).compareTo(o2);
@@ -345,5 +347,20 @@ public final class Tools {
 			im.put(objects.get(i), 1);
 		}
 		return im.size()==n;
+	}
+	
+	/**
+	 * Re-throws an exception in unchecked form, without wrapping in a new
+	 * exception. Useful for avoiding the need to declare unchecked exceptions.
+	 * 
+	 * @param t
+	 */
+	public static void sneakyThrow(Throwable t) {
+		Tools.<RuntimeException> sneakyRethrow(t);
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T extends Throwable> void sneakyRethrow(Throwable t) throws T {
+		throw (T) t;
 	}
 }

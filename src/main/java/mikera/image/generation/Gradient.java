@@ -217,6 +217,7 @@ public final class Gradient implements Cloneable, Serializable {
 		return result;
 	}
 	
+	@Override
 	public Gradient clone() {
 		return new Gradient(data.clone());
 	}

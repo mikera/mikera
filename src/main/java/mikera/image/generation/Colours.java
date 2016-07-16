@@ -184,6 +184,14 @@ public class Colours {
 		return getARGBQuick(ri,gi,bi,ai);
 	}
 	
+	public static int getARGBClamped(long r, long g, long b, long a) {
+    	int ri=(int)Maths.bound(0, r, MAX_BYTE);
+    	int gi=(int)Maths.bound(0, g, MAX_BYTE);
+    	int bi=(int)Maths.bound(0, b, MAX_BYTE);
+    	int ai=(int)Maths.bound(0, a, MAX_BYTE);
+		return getARGBQuick(ri,gi,bi,ai);
+	}
+	
 	/**
 	 * Converts an ARGB value to a array of floats
 	 * 

@@ -43,7 +43,8 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
      * Clone copies a BaseObject instance, maintaining
      * the same inherited properties
      */
-    @SuppressWarnings("unchecked")
+    @Override
+	@SuppressWarnings("unchecked")
 	public Object clone() {
         BaseObject o;
 		try {
@@ -58,7 +59,8 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
         return o;
     }
 
-    public final boolean equals(Object o) {
+    @Override
+	public final boolean equals(Object o) {
     	return this==o;
     }
     
@@ -110,7 +112,8 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
      * @param key
      * @return True if the receiver contains the key, false otherwise
      */
-    public boolean containsKey(String key) {
+    @Override
+	public boolean containsKey(String key) {
         if (local != null && local.containsKey(key)) return true;
 
         // tail-recursive call could give a mild performance
@@ -241,7 +244,8 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
      * @return Property value
      */
 
-    public Object get(String key) {
+    @Override
+	public Object get(String key) {
     	return getUnmodifiedValue(key);
     }
     	
@@ -261,13 +265,15 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
     /**
      * Get a single Map of all property pairs
      */
-    public Map<String,Object> getAll() {
+    @Override
+	public Map<String,Object> getAll() {
         Map<String,Object> map = new HashMap<String, Object>();
         putAll(map);
         return map;
     }
     
-    public void putAll(Map<String,Object> map) {	
+    @Override
+	public void putAll(Map<String,Object> map) {	
     	if (inherited!=null) {
     		inherited.putAll(map);
     	}

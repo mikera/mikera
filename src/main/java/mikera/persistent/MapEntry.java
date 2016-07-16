@@ -50,6 +50,7 @@ public final class MapEntry<K, V> implements Map.Entry<K,V>, Serializable {
 				&&Tools.equalsWithNulls(value, ent.getValue()));
 	}
 	
+	@Override
 	public int hashCode() {
 		// defined same as java.util.Map.Entry
 		return (getKey()==null   ? 0 : getKey().hashCode()) ^

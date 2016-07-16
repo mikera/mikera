@@ -318,6 +318,7 @@ public final class IntSet extends BasePersistentSet<Integer> {
 	/**
 	 * Calculates the hashcode of an IntSet
 	 */
+	@Override
 	public int hashCode() {
 		return hash;
 	}
@@ -334,6 +335,7 @@ public final class IntSet extends BasePersistentSet<Integer> {
 	/**
 	 * clone() returns the same IntSet, as it is defined to be immutable
 	 */
+	@Override
 	public IntSet clone() {
 		return this;
 	}
@@ -348,6 +350,7 @@ public final class IntSet extends BasePersistentSet<Integer> {
 		return true;
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if ((o instanceof IntSet)) {
 			return equals((IntSet) o);
@@ -358,24 +361,29 @@ public final class IntSet extends BasePersistentSet<Integer> {
 	/**
 	 * Set<Integer> methods
 	 */
+	@Override
 	public boolean add(Integer e) {
 		throw new UnsupportedOperationException("IntSet is Immutable");
 	}
 
+	@Override
 	public boolean addAll(Collection<? extends Integer> c) {
 		throw new UnsupportedOperationException("IntSet is Immutable");
 	}
 
+	@Override
 	public void clear() {
 		throw new UnsupportedOperationException("IntSet is Immutable");
 	}
 
+	@Override
 	public boolean contains(Object o) {
 		if (!(o instanceof Integer)) return false;
 		
 		return contains (((Integer)o).intValue());
 	}
 
+	@Override
 	public boolean containsAll(Collection<?> c) {
    		for (Object o: c) {
 			if (!contains(o)) return false;
@@ -383,6 +391,7 @@ public final class IntSet extends BasePersistentSet<Integer> {
 		return true;
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return size()==0;
 	}
@@ -392,44 +401,54 @@ public final class IntSet extends BasePersistentSet<Integer> {
 	 * 
 	 * Note that this needs to box each integer.
 	 */
+	@Override
 	public Iterator<Integer> iterator() {
 		return new Iterator<Integer>() {
 			int pos=0;
 			
+			@Override
 			public boolean hasNext() {
 				return pos<size();
 			}
 
+			@Override
 			public Integer next() {
 				return Integer.valueOf(data[pos++]);
 			}
 
+			@Override
 			public void remove() {
 				throw new UnsupportedOperationException("IntSet is Immutable");
 			}
 		};
 	}
 
+	@Override
 	public boolean remove(Object o) {
 		throw new UnsupportedOperationException("IntSet is Immutable");
 	}
 
+	@Override
 	public boolean removeAll(Collection<?> c) {
 		throw new UnsupportedOperationException("IntSet is Immutable");
 	}
 
+	@Override
 	public boolean retainAll(Collection<?> c) {
 		throw new UnsupportedOperationException("IntSet is Immutable");
 	}
 
+	@Override
 	public int size() {
 		return data.length;
 	}
 	
+	@Override
 	public Object[] toArray() {
 		return toArrayLocal(new Integer[size()]);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] a) {
 		int size=data.length;
@@ -460,6 +479,7 @@ public final class IntSet extends BasePersistentSet<Integer> {
 		return createMerged(this,values);
 	}
 	
+	@Override
 	public IntSet delete(Integer value) {
 		return createWithout(this,value.intValue());
 	}

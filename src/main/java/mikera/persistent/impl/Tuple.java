@@ -97,6 +97,7 @@ public final class Tuple<T> extends BasePersistentList<T> {
 		return new Tuple<T>(ndata);
 	}
 	
+	@Override
 	public int size() {
 		return data.length;
 	}
@@ -105,14 +106,17 @@ public final class Tuple<T> extends BasePersistentList<T> {
 		data=values;
 	}
 	
+	@Override
 	public T get(int i) {
 		return data[i];
 	}
 	
+	@Override
 	public Tuple<T> clone() {
 		return this;
 	}
 	
+	@Override
 	public PersistentList<T> subList(int fromIndex, int toIndex) {
 		if ((fromIndex<0)||(toIndex>size())) throw new IndexOutOfBoundsException();
 		if ((fromIndex==0)&&(toIndex==size())) return this;
@@ -126,6 +130,7 @@ public final class Tuple<T> extends BasePersistentList<T> {
 		return SubTuple.create(data, fromIndex, toIndex-fromIndex);
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public PersistentList<T> deleteRange(int start, int end) {
 		if ((start<0)||(end>size())) throw new IndexOutOfBoundsException();

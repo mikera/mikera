@@ -25,10 +25,12 @@ public final class SingletonSet<T> extends BasePersistentSet<T> {
 		return new SingletonSet<T>(object);
 	}
 	
+	@Override
 	public int size() {
 		return 1;
 	}
 	
+	@Override
 	public boolean isEmpty() {
 		return false;
 	}
@@ -42,23 +44,28 @@ public final class SingletonSet<T> extends BasePersistentSet<T> {
 		return SetFactory.concat(this,value);
 	}
 	
+	@Override
 	public boolean contains(Object o) {
 		return Tools.equalsWithNulls(value, o);
 	}
 
+	@Override
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
 			private int pos=0;
+			@Override
 			public boolean hasNext() {
 				return (pos<1);
 			}
 
+			@Override
 			public T next() {
 				if (pos>0) throw new NoSuchElementException();
 				pos++;
 				return value;
 			}
 
+			@Override
 			public void remove() {
 				throw new UnsupportedOperationException();
 			}

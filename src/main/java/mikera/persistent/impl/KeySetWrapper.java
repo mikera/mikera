@@ -27,6 +27,7 @@ public final class KeySetWrapper<K,V> extends PersistentSet<K> {
 		return source.size();
 	}
 
+	@Override
 	public Iterator<K> iterator() {
 		return new KeySetIterator<K, V>(source);
 	}
@@ -38,15 +39,18 @@ public final class KeySetWrapper<K,V> extends PersistentSet<K> {
 			source=base.iterator();
 		}
 
+		@Override
 		public boolean hasNext() {
 			return source.hasNext();
 		}
 
+		@Override
 		public K next() {
 			Map.Entry<K,V> next=source.next();
 			return next.getKey();
 		}
 
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
