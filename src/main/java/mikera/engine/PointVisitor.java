@@ -3,7 +3,8 @@
  */
 package mikera.engine;
 
-public abstract class PointVisitor<T> extends BlockVisitor<T> {
+public abstract class PointVisitor<T> extends BlockVisitor<T> implements IPointVisitor<T> {
+	@Override
 	public abstract Object visit(int x, int y, int z, T value);
 	
 	@Override
