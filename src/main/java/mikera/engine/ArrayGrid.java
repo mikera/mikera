@@ -82,6 +82,10 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 		}		
 	}
 	
+	/**
+	 * Visits every point in the array grid, including nulls
+	 * @param pv
+	 */
 	@SuppressWarnings("unchecked")
 	public void visitGrid(PointVisitor<T> pv) {
 		if (data==null) return;
@@ -107,7 +111,28 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 			for (int y=0; y<tgh; y++) {
 				for (int x=0; x<tgw; x++) {
 					T bv=(T)(data[si++]);
+					if (bv==null) continue;
 					bf.visit(x+gx,y+gy,z+gz,x+gx,y+gy,z+gz,bv);
+				}					
+			}
+		}			
+	}
+	
+	@Override
+	public void visitBlocks(BlockVisitor<T> bf, int xmin, int ymin, int zmin, int xmax, int ymax, int zmax) {
+		if (data==null) return;
+		xmin=Math.max(xmin, gx);
+		xmax=Math.min(xmax, gx+gw-1);
+		ymin=Math.max(ymin, gy);
+		ymax=Math.min(ymax, gy+gh-1);
+		zmin=Math.max(zmin, gz);
+		zmax=Math.min(zmax, gz+gd-1);
+		for (int z=zmin; z<=zmax; z++) {
+			for (int y=ymin; y<=ymax; y++) {
+				for (int x=xmin; x<=xmax; x++) {
+					T bv=get(x,y,z);
+					if (bv==null) continue;
+					bf.visit(x,y,z,x,y,z,bv);
 				}					
 			}
 		}			

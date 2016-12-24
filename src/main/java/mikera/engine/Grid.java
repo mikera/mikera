@@ -33,9 +33,10 @@ public abstract class Grid<T> {
 	/**
 	 * Visits all non-null points in the grid.
 	 * 
-	 * Visiting is guaranteed to be partially ordered in increasing x,y,z
+	 * Visiting is intended to be partially ordered in increasing x,y,z
+	 * But this depends on the grid implementation
 	 */
-	public abstract void visitPoints(PointVisitor<T> pointVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
+	public abstract void visitPoints(PointVisitor<T> pointVisitor, int xmin, int ymin, int zmin, int xmax, int ymax, int zmax);
 
 	/**
 	 * Visits all non-null blocks in this grid.

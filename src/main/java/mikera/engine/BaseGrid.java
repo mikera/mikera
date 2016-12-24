@@ -61,11 +61,13 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 
 	
 	@Override
-	public void visitPoints(final PointVisitor<T> bf, final int xmin, final int xmax, final int ymin, final int ymax, final int zmin, final int zmax) {
+	public void visitPoints(final PointVisitor<T> bf, final int xmin, final int ymin, final int zmin, final int xmax, final int ymax, final int zmax) {
+		// by default, use a blockvisitor
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
 			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
 					T value) {
+				if (value==null) return null;
 				x1=Maths.max(x1,xmin);
 				x2=Maths.min(x2,xmax);
 				y1=Maths.max(y1,xmin);
@@ -78,6 +80,7 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 				for (int z=z1; z<=z2; z++) {
 					for (int y=y1; y<=y2; y++) {
 						for (int x=x1; x<=x2; x++) {
+							// visit the point
 							bf.visit(x, y, z, value);
 						}
 					}

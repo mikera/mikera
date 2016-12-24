@@ -142,7 +142,7 @@ public class PersistentTreeGrid<T> extends BaseGrid<T> {
 					
 					// start of inner loop
 					Object d=data[li++];
-					if (d==null) continue;
+					if (d==null) continue; // skip null blocks
 					if (d instanceof PersistentTreeGrid<?>) {
 						PersistentTreeGrid<T> tg=(PersistentTreeGrid<T>)d;
 						tg.visitBlocksLocal(
