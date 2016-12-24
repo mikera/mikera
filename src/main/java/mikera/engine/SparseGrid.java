@@ -55,12 +55,12 @@ public class SparseGrid<T> extends BaseGrid<T> {
 	}
 
 	@Override
-	public void visitBlocks(BlockVisitor<T> bf) {
+	public void visitBlocks(IBlockVisitor<T> bf) {
 		visitBlocksLocal(bf,data,0);
 	}
 
 	@SuppressWarnings("unchecked")
-	private void visitBlocksLocal(BlockVisitor<T> bf, SparseArray<T> sa, long index) {
+	private void visitBlocksLocal(IBlockVisitor<T> bf, SparseArray<T> sa, long index) {
 		int n=sa.shiftSize();
 		int shift=sa.getShift();
 		for (int i=0; i<n; i++) {
@@ -79,7 +79,7 @@ public class SparseGrid<T> extends BaseGrid<T> {
 		}
 	}
 
-	private void visitCell(BlockVisitor<T> bf, T d, long index) {
+	private void visitCell(IBlockVisitor<T> bf, T d, long index) {
 		int x=Bits.zigzagDecodeInt(Octreap.extractX(index));
 		int y=Bits.zigzagDecodeInt(Octreap.extractY(index));
 		int z=Bits.zigzagDecodeInt(Octreap.extractZ(index));

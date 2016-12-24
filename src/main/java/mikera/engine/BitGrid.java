@@ -165,7 +165,7 @@ public final class BitGrid extends BaseGrid<Boolean> {
 		}		
 	}
 	
-	public void visitBits(BlockVisitor<Boolean> bf) {
+	public void visitBits(IBlockVisitor<Boolean> bf) {
 		if (data==null) return;
 		int si=0;
 		int tgw=gw; int tgh=gh; int tgd=gd; // make local copy to enable loop optimisation?
@@ -373,7 +373,7 @@ public final class BitGrid extends BaseGrid<Boolean> {
 	}
 
 	@Override
-	public void visitBlocks(BlockVisitor<Boolean> bf) {
+	public void visitBlocks(IBlockVisitor<Boolean> bf) {
 		visitBits(bf);
 	}
 

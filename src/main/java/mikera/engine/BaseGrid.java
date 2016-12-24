@@ -20,7 +20,7 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 	}
 	
 	@Override
-	public void visitPoints(final PointVisitor<T> pointVisitor) {
+	public void visitPoints(final IPointVisitor<T> pointVisitor) {
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
 			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
@@ -39,7 +39,7 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 	}
 	
 	@Override
-	public void visitBlocks(final BlockVisitor<T> bf, final int xmin, final int ymin, final int zmin, final int xmax, final int ymax, final int zmax) {
+	public void visitBlocks(final IBlockVisitor<T> bf, final int xmin, final int ymin, final int zmin, final int xmax, final int ymax, final int zmax) {
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
 			@Override
 			public Object visit(int x1, int y1, int z1, int x2, int y2, int z2,
@@ -61,7 +61,7 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 
 	
 	@Override
-	public void visitPoints(final PointVisitor<T> bf, final int xmin, final int ymin, final int zmin, final int xmax, final int ymax, final int zmax) {
+	public void visitPoints(final IPointVisitor<T> bf, final int xmin, final int ymin, final int zmin, final int xmax, final int ymax, final int zmax) {
 		// by default, use a blockvisitor
 		BlockVisitor<T> bv=new BlockVisitor<T>() {
 			@Override

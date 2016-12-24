@@ -22,13 +22,13 @@ public abstract class Grid<T> {
 	 * Visits all non-null Points in this grid
 	 * @param pointVisitor
 	 */
-	public abstract void visitPoints(PointVisitor<T> pointVisitor);
+	public abstract void visitPoints(IPointVisitor<T> pointVisitor);
 
 	/**
 	 * Visits all non-null Blocks in this grid
 	 * @param pointVisitor
 	 */
-	public abstract void visitBlocks(BlockVisitor<T> blockVisitor);
+	public abstract void visitBlocks(IBlockVisitor<T> blockVisitor);
 
 	/**
 	 * Visits all non-null points in the grid.
@@ -36,14 +36,14 @@ public abstract class Grid<T> {
 	 * Visiting is intended to be partially ordered in increasing x,y,z
 	 * But this depends on the grid implementation
 	 */
-	public abstract void visitPoints(PointVisitor<T> pointVisitor, int xmin, int ymin, int zmin, int xmax, int ymax, int zmax);
+	public abstract void visitPoints(IPointVisitor<T> pointVisitor, int xmin, int ymin, int zmin, int xmax, int ymax, int zmax);
 
 	/**
 	 * Visits all non-null blocks in this grid.
 	 * 
 	 * Visiting is guaranteed to be partially ordered in increasing x,y,z
 	 */
-	public abstract void visitBlocks(BlockVisitor<T> blockVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
+	public abstract void visitBlocks(IBlockVisitor<T> blockVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
 
 	// bulk change operations
 	

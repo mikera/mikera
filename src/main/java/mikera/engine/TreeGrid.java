@@ -95,7 +95,7 @@ public class TreeGrid<T> extends BaseGrid<T> {
 	}
 	
 	@Override
-	public void visitBlocks(BlockVisitor<T> bf) {
+	public void visitBlocks(IBlockVisitor<T> bf) {
 		visitBlocksLocal(bf,
 				0,0,0,
 				0,0,0,
@@ -104,7 +104,7 @@ public class TreeGrid<T> extends BaseGrid<T> {
 	}
 	
 	@Override
-	public void visitBlocks(BlockVisitor<T> bf,int x1, int y1, int z1,int x2, int y2, int z2) {
+	public void visitBlocks(IBlockVisitor<T> bf,int x1, int y1, int z1,int x2, int y2, int z2) {
 		visitBlocksLocal(bf,
 				0,0,0,
 				x1+TOP_OFFSET,y1+TOP_OFFSET,z1+TOP_OFFSET,
@@ -115,7 +115,7 @@ public class TreeGrid<T> extends BaseGrid<T> {
 	@SuppressWarnings("unchecked")
 	// cx,cy,cz are offset to bottom left of grid
 	// x1,y1,z1,x2,y2,z2 relative to bottom left
-	private void visitBlocksLocal(BlockVisitor<T> bf, int cx, int cy, int cz,int x1, int y1, int z1,int x2, int y2, int z2,int shift) {
+	private void visitBlocksLocal(IBlockVisitor<T> bf, int cx, int cy, int cz,int x1, int y1, int z1,int x2, int y2, int z2,int shift) {
 		int li=0;
 		int bsize=1<<shift; // size of sub blocks in this TreeGrid
 		

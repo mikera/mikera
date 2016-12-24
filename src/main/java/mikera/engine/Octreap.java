@@ -197,14 +197,14 @@ public final class Octreap<T> extends BaseGrid<T> {
 	}
 	
 	@Override
-	public void visitBlocks(BlockVisitor<T> bf) {
+	public void visitBlocks(IBlockVisitor<T> bf) {
 		visitBlocks(head,bf);
 	}
 	
 
 	
 	@SuppressWarnings("unchecked")
-	private void visitBlocks(ZNode node, BlockVisitor<T> bf) {
+	private void visitBlocks(ZNode node, IBlockVisitor<T> bf) {
 		if (node==null) return;
 		visitBlocks(node.left,bf);
 		

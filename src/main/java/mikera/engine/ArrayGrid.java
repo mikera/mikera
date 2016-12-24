@@ -103,7 +103,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public void visitBlocks(BlockVisitor<T> bf) {
+	public void visitBlocks(IBlockVisitor<T> bf) {
 		if (data==null) return;
 		int si=0;
 		int tgw=gw; int tgh=gh; int tgd=gd; // make local copy to enable loop optimisation?
@@ -119,7 +119,7 @@ public class ArrayGrid<T> extends BaseGrid<T> {
 	}
 	
 	@Override
-	public void visitBlocks(BlockVisitor<T> bf, int xmin, int ymin, int zmin, int xmax, int ymax, int zmax) {
+	public void visitBlocks(IBlockVisitor<T> bf, int xmin, int ymin, int zmin, int xmax, int ymax, int zmax) {
 		if (data==null) return;
 		xmin=Math.max(xmin, gx);
 		xmax=Math.min(xmax, gx+gw-1);
