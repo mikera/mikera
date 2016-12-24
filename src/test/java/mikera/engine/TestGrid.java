@@ -141,9 +141,6 @@ public class TestGrid {
 	}
 	
 	public void testVisitPoints(Grid<Integer> g) {
-		// TODO: fix visitPoints for Octreap
-		if (g instanceof Octreap) return;
-		
 		PCounter pc=new PCounter();	
 		g=g.setBlock(-5,-5,-5,4,4,4,2);
 		g=g.set(0,0,0,null);
