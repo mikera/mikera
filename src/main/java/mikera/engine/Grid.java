@@ -18,15 +18,30 @@ public abstract class Grid<T> {
 	
 	// visitor functions
 	
+	/**
+	 * Visits all non-null Points in this grid
+	 * @param pointVisitor
+	 */
 	public abstract void visitPoints(PointVisitor<T> pointVisitor);
 
+	/**
+	 * Visits all non-null Blocks in this grid
+	 * @param pointVisitor
+	 */
 	public abstract void visitBlocks(BlockVisitor<T> blockVisitor);
 
 	/**
 	 * Visits all non-null points in the grid.
+	 * 
+	 * Visiting is guaranteed to be partially ordered in increasing x,y,z
 	 */
 	public abstract void visitPoints(PointVisitor<T> pointVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
 
+	/**
+	 * Visits all non-null blocks in this grid.
+	 * 
+	 * Visiting is guaranteed to be partially ordered in increasing x,y,z
+	 */
 	public abstract void visitBlocks(BlockVisitor<T> blockVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
 
 	// bulk change operations
