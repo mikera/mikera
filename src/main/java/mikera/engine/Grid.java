@@ -22,6 +22,9 @@ public abstract class Grid<T> {
 
 	public abstract void visitBlocks(BlockVisitor<T> blockVisitor);
 
+	/**
+	 * Visits all non-null points in the grid.
+	 */
 	public abstract void visitPoints(PointVisitor<T> pointVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
 
 	public abstract void visitBlocks(BlockVisitor<T> blockVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);

@@ -28,6 +28,7 @@ public class TestGrid {
 		testSet(g);
 		testSetBlock(g);
 		testVisitBlock(g);
+		testVisitPoints(g);
 		testPaste(g);
 		
 		// finally check all clear
@@ -139,6 +140,29 @@ public class TestGrid {
 		g.clear();
 	}
 	
+	public void testVisitPoints(Grid<Integer> g) {
+		PCounter bc=new PCounter();	
+		g=g.setBlock(-5,-5,-5,4,4,4,2);
+		
+		g.visitPoints(bc);
+		assertEquals(1000,bc.count);
+		
+		bc=new PCounter();
+		g.visitBlocks(bc,0,0,0,9,9,9);
+		assertEquals(125,bc.count);
+		
+		bc=new PCounter();
+		g.visitBlocks(bc,-9,-9,-9,0,0,0);
+		assertEquals(216,bc.count);
+		assertEquals(432,bc.sum);
+		
+		bc=new PCounter();
+		g.visitBlocks(bc,-1,-1,-1,1,1,1);
+		assertEquals(27,bc.count);
+		
+		g.clear();
+	}
+	
 	@SuppressWarnings("unused")
 	private static class BCounter extends BlockVisitor<Integer>  {
 		public long count=0;
@@ -149,6 +173,19 @@ public class TestGrid {
 				Integer value) {
 			count+=1;
 			size+=((long)(x2-x1+1))*(y2-y1+1)*(z2-z1+1);
+			
+			return null;
+		}	
+	}
+	
+	private static class PCounter extends PointVisitor<Integer>  {
+		public long count=0;
+		public long sum=0;
+		
+		@Override
+		public Object visit(int x1, int y1, int z1, Integer value) {
+			count+=1;
+			sum+=value;
 			
 			return null;
 		}	
