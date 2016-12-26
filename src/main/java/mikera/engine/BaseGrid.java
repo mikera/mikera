@@ -70,10 +70,10 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 				if (value==null) return null;
 				x1=Maths.max(x1,xmin);
 				x2=Maths.min(x2,xmax);
-				y1=Maths.max(y1,xmin);
-				y2=Maths.min(y2,xmax);
-				z1=Maths.max(z1,xmin);
-				z2=Maths.min(z2,xmax);
+				y1=Maths.max(y1,ymin);
+				y2=Maths.min(y2,ymax);
+				z1=Maths.max(z1,zmin);
+				z2=Maths.min(z2,zmax);
 				
 				if ((z2<z1)||(y2<y1)||(x2<x1)) return null;
 				
