@@ -30,6 +30,7 @@ public class TestGrid {
 		testVisitBlocks(g);
 		testVisitPoints(g);
 		testPaste(g);
+		testTrace(g);
 		
 		// finally check all clear
 		testAllNull(g);
@@ -140,6 +141,33 @@ public class TestGrid {
 		g.clear();
 	}
 	
+	public void testTrace(Grid<Integer> g) {
+		PRecorder bc=new PRecorder();	
+		g=g.setBlock(-5,-5,-5,4,4,4,2);
+		g=g.set(0,0,0,null);
+		
+		g.trace(bc, -5.5, 0, 0, 1, 0, 0, 20);
+		assertEquals("[[-5,0,0]=2][[-4,0,0]=2][[-3,0,0]=2][[-2,0,0]=2][[-1,0,0]=2][[1,0,0]=2][[2,0,0]=2][[3,0,0]=2][[4,0,0]=2]",bc.result());
+		
+		bc=new PRecorder();	
+		g.trace(bc, 3, 0, 1, 1, 0, 0, 0);
+		assertEquals("[[3,0,1]=2]",bc.result());
+
+		bc=new PRecorder();	
+		g.trace(bc, 0.5, 0.5, 0.5, 0, 0, -1, 0);
+		assertEquals("",bc.result());
+
+		bc=new PRecorder();	
+		g.trace(bc, 0.5, 0.5, 0.5, 0, 0, -1, 0.3);
+		assertEquals("",bc.result());
+
+		bc=new PRecorder();	
+		g.trace(bc, 1.5, 1.5, 1.5, 0, -1, 0, 1.6);
+		assertEquals("[[1,1,1]=2][[1,0,1]=2][[1,-1,1]=2]",bc.result());
+		
+		g.clear();
+	}
+	
 	public void testVisitPoints(Grid<Integer> g) {
 		PCounter pc=new PCounter();	
 		g=g.setBlock(-5,-5,-5,4,4,4,2);
@@ -188,6 +216,20 @@ public class TestGrid {
 			count+=1;
 			sum+=value;
 			return null;
+		}	
+	}
+	
+	private static class PRecorder extends PointVisitor<Integer>  {
+		private StringBuffer sb=new StringBuffer();
+		
+		@Override
+		public Object visit(int x1, int y1, int z1, Integer value) {
+			sb.append("[["+x1+","+y1+","+z1+"]="+value+"]");
+			return null;
+		}
+
+		public String result() {
+			return sb.toString();
 		}	
 	}
 

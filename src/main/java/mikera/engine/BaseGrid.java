@@ -1,5 +1,6 @@
 package mikera.engine;
 
+import mikera.math.Utils;
 import mikera.util.Maths;
 
 public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
@@ -91,8 +92,65 @@ public abstract class BaseGrid<T> extends Grid<T> implements Cloneable {
 		visitBlocks(bv);
 	}
 
-
+	@Override
+	public void trace(IPointVisitor<T> pointVisitor, double x, double y, double z, double dx, double dy, double dz,
+			double range) {
+		// current location
+		int cx=(int)Math.floor(x);
+		int cy=(int)Math.floor(y);
+		int cz=(int)Math.floor(z);
+		
+		// step directions
+		int sx=Maths.sign(dx);
+		int sy=Maths.sign(dy);
+		int sz=Maths.sign(dz);
+		
+		double dirLength=Math.sqrt(Utils.distanceSquared(dx,dy,dz));
+		dx=Math.abs(dx)/dirLength;
+		dy=Math.abs(dy)/dirLength;
+		dz=Math.abs(dz)/dirLength;
+		
+		// residuals = distance along line until next step change
+		double rx=(x-cx);
+		double ry=(y-cy);
+		double rz=(z-cz);
+		rx=((sx>0)?(1.0-rx):rx)/dx;
+		ry=((sy>0)?(1.0-ry):ry)/dy;
+		rz=((sz>0)?(1.0-rz):rz)/dz;
+		if (sx==0) rx=Double.POSITIVE_INFINITY;
+		if (sy==0) ry=Double.POSITIVE_INFINITY;
+		if (sz==0) rz=Double.POSITIVE_INFINITY;
+		
+		while (range>=0.0) {
+			T value=get(cx,cy,cz);
+			if (value!=null) pointVisitor.visit(cx, cy, cz, value);
+			
+			if ((rx<=ry)&&(rx<=rz)) {
+				range-=rx;
+				cx+=sx;
+				ry-=rx;
+				rz-=rx;
+				rx=1.0/dx;
+			} else if ((ry<=rx)&&(ry<=rz)) {
+				range-=ry;
+				cy+=sy;
+				rx-=ry;
+				rz-=ry;
+				ry=1.0/dy;	
+			} else {
+				range-=rz;
+				cz+=sz;
+				rx-=rz;
+				ry-=rz;
+				rz=1.0/dz;					
+			}
+		}
+	}
 	
+	/**
+	 * Changes all non-null values to the specified value
+	 * @param value
+	 */
 	public void changeAll(final T value) {
 		BlockVisitor<T> changer=new BlockVisitor<T>() {
 			@Override

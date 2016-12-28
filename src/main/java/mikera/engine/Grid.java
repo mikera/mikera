@@ -45,6 +45,15 @@ public abstract class Grid<T> {
 	 */
 	public abstract void visitBlocks(IBlockVisitor<T> blockVisitor, int xmin, int xmax, int ymin, int ymax, int zmin, int zmax);
 
+	/**
+	 * Traces all points from a given start point in a given direction,
+	 * up to the maximum range (inclusive)
+	 * Calls the point visitor for all non-null points.
+	 * @param value
+	 * @return
+	 */
+	public abstract void trace(IPointVisitor<T> pointVisitor, double x, double y, double z, double dx, double dy, double dz, double range);
+	
 	// bulk change operations
 	
 	public abstract Grid<T> setBlock(int x1, int y1, int z1, int x2, int y2, int z2, T value);
