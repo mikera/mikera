@@ -137,6 +137,11 @@ public class TestText {
 		assertEquals("ACDB",t1.insert(1, t2).toString());		
 	}
 	
+	@Test public void testStringEqualsCharSequence() {
+		Text t=Text.create("hi").concat(Text.create("there"));
+		assertTrue(t.toString().contentEquals(t));
+	}
+	
 	public void testTextObject(Text t) {
 		int len=t.length();
 		
