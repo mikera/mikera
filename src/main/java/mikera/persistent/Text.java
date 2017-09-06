@@ -272,7 +272,7 @@ public final class Text extends PersistentObject implements CharSequence, Compar
 		if (fc>index) {
 			return front.charAtLocal(index);
 		}
-		return back.charAtLocal(index);
+		return back.charAtLocal(index - fc);
 	}
 
 	@Override
