@@ -94,7 +94,7 @@ public class BaseObject implements Cloneable, Serializable, ObjectProperties {
     }
     
     public void set(String s, double value) {
-        set(s, new Double(value));
+        set(s, Double.valueOf(value));
     }
 
     public void setProperties(Map<String,Object> map) {

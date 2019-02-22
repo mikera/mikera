@@ -431,7 +431,7 @@ public class TextUtils {
     	if (Character.isDigit(s.charAt(0))) {
     		try { 	
 	    		if (s.indexOf(".")>=1) {
-	    			return new Double(Double.parseDouble(s));
+	    			return Double.parseDouble(s);
 	    		} 
 	    			
 	    		return Integer.valueOf(Integer.parseInt(s));

@@ -101,6 +101,7 @@ public class TestTools {
 		assertEquals(true, Tools.equalsWithNulls(1, 1));
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test public void testDistinct() {
 		assertEquals(true, Tools.distinctObjects());
 		assertEquals(true, Tools.distinctObjects(new Boolean(true),new Boolean(true)));
